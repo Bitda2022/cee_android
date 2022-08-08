@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/studyfragment"
+        android:icon="@drawable/ic_bt_book"
+        android:title="지식"
+        app:showAsAction="withText" />
+
+
+    <item
+        android:id="@+id/quizfragment"
+        android:icon="@drawable/ic_bt_quiz"
+        android:title="퀴즈"
+        app:showAsAction="withText"
+        />
+
+    <item
+        android:id="@+id/investfragment"
+        android:icon="@drawable/ic_bt_savemoney"
+        android:title="투자"
+        app:showAsAction="withText"
+        />
+
+    <item
+        android:id="@+id/settingfragment"
+        android:icon="@drawable/ic_bt_settings"
+        android:title="설정"
+        app:showAsAction="withText"
+        />
+
+</menu>
