@@ -35,10 +35,9 @@ android {
     }
 
     dependencies {
-
-        // 뷰페이저 2
         implementation "androidx.viewpager2:viewpager2:1.0.0"
     }
+
 }
 
 dependencies {
