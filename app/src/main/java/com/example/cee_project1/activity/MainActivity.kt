@@ -31,25 +31,25 @@ class MainActivity : AppCompatActivity() {
         binding.pager.isUserInputEnabled = true
         binding.pager.adapter = ViewPagerAdapter(supportFragmentManager,lifecycle)
         binding.pager.registerOnPageChangeCallback(PageChangeCallback())
-        binding.bottomNavigationView.setOnItemSelectedListener {navigationSelected(it) }
+        binding.bottomNavigationView.setOnItemSelectedListener { navigationSelected(it) }
     }
 
     private fun navigationSelected(item: MenuItem): Boolean {
         val checked = item.setChecked(true)
         when (checked.itemId) {
-            R.id.studyfragment-> {
+            R.id.study_fragment-> {
                 binding.pager.currentItem = 0
                 return true
             }
-            R.id.quizfragment -> {
+            R.id.quiz_fragment -> {
                 binding.pager.currentItem = 1
                 return true
             }
-            R.id.investfragment -> {
+            R.id.invest_fragment -> {
                 binding.pager.currentItem = 2
                 return true
             }
-            R.id.settingfragment -> {
+            R.id.setting_fragment -> {
                 binding.pager.currentItem = 3
                 return true
             }
@@ -76,10 +76,10 @@ class MainActivity : AppCompatActivity() {
         override fun onPageSelected(position: Int) {
             super.onPageSelected(position)
             binding.bottomNavigationView.selectedItemId = when (position) {
-                0 -> R.id.studyfragment
-                1 -> R.id.quizfragment
-                2 -> R.id.investfragment
-                3 -> R.id.settingfragment
+                0 -> R.id.study_fragment
+                1 -> R.id.quiz_fragment
+                2 -> R.id.invest_fragment
+                3 -> R.id.setting_fragment
                 else -> error("no such position: $position")
             }
         }
