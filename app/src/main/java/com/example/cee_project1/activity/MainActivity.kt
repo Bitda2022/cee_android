@@ -2,6 +2,10 @@ package com.example.cee_project1.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
+import android.os.Message
+import android.util.Log
 import android.view.MenuItem
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
@@ -16,6 +20,7 @@ import com.example.cee_project1.fregment.InvestFragment
 import com.example.cee_project1.fregment.QuizSettingFragment
 import com.example.cee_project1.fregment.SettingFragment
 import com.example.cee_project1.fregment.StudyFragment
+import com.example.cee_project1.service.DownloadData
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 
@@ -32,6 +37,16 @@ class MainActivity : AppCompatActivity() {
         binding.pager.adapter = ViewPagerAdapter(supportFragmentManager,lifecycle)
         binding.pager.registerOnPageChangeCallback(PageChangeCallback())
         binding.bottomNavigationView.setOnItemSelectedListener { navigationSelected(it) }
+
+        // test code
+        class MyHandler : Handler(Looper.getMainLooper()) {
+            override fun handleMessage(msg: Message) {
+                val bundle = msg.data
+                Log.d("main", "handleMessage: " + bundle.getString("version"))
+            }
+        }
+        val handler = MyHandler()
+        DownloadData().getVersion(handler)
     }
 
     private fun navigationSelected(item: MenuItem): Boolean {
