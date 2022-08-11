@@ -8,4 +8,6 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="ceeblue">#017AFF</color>
+    <color name="ceebtn_fill">#47484A</color>
+    <color name="ceebtn_stroke">#47484A</color>
 </resources>
