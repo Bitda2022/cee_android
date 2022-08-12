@@ -12,7 +12,9 @@ import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.Lifecycle
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import androidx.viewpager2.widget.ViewPager2
+import com.example.cee_project1.CEEApplication
 import com.example.cee_project1.R
+import com.example.cee_project1.data.Quiz
 import com.example.cee_project1.data.Term
 import com.example.cee_project1.databinding.ActivityMainBinding
 import com.example.cee_project1.fragment.InvestFragment
@@ -20,6 +22,8 @@ import com.example.cee_project1.fragment.QuizSettingFragment
 import com.example.cee_project1.fragment.SettingFragment
 import com.example.cee_project1.fragment.StudyFragment
 import com.example.cee_project1.service.DownloadData
+import io.realm.Realm
+import io.realm.kotlin.where
 
 
 class MainActivity : AppCompatActivity() {
@@ -36,31 +40,43 @@ class MainActivity : AppCompatActivity() {
         binding.pager.registerOnPageChangeCallback(PageChangeCallback())
         binding.bottomNavigationView.setOnItemSelectedListener { navigationSelected(it) }
 
-        // test code
-        class MyHandler : Handler(Looper.getMainLooper()) {
-            override fun handleMessage(msg: Message) {
-                val bundle = msg.data
-                Log.d("main", "handleMessage: " + bundle.getString("version"))
-            }
-        }
-        val handler = MyHandler()
-        DownloadData().getVersion(handler)
+        testDatabase()
+    }
 
-        class MyHandler2 : Handler(Looper.getMainLooper()) {
-            override fun handleMessage(msg: Message) {
-                val termList = msg.obj as ArrayList<Term>
-                for (term in termList) {
-                    var str = ""
-                    str += (term.id.toString() + "\n")
-                    str += (term.name + "\n")
-                    str += (term.description + "\n")
-                    Log.d("term", "handleMessage: \n$str\n---------------------------")
-                }
-            }
+    private fun testDatabase() {
+        val realm = Realm.getDefaultInstance()
+        val version = CEEApplication.prefs.getString("version", "main_null")
+        Log.d("version", "onCreate: version: $version")
+
+        val term = realm.where<Term>().contains("name", "생산").findFirst()
+        Log.d("test", "testDatabase: " + term?.quizs?.size.toString())
+
+        val termList = realm.where<Term>().findAll()
+        var str1 : String
+        for(tmp in termList) {
+            str1 = "\n-----------------------------------\n"
+            str1 += termList.size.toString() + "\n"
+            str1 += "id : " + tmp.id + "\n"
+            str1 += "name : " + tmp.name + "\n"
+            str1 += "description : " + tmp.description + "\n"
+            str1 += "hasStudied : " + tmp.hasStudied + "\n"
+            if(tmp.quizs?.size!! > 0)
+                str1 += "quizs : " + tmp.quizs?.get(0)?.content + "\n"
+            Log.d("term", "onCreate: terms: $str1")
         }
-        val handler2 = MyHandler2()
-        DownloadData().downloadTerms(handler2)
-        // --------------------------------------------
+
+        val quizList = realm.where<Quiz>().findAll()
+        var str2 : String
+        for(tmp in quizList) {
+            str2 = "\n-----------------------------------\n"
+            str2 += quizList.size.toString() + "\n"
+            str2 += "id : " + tmp.id + "\n"
+            str2 += "term : " + tmp.term + "\n"
+            str2 += "content : " + tmp.content + "\n"
+            str2 += "answer : " + tmp.answer + "\n"
+            str2 += "wrong : " + tmp.wrong + "\n"
+            Log.d("quiz", "onCreate: quizs: $str2")
+        }
     }
 
     private fun navigationSelected(item: MenuItem): Boolean {

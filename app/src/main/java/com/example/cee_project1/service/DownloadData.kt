@@ -2,9 +2,11 @@ package com.example.cee_project1.service
 
 import android.os.Bundle
 import android.os.Handler
+import android.util.Log
 import com.example.cee_project1.data.Quiz
 import com.example.cee_project1.data.Term
 import io.realm.Realm
+import io.realm.RealmList
 import io.realm.kotlin.where
 import org.jsoup.Jsoup
 
@@ -58,13 +60,9 @@ class DownloadData {
                             val description = form.select(".description").text()
                             val metaphor = form.select(".metaphor").text()
                             val example = form.select(".real_example").text()
-                            var hasStudied : Boolean
+                            var hasStudied = false
 
-                            // examine past data
-                            val tmpTerm : Term? = realm.where<Term>().contains("name", name).findFirst()
-                            hasStudied = tmpTerm?.hasStudied ?: false
-
-                            val quizs = ArrayList<Quiz>()
+                            val quizs = RealmList<Quiz>()
 
                             val term = Term(
                                 id,
@@ -104,16 +102,7 @@ class DownloadData {
                         val forms = doc.select(".form")
 
                         for(form in forms) {
-                            // find term object
-                            val name = form.select(".term").text()
-                            val tmp = realm.where<Term>().contains("name", name).findFirst()
-                            val term : Term
-                            if(tmp != null)
-                                term = tmp
-                            else
-                                throw java.lang.Exception("cannot find term")
-
-                            // crawling content
+                            val term = form.select(".term").text()
                             val content = form.select(".content").text()
 
                             // crawling answer
@@ -125,10 +114,8 @@ class DownloadData {
                             else
                                 throw java.lang.Exception("wrong answer form")
 
-                            // examine past data
-                            val wrong : Int
-                            val tmpQuiz = realm.where<Quiz>().contains("content", content).findFirst()
-                            wrong = tmpQuiz?.wrong ?: 0
+
+                            val wrong = 0
 
                             val quiz = Quiz(
                                 id,
