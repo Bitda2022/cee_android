@@ -2,11 +2,9 @@ package com.example.cee_project1.service
 
 import android.os.Bundle
 import android.os.Handler
-import android.util.Log
 import com.example.cee_project1.data.Quiz
 import com.example.cee_project1.data.Term
 import org.jsoup.Jsoup
-import java.lang.Exception
 
 class DownloadData {
 
@@ -41,7 +39,7 @@ class DownloadData {
     }
 
     fun downloadTerms(handler : Handler) {
-        var termList = ArrayList<Term>()
+        val termList = ArrayList<Term>()
 
         Thread {
             kotlin.run {
@@ -55,7 +53,7 @@ class DownloadData {
                             val description = form.select(".description").text()
                             val metaphor = form.select(".metaphor").text()
                             val example = form.select(".real_example").text()
-                            val hasStudied = false
+                            val hasStudied = false // 데이터가 존재하지 않을 시
                             val quizs = ArrayList<Quiz>()
 
                             val term = Term(
@@ -81,6 +79,10 @@ class DownloadData {
                 }
             }
         }.start()
+    }
+
+    fun downloadQuizs(handler: Handler, terms : ArrayList<Term>) {
+
     }
 
 }
