@@ -1,11 +1,10 @@
-package com.example.cee_project1.fregment
+package com.example.cee_project1.fragment
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.example.cee_project1.databinding.FragmentSettingBinding
 import com.example.cee_project1.databinding.FragmentStudyBinding
 
 class StudyFragment : Fragment() {

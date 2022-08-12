@@ -1,22 +1,22 @@
-package com.example.cee_project1.fregment
+package com.example.cee_project1.fragment
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.example.cee_project1.databinding.FragmentInvestBinding
+import com.example.cee_project1.databinding.FragmentSettingBinding
 
-class InvestFragment : Fragment() {
+class SettingFragment : Fragment() {
 
-    lateinit var binding : FragmentInvestBinding
+    lateinit var binding : FragmentSettingBinding
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentInvestBinding.inflate(inflater, container, false)
+        binding = FragmentSettingBinding.inflate(inflater, container, false)
 
         return binding.root
     }
