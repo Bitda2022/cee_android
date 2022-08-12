@@ -1,12 +1,18 @@
 package com.example.cee_project1
 
 import android.app.Application
+import com.example.cee_project1.service.PreferenceUtil
 import io.realm.Realm
 import io.realm.RealmConfiguration
 
 class CEEApplication : Application() {
+    companion object {
+        lateinit var prefs : PreferenceUtil
+    }
 
     override fun onCreate() {
+        prefs = PreferenceUtil(applicationContext)
+
         super.onCreate()
 
         Realm.init(this)
