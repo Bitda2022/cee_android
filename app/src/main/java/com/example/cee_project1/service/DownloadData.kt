@@ -4,6 +4,8 @@ import android.os.Bundle
 import android.os.Handler
 import com.example.cee_project1.data.Quiz
 import com.example.cee_project1.data.Term
+import io.realm.Realm
+import io.realm.kotlin.where
 import org.jsoup.Jsoup
 
 class DownloadData {
@@ -13,6 +15,8 @@ class DownloadData {
     private val termURL = arrayOf("knowledge/economy_basic.html", "knowledge/financial_basic.html", "knowledge/stock_advanced.html")
 
     private val quizURL = arrayOf("quiz/economy_basic_quiz.html", "quiz/financial_basic_quiz.html", "quiz/stock_advanced_quiz.html")
+
+    private val realm = Realm.getDefaultInstance()
 
     fun getVersion(handler : Handler) {
         var version = ""
@@ -53,7 +57,12 @@ class DownloadData {
                             val description = form.select(".description").text()
                             val metaphor = form.select(".metaphor").text()
                             val example = form.select(".real_example").text()
-                            val hasStudied = false // 데이터가 존재하지 않을 시
+                            var hasStudied = false
+
+                            val tmpTerm : Term? = realm.where<Term>().contains("name", name).findFirst()
+                            if(tmpTerm != null)
+                                hasStudied = tmpTerm.hasStudied
+
                             val quizs = ArrayList<Quiz>()
 
                             val term = Term(

@@ -1,5 +1,7 @@
 package com.example.cee_project1.data
 
+import io.realm.RealmObject
+
 data class Term(
     var id : Int,
     var type : String, // 경제기초, 금융기반, 주식심화 구분
@@ -9,4 +11,4 @@ data class Term(
     var example : String, // 실생활 예시
     var hasStudied : Boolean, // 공부 완료/미완료
     var quizs : ArrayList<Quiz> // 퀴즈들
-)
+) : RealmObject()
