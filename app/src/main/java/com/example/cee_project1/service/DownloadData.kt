@@ -48,20 +48,21 @@ class DownloadData {
         Thread {
             kotlin.run {
                 try {
+                    var id = 0
                     for(url in termURL) {
                         val doc = Jsoup.connect(baseURL + url).get()
                         val forms = doc.select(".form")
 
-                        for((id, form) in forms.withIndex()) {
+                        for(form in forms) {
                             val name = form.select(".term").text()
                             val description = form.select(".description").text()
                             val metaphor = form.select(".metaphor").text()
                             val example = form.select(".real_example").text()
-                            var hasStudied = false
+                            var hasStudied : Boolean
 
+                            // examine past data
                             val tmpTerm : Term? = realm.where<Term>().contains("name", name).findFirst()
-                            if(tmpTerm != null)
-                                hasStudied = tmpTerm.hasStudied
+                            hasStudied = tmpTerm?.hasStudied ?: false
 
                             val quizs = ArrayList<Quiz>()
 
@@ -77,6 +78,7 @@ class DownloadData {
                             )
 
                             termList.add(id, term)
+                            id++
                         }
                     }
 
@@ -90,8 +92,65 @@ class DownloadData {
         }.start()
     }
 
-    fun downloadQuizs(handler: Handler, terms : ArrayList<Term>) {
+    fun downloadQuizs(handler: Handler) {
+        val quizList = ArrayList<Quiz>()
 
+        Thread {
+            kotlin.run {
+                try {
+                    var id = 0
+                    for(url in quizURL) {
+                        val doc = Jsoup.connect(baseURL + url).get()
+                        val forms = doc.select(".form")
+
+                        for(form in forms) {
+                            // find term object
+                            val name = form.select(".term").text()
+                            val tmp = realm.where<Term>().contains("name", name).findFirst()
+                            val term : Term
+                            if(tmp != null)
+                                term = tmp
+                            else
+                                throw java.lang.Exception("cannot find term")
+
+                            // crawling content
+                            val content = form.select(".content").text()
+
+                            // crawling answer
+                            val answer = form.select(".answer").text()
+                            val bool : Boolean = if(answer.equals("o"))
+                                true
+                            else if(answer.equals("x"))
+                                false
+                            else
+                                throw java.lang.Exception("wrong answer form")
+
+                            // examine past data
+                            val wrong : Int
+                            val tmpQuiz = realm.where<Quiz>().contains("content", content).findFirst()
+                            wrong = tmpQuiz?.wrong ?: 0
+
+                            val quiz = Quiz(
+                                id,
+                                term,
+                                content,
+                                bool,
+                                wrong
+                            )
+
+                            quizList.add(id, quiz)
+                            id++
+                        }
+                    }
+
+                    val msg = handler.obtainMessage()
+                    msg.obj = quizList
+                    handler.sendMessage(msg)
+                } catch(e : Exception) {
+                    e.printStackTrace()
+                }
+            }
+        }.start()
     }
 
 }
