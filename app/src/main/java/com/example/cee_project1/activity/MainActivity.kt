@@ -15,6 +15,7 @@ import androidx.viewpager.widget.PagerAdapter
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import androidx.viewpager2.widget.ViewPager2
 import com.example.cee_project1.R
+import com.example.cee_project1.data.Term
 import com.example.cee_project1.databinding.ActivityMainBinding
 import com.example.cee_project1.fregment.InvestFragment
 import com.example.cee_project1.fregment.QuizSettingFragment
@@ -47,6 +48,22 @@ class MainActivity : AppCompatActivity() {
         }
         val handler = MyHandler()
         DownloadData().getVersion(handler)
+
+        class MyHandler2 : Handler(Looper.getMainLooper()) {
+            override fun handleMessage(msg: Message) {
+                val termList = msg.obj as ArrayList<Term>
+                for (term in termList) {
+                    var str = ""
+                    str += (term.id.toString() + "\n")
+                    str += (term.name + "\n")
+                    str += (term.description + "\n")
+                    Log.d("term", "handleMessage: \n$str\n---------------------------")
+                }
+            }
+        }
+        val handler2 = MyHandler2()
+        DownloadData().downloadTerms(handler2)
+        // --------------------------------------------
     }
 
     private fun navigationSelected(item: MenuItem): Boolean {
