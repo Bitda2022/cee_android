@@ -2,12 +2,9 @@ package com.example.cee_project1.service
 
 import android.os.Bundle
 import android.os.Handler
-import android.util.Log
 import com.example.cee_project1.data.Quiz
 import com.example.cee_project1.data.Term
-import io.realm.Realm
 import io.realm.RealmList
-import io.realm.kotlin.where
 import org.jsoup.Jsoup
 
 class DownloadData {
@@ -17,8 +14,6 @@ class DownloadData {
     private val termURL = arrayOf("knowledge/economy_basic.html", "knowledge/financial_basic.html", "knowledge/stock_advanced.html")
 
     private val quizURL = arrayOf("quiz/economy_basic_quiz.html", "quiz/financial_basic_quiz.html", "quiz/stock_advanced_quiz.html")
-
-    private val realm = Realm.getDefaultInstance()
 
     fun getVersion(handler : Handler) {
         var version = ""
@@ -60,7 +55,7 @@ class DownloadData {
                             val description = form.select(".description").text()
                             val metaphor = form.select(".metaphor").text()
                             val example = form.select(".real_example").text()
-                            var hasStudied = false
+                            val hasStudied = false
 
                             val quizs = RealmList<Quiz>()
 

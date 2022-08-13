@@ -1,12 +1,9 @@
 package com.example.cee_project1.activity
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
-import android.os.Message
 import android.util.Log
 import android.view.MenuItem
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.Lifecycle
@@ -21,7 +18,6 @@ import com.example.cee_project1.fragment.InvestFragment
 import com.example.cee_project1.fragment.QuizSettingFragment
 import com.example.cee_project1.fragment.SettingFragment
 import com.example.cee_project1.fragment.StudyFragment
-import com.example.cee_project1.service.DownloadData
 import io.realm.Realm
 import io.realm.kotlin.where
 
