@@ -34,7 +34,6 @@ class QuizActivity : AppCompatActivity() {
         if(flag){
             Log.d("flag값","if(flag) 들어옴")
             settingQuiz(quizs,++quizIndex)
-            flag=false
         }
 
     }
@@ -123,15 +122,12 @@ class QuizActivity : AppCompatActivity() {
     }
 
     private fun settingQuiz(quizs: ArrayList<Quiz>,i:Int) {
-
-
         var quizNumberText = "퀴즈" + i.toString()
-        binding.activityQuizNumberTv.setText(i)
-        binding.activityQuizQuestionTv.setText(quizs.get(i).content)
+        binding.activityQuizNumberTv.text = i.toString()
+        Log.d("TAG", "settingQuiz: $i")
+        binding.activityQuizQuestionTv.text = quizs.get(i).content
+        flag = false
         quiz(quizs)
-
-
-
     }
 
     private fun startQuiz(quizs: ArrayList<Quiz>) {
