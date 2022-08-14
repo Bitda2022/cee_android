@@ -11,7 +11,7 @@
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginTop="100dp"
 
-        android:text="퀴즈1"
+        android:text="@string/quiz_number"
 
         android:textColor="@color/white"
         android:layout_width="wrap_content"
@@ -24,8 +24,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/activity_quiz_number_tv"
         android:layout_marginTop="30dp"
-        android:text="빌리거나 빌려 준 돈에 대한 \n
-이자. 이율을 금리라고 한다"
+        android:text="@string/quiz_question"
         android:textAlignment="center"
         android:textColor="@color/white"
         android:layout_width="match_parent"

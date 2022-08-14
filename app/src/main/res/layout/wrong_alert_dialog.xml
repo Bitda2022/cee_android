@@ -14,7 +14,7 @@
         app:layout_constraintBottom_toBottomOf="@id/wrong_dialog_title_tv"
         app:layout_constraintTop_toTopOf="@id/wrong_dialog_title_tv"
         app:layout_constraintEnd_toStartOf="@id/wrong_dialog_title_tv"
-        
+
         android:layout_marginEnd="5dp"
         android:src="@drawable/wrong_dialog_close_btn"
         >
