@@ -15,9 +15,9 @@ import com.example.cee_project1.data.Quiz
 import com.example.cee_project1.data.Term
 import com.example.cee_project1.databinding.ActivityMainBinding
 import com.example.cee_project1.fragment.InvestFragment
-import com.example.cee_project1.fragment.QuizSettingFragment
 import com.example.cee_project1.fragment.SettingFragment
 import com.example.cee_project1.fragment.StudyFragment
+import com.example.cee_project1.fregment.QuizSettingFragment
 import io.realm.Realm
 import io.realm.kotlin.where
 

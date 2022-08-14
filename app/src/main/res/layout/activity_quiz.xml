@@ -1,6 +1,82 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/black"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <TextView
+        android:id="@+id/activity_quiz_number_tv"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="100dp"
+
+        android:text="@string/quiz_number"
+
+        android:textColor="@color/white"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+    </TextView>
+
+    <TextView
+        android:id="@+id/activity_quiz_question_tv"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/activity_quiz_number_tv"
+        android:layout_marginTop="30dp"
+        android:text="@string/quiz_question"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    </TextView>
+
+    <ImageView
+        android:id="@+id/activity_quiz_correct_iv"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/activity_quiz_question_tv"
+        android:src="@drawable/ic_correct"
+        app:layout_constraintHorizontal_bias="0.3"
+        android:layout_marginTop="50dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+    </ImageView>
+    <TextView
+        app:layout_constraintStart_toStartOf="@id/activity_quiz_correct_iv"
+        app:layout_constraintEnd_toEndOf="@id/activity_quiz_correct_iv"
+        app:layout_constraintTop_toTopOf="@id/activity_quiz_correct_iv"
+        app:layout_constraintBottom_toBottomOf="@id/activity_quiz_correct_iv"
+        android:text="맞다"
+        android:textColor="@color/white"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+    </TextView>
+
+    <ImageView
+        android:id="@+id/activity_quiz_wrong_iv"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/activity_quiz_question_tv"
+        android:src="@drawable/ic_wrong"
+        app:layout_constraintHorizontal_bias="0.7"
+        android:layout_marginTop="50dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+    </ImageView>
+
+    <TextView
+        app:layout_constraintStart_toStartOf="@id/activity_quiz_wrong_iv"
+        app:layout_constraintEnd_toEndOf="@id/activity_quiz_wrong_iv"
+        app:layout_constraintTop_toTopOf="@id/activity_quiz_wrong_iv"
+        app:layout_constraintBottom_toBottomOf="@id/activity_quiz_wrong_iv"
+        android:text="틀리다"
+        android:textColor="@color/white"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+    </TextView>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

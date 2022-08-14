@@ -2,15 +2,109 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/black"
+    >
 
     <TextView
+        android:id="@+id/fragment_quiz_setting_quiz_range_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="퀴즈 탭입니다"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:text="퀴즈범위"
+        android:textColor="@color/white"
+        app:layout_constraintStart_toStartOf="@id/fragment_quiz_setting_level_ll"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/fragment_quiz_setting_level_ll"
+        >
+
+    </TextView>
+
+     <LinearLayout
+         android:id="@+id/fragment_quiz_setting_level_ll"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:layout_marginStart="20dp"
+         android:layout_marginEnd="20dp"
+         android:layout_marginTop="30dp"
+         android:layout_marginBottom="30dp"
+         app:layout_constraintStart_toStartOf="parent"
+         app:layout_constraintEnd_toEndOf="parent"
+         app:layout_constraintTop_toBottomOf="@id/fragment_quiz_setting_quiz_range_tv"
+         app:layout_constraintBottom_toTopOf="@id/fragment_quiz_setting_customize_quiz_btn"
+
+         android:orientation="horizontal">
+
+         <Button
+             android:id="@+id/fragment_quiz_setting_economy_basic_btn"
+             android:layout_width="0dp"
+             android:layout_weight="1"
+             android:layout_height="wrap_content"
+             android:text="경제 기초"
+             android:textColor="@color/white"
+             android:background="@drawable/button_rectangle"
+
+
+             />
+
+
+         <Button
+             android:id="@+id/fragment_quiz_setting_financial_basic_btn"
+             android:layout_width="0dp"
+             android:layout_weight="1"
+             android:layout_height="wrap_content"
+             android:text="금융 심화"
+             android:textColor="@color/white"
+             android:background="@drawable/button_rectangle"
+
+             />
+
+         <Button
+             android:id="@+id/fragment_quiz_setting_stock_advanced_btn"
+             android:layout_width="0dp"
+             android:layout_weight="1"
+             android:layout_height="wrap_content"
+             android:text="주식 심화"
+             android:textColor="@color/white"
+             android:background="@drawable/button_rectangle"
+
+             />
+
+     </LinearLayout>
+
+    <Button
+        android:id="@+id/fragment_quiz_setting_customize_quiz_btn"
+        app:layout_constraintStart_toStartOf="@id/fragment_quiz_setting_level_ll"
+        app:layout_constraintEnd_toEndOf="@id/fragment_quiz_setting_level_ll"
+        app:layout_constraintTop_toBottomOf="@id/fragment_quiz_setting_level_ll"
+        android:text="맞춤형 퀴즈"
+
+        android:textColor="@color/white"
+        android:background="@drawable/button_rectangle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content">
+
+    </Button>
+
+
+    <Button
+        android:id="@+id/fragment_quiz_setting_start_quiz_btn"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/fragment_quiz_setting_customize_quiz_btn"
+        android:text="퀴즈\n시작"
+        android:textColor="@color/white"
+        android:background="@drawable/buttom_round"
+        android:layout_width="70dp"
+        android:layout_height="70dp">
+    </Button>
+
+
+
+
+
+
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

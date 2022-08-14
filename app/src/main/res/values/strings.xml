@@ -4,4 +4,8 @@
     <string name="quiz">퀴즈</string>
     <string name="invest">투자</string>
     <string name="setting">설정</string>
+
+    <string name="quiz_number">퀴즈1</string>
+    <string name="quiz_question">빌리거나 빌려 준 돈에 대한 이자. 이율을 금리라고 한다</string>
+
 </resources>
