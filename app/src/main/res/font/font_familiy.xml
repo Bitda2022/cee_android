@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<font-family xmlns:android="http://schemas.android.com/apk/res/android">
+    <font android:font="@font/sf_heavy" />
+    <font android:font="@font/sf_bold"/>
+    <font android:font="@font/sf_semibold"/>
+    <font android:font="@font/sf_medium"/>
+    <font android:font="@font/sf_regular"/>
+    <font android:font="@font/sf_light"/>
+
+</font-family>
