@@ -10,4 +10,5 @@
     <color name="ceeblue">#017AFF</color>
     <color name="ceebtn_fill">#47484A</color>
     <color name="ceebtn_stroke">#47484A</color>
+    <color name="cee_dialog">#323436</color>
 </resources>
