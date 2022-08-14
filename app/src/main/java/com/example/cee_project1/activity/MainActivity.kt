@@ -1,22 +1,25 @@
 package com.example.cee_project1.activity
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.MenuItem
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentActivity
 import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.Lifecycle
-import androidx.viewpager.widget.PagerAdapter
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import androidx.viewpager2.widget.ViewPager2
+import com.example.cee_project1.CEEApplication
 import com.example.cee_project1.R
+import com.example.cee_project1.data.Quiz
+import com.example.cee_project1.data.Term
 import com.example.cee_project1.databinding.ActivityMainBinding
-import com.example.cee_project1.fregment.InvestFragment
-import com.example.cee_project1.fregment.QuizSettingFragment
-import com.example.cee_project1.fregment.SettingFragment
-import com.example.cee_project1.fregment.StudyFragment
-import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.example.cee_project1.fragment.InvestFragment
+import com.example.cee_project1.fragment.QuizSettingFragment
+import com.example.cee_project1.fragment.SettingFragment
+import com.example.cee_project1.fragment.StudyFragment
+import io.realm.Realm
+import io.realm.kotlin.where
 
 
 class MainActivity : AppCompatActivity() {
@@ -32,6 +35,44 @@ class MainActivity : AppCompatActivity() {
         binding.pager.adapter = ViewPagerAdapter(supportFragmentManager,lifecycle)
         binding.pager.registerOnPageChangeCallback(PageChangeCallback())
         binding.bottomNavigationView.setOnItemSelectedListener { navigationSelected(it) }
+
+        testDatabase()
+    }
+
+    private fun testDatabase() {
+        val realm = Realm.getDefaultInstance()
+        val version = CEEApplication.prefs.getString("version", "main_null")
+        Log.d("version", "onCreate: version: $version")
+
+        val term = realm.where<Term>().contains("name", "생산").findFirst()
+        Log.d("test", "testDatabase: " + term?.quizs?.size.toString())
+
+        val termList = realm.where<Term>().findAll()
+        var str1 : String
+        for(tmp in termList) {
+            str1 = "\n-----------------------------------\n"
+            str1 += termList.size.toString() + "\n"
+            str1 += "id : " + tmp.id + "\n"
+            str1 += "name : " + tmp.name + "\n"
+            str1 += "description : " + tmp.description + "\n"
+            str1 += "hasStudied : " + tmp.hasStudied + "\n"
+            if(tmp.quizs?.size!! > 0)
+                str1 += "quizs : " + tmp.quizs?.get(0)?.content + "\n"
+            Log.d("term", "onCreate: terms: $str1")
+        }
+
+        val quizList = realm.where<Quiz>().findAll()
+        var str2 : String
+        for(tmp in quizList) {
+            str2 = "\n-----------------------------------\n"
+            str2 += quizList.size.toString() + "\n"
+            str2 += "id : " + tmp.id + "\n"
+            str2 += "term : " + tmp.term + "\n"
+            str2 += "content : " + tmp.content + "\n"
+            str2 += "answer : " + tmp.answer + "\n"
+            str2 += "wrong : " + tmp.wrong + "\n"
+            Log.d("quiz", "onCreate: quizs: $str2")
+        }
     }
 
     private fun navigationSelected(item: MenuItem): Boolean {

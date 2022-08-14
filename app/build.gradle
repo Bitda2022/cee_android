@@ -1,7 +1,10 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
+    id 'org.jetbrains.kotlin.kapt'
 }
+
+apply plugin: "realm-android"
 
 android {
     compileSdk 32
@@ -41,6 +44,11 @@ android {
 }
 
 dependencies {
+    // for realm database
+    implementation 'io.realm:realm-gradle-plugin:10.10.1'
+
+    // for web crawling
+    implementation 'org.jsoup:jsoup:1.13.1'
 
     implementation 'androidx.core:core-ktx:1.7.0'
     implementation 'androidx.appcompat:appcompat:1.4.2'
