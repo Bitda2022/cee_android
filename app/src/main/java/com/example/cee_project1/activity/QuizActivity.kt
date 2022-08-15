@@ -110,9 +110,9 @@ class QuizActivity : AppCompatActivity() {
                 "            경제학에서는 이를 ‘투자’라고 부릅니다.",false,null)
 
 
-        var quiz1=Quiz(0,"생산","아르바이트는 생산의 예이다",true,0)
-        var quiz2=Quiz(1,"분배","예금 이자를 받은 것은 생산의 예이다",false,0)
-        var quiz3=Quiz(2,"소비","유튜브 동영상을 만드릭 위해서 편집 프로그램을 산 것은 소비이다",false,0)
+        var quiz1=Quiz(0,"생산","아르바이트는 생산의 예이다",true,"해설1",0)
+        var quiz2=Quiz(1,"분배","예금 이자를 받은 것은 생산의 예이다",false,"해설2",0)
+        var quiz3=Quiz(2,"소비","유튜브 동영상을 만드릭 위해서 편집 프로그램을 산 것은 소비이다",false,"해설3",0)
 
         var quizs=ArrayList<Quiz>()
         quizs.add(quiz1)
