@@ -21,12 +21,24 @@ class TTSService(context: Context) : UtteranceProgressListener(), TextToSpeech.O
 
     private var state : State = State.CLEAR
 
+    open class OnDoneListener {
+        open fun afterDone() {
+            return
+        }
+    }
+
+    private var onDoneListener = OnDoneListener()
+
     init {
         tts = TextToSpeech(context, this, "com.google.android.tts")
         val engines = whatEnginesAreInstalled(context)
         for(e in engines) {
             Log.d("engine", "engines: $e")
         }
+    }
+
+    fun setOnDoneListener(onDoneListener: OnDoneListener) {
+        this.onDoneListener = onDoneListener
     }
 
     fun reset() {
@@ -53,7 +65,7 @@ class TTSService(context: Context) : UtteranceProgressListener(), TextToSpeech.O
         if(state != State.PLAY) {
             state = State.PLAY
             contents[0] = contents[0].substring(nowIndex)
-            tts.speak(contents[0], TextToSpeech.QUEUE_FLUSH, null, "1")
+            tts.speak(contents[0], TextToSpeech.QUEUE_FLUSH, null, "-1")
         }
     }
 
@@ -93,6 +105,8 @@ class TTSService(context: Context) : UtteranceProgressListener(), TextToSpeech.O
         contents.removeAt(0)
         if(contents.isEmpty()) {
             state = State.CLEAR
+            nowIndex = 0
+            onDoneListener.afterDone()
         } else {
             tts.speak(contents[0], TextToSpeech.QUEUE_FLUSH, null, contents.size.toString())
         }

@@ -7,7 +7,7 @@ import io.realm.Realm
 import io.realm.RealmConfiguration
 
 class CEEApplication : Application() {
-    
+
     companion object {
         lateinit var prefs : PreferenceUtil
         lateinit var tts : TTSService
