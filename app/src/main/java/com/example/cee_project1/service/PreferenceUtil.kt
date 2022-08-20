@@ -15,4 +15,12 @@ class PreferenceUtil(context : Context) {
         prefs.edit().putString(key, str).apply()
     }
 
+    fun getFloat(key: String, defValue: Float): Float {
+        return prefs.getFloat(key, defValue)
+    }
+
+    fun setFloat(key: String, float: Float) {
+        prefs.edit().putFloat(key, float).apply()
+    }
+
 }

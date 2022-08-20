@@ -6,6 +6,7 @@ import android.content.pm.PackageManager
 import android.speech.tts.TextToSpeech
 import android.speech.tts.UtteranceProgressListener
 import android.util.Log
+import com.example.cee_project1.CEEApplication.Companion.prefs
 import java.util.*
 
 
@@ -29,13 +30,14 @@ class TTSService(context: Context) : UtteranceProgressListener(), TextToSpeech.O
     }
 
     fun reset() {
-        setSpeed(1f)
+        speed = prefs.getFloat("tts_speed", 1f)
         contents.clear()
         nowIndex = 0
         state = State.CLEAR
     }
 
     fun setSpeed(speed : Float) {
+        prefs.setFloat("tts_speed", speed)
         this.speed = speed
     }
 
