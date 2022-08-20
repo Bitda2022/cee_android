@@ -28,6 +28,7 @@ class SettingFragment : Fragment() {
     }
 
     private fun testTTS() {
+        tts.setSpeed(1.3f)
         tts.addContents("소비")
         tts.addContents("만족을 얻으려고 생활에 필요한 재화나 서비스를 구매 또는 사용하는 행위")
         tts.addContents("컴퓨터 게임 프로그램을 산 것은 소비이지만, 유튜브 동영상을 만들기 위해서 동영상 편집 프로그램을 산 것은 소비가 아닙니다. " +
@@ -46,6 +47,9 @@ class SettingFragment : Fragment() {
                 }
             }
         )
+        tts.pause()
+        tts.play()
+        tts.pause()
     }
 
 }

@@ -51,6 +51,7 @@ class TTSService(context: Context) : UtteranceProgressListener(), TextToSpeech.O
     fun setSpeed(speed : Float) {
         prefs.setFloat("tts_speed", speed)
         this.speed = speed
+        tts.setSpeechRate(speed)
     }
 
     fun addContents(str : String) {
@@ -70,8 +71,10 @@ class TTSService(context: Context) : UtteranceProgressListener(), TextToSpeech.O
     }
 
     fun pause() {
-        state = State.PAUSE
-        tts.stop()
+        if(state == State.PLAY) {
+            state = State.PAUSE
+            tts.stop()
+        }
     }
 
     fun execute() {
@@ -105,11 +108,11 @@ class TTSService(context: Context) : UtteranceProgressListener(), TextToSpeech.O
         contents.removeAt(0)
         if(contents.isEmpty()) {
             state = State.CLEAR
-            nowIndex = 0
             onDoneListener.afterDone()
         } else {
             tts.speak(contents[0], TextToSpeech.QUEUE_FLUSH, null, contents.size.toString())
         }
+        nowIndex = 0
     }
 
     override fun onError(p0: String?) {
