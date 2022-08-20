@@ -11,16 +11,14 @@ import com.example.cee_project1.dialog.WrongAlertDialog
 class QuizActivity : AppCompatActivity() {
 
     lateinit var binding : ActivityQuizBinding
-    var quizCnt:Int=0
-    var settingQuizCnt:Int=0
     var quizIndex:Int=0
     var flag:Boolean=false
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityQuizBinding.inflate(layoutInflater)
         setContentView(binding.root)
         initData()
-        initView()
 
     }
 
@@ -134,64 +132,5 @@ class QuizActivity : AppCompatActivity() {
         quiz(quizs)
     }
 
-    private fun startQuiz(quizs: ArrayList<Quiz>) {
-//        quizCnt++
-//
-//            settingQuiz(quizs)
-//
-//
-//            if (quizs.get(settingQuizCnt).answer) {//정답이 O라면
-//                binding.activityQuizCorrectIv.setOnClickListener {
-//                    Log.d("click_event","정답 O인데 O 누름")
-//                    quizCnt++
-//                    settingQuizCnt++
-//                    settingQuiz(quizs,i)
-//                }
-//                binding.activityQuizWrongIv.setOnClickListener {
-//                    Log.d("click_event","정답 O인데 X 누름")
-//
-//                    WrongAlertDialog(this) {
-//                        quizCnt++
-//                    }.show()
-//                    settingQuizCnt++
-//                    settingQuiz(quizs,i)
-//
-//                }
-//
-//            } else {//정답이 X라면
-//                binding.activityQuizCorrectIv.setOnClickListener {
-//
-//                    Log.d("click_event","정답 X인데 O 누름")
-//                    WrongAlertDialog(this) {
-//                        quizCnt++
-//                    }.show()
-//                    settingQuizCnt++
-//                    settingQuiz(quizs)
-//                }
-//                binding.activityQuizWrongIv.setOnClickListener {
-//                    Log.d("click_event","정답 X인데 X 누름")
-//                    quizCnt++
-//
-//                    settingQuizCnt++
-//                    settingQuiz(quizs)
-//                }
-//
-//            }
-//
-
-    }
-
-
-
-    private fun initView() {
-        //임의로 O를 눌렀을 떄 다이얼로그 뜨도록 구현
-//
-//        binding.activityQuizCorrectIv.setOnClickListener {
-//            WrongAlertDialog(this){
-//                quizCnt++
-//            }.show()
-//        }
-
-    }
 
 }
