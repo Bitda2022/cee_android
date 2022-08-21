@@ -15,6 +15,7 @@ import io.realm.RealmResults
 import io.realm.kotlin.where
 import java.util.*
 import kotlin.collections.ArrayList
+import kotlin.random.Random
 
 
 class QuizActivity : AppCompatActivity() {
@@ -156,8 +157,9 @@ class QuizActivity : AppCompatActivity() {
 
        //database에 있는 quizList 사이즈 만큼 인덱스 랜덤 추출(중복제거)
         while(randIdxSet.size<10){
-            randIdxSet.add((0..quizList.size-1).random())
+            randIdxSet.add((0..quizList.size-1).random(Random(System.currentTimeMillis())))
         }
+
         Log.d("quizListSize",quizList.size.toString())
         Log.d("randIdxSet",randIdxSet.toString())
 
@@ -203,6 +205,9 @@ class QuizActivity : AppCompatActivity() {
 
 
         //quiz(quizs)
+
+        binding.activityQuizNumberTv.text = "퀴즈1"
+        binding.activityQuizQuestionTv.text = quizTen[0].content
 
         //realm에서 뽑은 DATA
         quiz(quizTen)

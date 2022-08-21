@@ -6,18 +6,11 @@
         <entry key="..\:/Users/rdrni/AndroidStudioProjects/CEE/app/src/main/res/drawable/buttom_round.xml" value="0.3125" />
         <entry key="..\:/Users/rdrni/AndroidStudioProjects/CEE/app/src/main/res/drawable/button_rectangle.xml" value="0.3125" />
         <entry key="..\:/Users/rdrni/AndroidStudioProjects/CEE/app/src/main/res/drawable/dialog_background_radius.xml" value="0.3125" />
-        <entry key="..\:/Users/rdrni/AndroidStudioProjects/CEE/app/src/main/res/layout/activity_main.xml" value="0.41727233860624197" />
-        <entry key="..\:/Users/rdrni/AndroidStudioProjects/CEE/app/src/main/res/layout/fragment_quiz_setting.xml" value="0.2071622846781505" />
+        <entry key="..\:/Users/rdrni/AndroidStudioProjects/CEE/app/src/main/res/layout/activity_main.xml" value="0.26336041043180847" />
+        <entry key="..\:/Users/rdrni/AndroidStudioProjects/CEE/app/src/main/res/layout/activity_quiz.xml" value="0.2071622846781505" />
+        <entry key="..\:/Users/rdrni/AndroidStudioProjects/CEE/app/src/main/res/layout/fragment_quiz_setting.xml" value="0.33" />
         <entry key="..\:/Users/rdrni/AndroidStudioProjects/CEE/app/src/main/res/layout/wrong_alert_dialog.xml" value="0.26336041043180847" />
         <entry key="..\:/Users/rdrni/AndroidStudioProjects/CEE/app/src/main/res/menu/bottom_nev_menu.xml" value="0.43148148148148147" />
-        <entry key="..\:/cee/cee_android/cee_android/app/src/main/res/drawable/dialog_background_radius.xml" value="0.14" />
-        <entry key="..\:/cee/cee_android/cee_android/app/src/main/res/font/font_familiy.xml" value="0.1375" />
-        <entry key="..\:/cee/cee_android/cee_android/app/src/main/res/layout/activity_finish_quiz.xml" value="0.1" />
-        <entry key="..\:/cee/cee_android/cee_android/app/src/main/res/layout/activity_quiz.xml" value="0.10597826086956522" />
-        <entry key="..\:/cee/cee_android/cee_android/app/src/main/res/layout/correct_alert_dialog.xml" value="0.10625" />
-        <entry key="..\:/cee/cee_android/cee_android/app/src/main/res/layout/fragment_quiz_setting.xml" value="0.22" />
-        <entry key="..\:/cee/cee_android/cee_android/app/src/main/res/layout/term_info_dialog.xml" value="0.22" />
-        <entry key="..\:/cee/cee_android/cee_android/app/src/main/res/layout/wrong_alert_dialog.xml" value="0.6666666666666666" />
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.128" />
         <entry key="app/src/main/res/drawable/menu_selector_color.xml" value="0.128" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.1" />
