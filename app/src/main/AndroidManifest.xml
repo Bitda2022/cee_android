@@ -5,6 +5,12 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
 
+    <queries>
+        <intent>
+            <action android:name="android.intent.action.TTS_SERVICE"/>
+        </intent>
+    </queries>
+
     <application
         android:name=".CEEApplication"
         android:allowBackup="true"
@@ -30,9 +36,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.MainActivity" />
-        <activity android:name=".activity.TermActivity" />
-        <activity android:name=".activity.QuizActivity" />
+        <activity android:name=".activity.MainActivity"/>
+        <activity android:name=".activity.TermActivity"/>
+        <activity android:name=".activity.QuizActivity"/>
+
     </application>
 
 </manifest>
