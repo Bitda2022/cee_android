@@ -8,4 +8,14 @@
     <string name="quiz_number">퀴즈1</string>
     <string name="quiz_question">빌리거나 빌려 준 돈에 대한 이자. 이율을 금리라고 한다</string>
 
+    <string name="quiz_dialog_correct">정답</string>
+    <string name="quiz_dialog_correct_text">정답입니다</string>
+    <string name="quiz_dialog_wrong">오답</string>
+    <string name="quiz_dialog_wrong_text">오답입니다</string>
+
+    <string name="quiz_correct">맞다</string>
+    <string name="quiz_wrong">틀리다</string>
+
+    <string name="finish_quiz">퀴즈 종료</string>
+
 </resources>

@@ -70,6 +70,7 @@ class MainActivity : AppCompatActivity() {
             str2 += "term : " + tmp.term + "\n"
             str2 += "content : " + tmp.content + "\n"
             str2 += "answer : " + tmp.answer + "\n"
+            str2 += "commentary : " + tmp.commentary + "\n"
             str2 += "wrong : " + tmp.wrong + "\n"
             Log.d("quiz", "onCreate: quizs: $str2")
         }

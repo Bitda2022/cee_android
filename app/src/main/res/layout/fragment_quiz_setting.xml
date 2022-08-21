@@ -11,7 +11,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="퀴즈범위"
+        android:fontFamily="@font/sf_bold"
+        android:textSize="20dp"
         android:textColor="@color/white"
+        android:layout_marginTop="100dp"
+        android:layout_marginBottom="15dp"
+
         app:layout_constraintStart_toStartOf="@id/fragment_quiz_setting_level_ll"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toTopOf="@id/fragment_quiz_setting_level_ll"
@@ -21,11 +26,11 @@
 
      <LinearLayout
          android:id="@+id/fragment_quiz_setting_level_ll"
+
          android:layout_width="match_parent"
          android:layout_height="wrap_content"
          android:layout_marginStart="20dp"
          android:layout_marginEnd="20dp"
-         android:layout_marginTop="30dp"
          android:layout_marginBottom="30dp"
          app:layout_constraintStart_toStartOf="parent"
          app:layout_constraintEnd_toEndOf="parent"
@@ -38,8 +43,11 @@
              android:id="@+id/fragment_quiz_setting_economy_basic_btn"
              android:layout_width="0dp"
              android:layout_weight="1"
+             android:fontFamily="@font/sf_bold"
+             android:textSize="20dp"
              android:layout_height="wrap_content"
              android:text="경제 기초"
+             android:layout_marginRight="10dp"
              android:textColor="@color/white"
              android:background="@drawable/button_rectangle"
 
@@ -51,6 +59,9 @@
              android:id="@+id/fragment_quiz_setting_financial_basic_btn"
              android:layout_width="0dp"
              android:layout_weight="1"
+             android:fontFamily="@font/sf_bold"
+             android:textSize="20dp"
+             android:layout_marginRight="10dp"
              android:layout_height="wrap_content"
              android:text="금융 심화"
              android:textColor="@color/white"
@@ -62,6 +73,8 @@
              android:id="@+id/fragment_quiz_setting_stock_advanced_btn"
              android:layout_width="0dp"
              android:layout_weight="1"
+             android:fontFamily="@font/sf_bold"
+             android:textSize="20dp"
              android:layout_height="wrap_content"
              android:text="주식 심화"
              android:textColor="@color/white"
@@ -77,7 +90,9 @@
         app:layout_constraintEnd_toEndOf="@id/fragment_quiz_setting_level_ll"
         app:layout_constraintTop_toBottomOf="@id/fragment_quiz_setting_level_ll"
         android:text="맞춤형 퀴즈"
-
+        android:fontFamily="@font/sf_bold"
+        android:textSize="20dp"
+        android:layout_marginTop="10dp"
         android:textColor="@color/white"
         android:background="@drawable/button_rectangle"
         android:layout_width="0dp"
@@ -95,8 +110,10 @@
         android:text="퀴즈\n시작"
         android:textColor="@color/white"
         android:background="@drawable/buttom_round"
-        android:layout_width="70dp"
-        android:layout_height="70dp">
+        android:fontFamily="@font/sf_bold"
+        android:textSize="30dp"
+        android:layout_width="150dp"
+        android:layout_height="150dp">
     </Button>
 
 
