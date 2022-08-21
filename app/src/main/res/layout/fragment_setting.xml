@@ -129,10 +129,10 @@
     <!--만남-->
 
     <ImageView
-        android:id="@+id/set_contat_iv"
+        android:id="@+id/set_contact_iv"
         android:layout_width="28dp"
         android:layout_height="28dp"
-        android:src="@drawable/ic_set_update"
+        android:src="@drawable/ic_set_contact"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/set_update_iv"
         android:layout_marginTop="70dp"
@@ -142,9 +142,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Contact"
-        app:layout_constraintStart_toStartOf="@id/set_contat_iv"
-        app:layout_constraintBottom_toBottomOf="@id/set_contat_iv"
-        app:layout_constraintTop_toTopOf="@id/set_contat_iv"
+        app:layout_constraintStart_toStartOf="@id/set_contact_iv"
+        app:layout_constraintBottom_toBottomOf="@id/set_contact_iv"
+        app:layout_constraintTop_toTopOf="@id/set_contact_iv"
         android:layout_marginStart="61dp"
         android:textColor="@color/white"
         android:fontFamily="@font/sf_semibold"
