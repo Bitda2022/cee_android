@@ -54,6 +54,7 @@ class MainActivity : AppCompatActivity() {
             str1 += termList.size.toString() + "\n"
             str1 += "id : " + tmp.id + "\n"
             str1 += "name : " + tmp.name + "\n"
+            str1 += "type : " + tmp.type + "\n"
             str1 += "description : " + tmp.description + "\n"
             str1 += "hasStudied : " + tmp.hasStudied + "\n"
             if(tmp.quizs?.size!! > 0)

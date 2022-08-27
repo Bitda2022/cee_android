@@ -72,13 +72,14 @@
         android:id="@+id/term_info_dialog_line_after_term_content"
         android:layout_width="match_parent"
         android:layout_height="2px"
-
         android:layout_marginTop="30dp"
         android:background="@color/line"
         app:layout_constraintTop_toBottomOf="@id/term_info_dialog_term_content_tv"
         tools:layout_editor_absoluteX="3dp">
 
     </View>
+
+
 
     <TextView
         android:id="@+id/term_info_dialog_example_tv"

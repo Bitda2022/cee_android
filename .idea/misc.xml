@@ -14,7 +14,9 @@
         <entry key="..\:/Users/rdrni/AndroidStudioProjects/CEE/app/src/main/res/layout/fragment_quiz_setting.xml" value="0.33" />
         <entry key="..\:/Users/rdrni/AndroidStudioProjects/CEE/app/src/main/res/layout/fragment_setting.xml" value="0.26324786324786326" />
         <entry key="..\:/Users/rdrni/AndroidStudioProjects/CEE/app/src/main/res/layout/fragment_study.xml" value="0.25" />
-        <entry key="..\:/Users/rdrni/AndroidStudioProjects/CEE/app/src/main/res/layout/fragment_term_list.xml" value="0.32083333333333336" />
+        <entry key="..\:/Users/rdrni/AndroidStudioProjects/CEE/app/src/main/res/layout/fragment_term_list.xml" value="0.25" />
+        <entry key="..\:/Users/rdrni/AndroidStudioProjects/CEE/app/src/main/res/layout/item_term_lilst.xml" value="0.2623931623931624" />
+        <entry key="..\:/Users/rdrni/AndroidStudioProjects/CEE/app/src/main/res/layout/item_term_list.xml" value="0.5" />
         <entry key="..\:/Users/rdrni/AndroidStudioProjects/CEE/app/src/main/res/layout/term_info_dialog.xml" value="0.33" />
         <entry key="..\:/Users/rdrni/AndroidStudioProjects/CEE/app/src/main/res/layout/wong_term_info_dialog.xml" value="0.32083333333333336" />
         <entry key="..\:/Users/rdrni/AndroidStudioProjects/CEE/app/src/main/res/layout/wrong_alert_dialog.xml" value="0.26336041043180847" />

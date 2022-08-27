@@ -39,6 +39,7 @@
         <activity android:name=".activity.MainActivity"/>
         <activity android:name=".activity.TermActivity"/>
         <activity android:name=".activity.QuizActivity"/>
+        <activity android:name=".activity.TermListActivity"/>
 
     </application>
 

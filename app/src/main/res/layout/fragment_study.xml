@@ -17,12 +17,12 @@
         android:fontFamily="@font/sf_bold"
         android:gravity="center"
         android:background="@color/gray"
-        android:id="@+id/setting_title_tv"/>
+        android:id="@+id/study_title_tv"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/setting_title_tv"
+        app:layout_constraintTop_toBottomOf="@+id/study_title_tv"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="150dp"
@@ -30,27 +30,27 @@
         android:textColor="@color/white"
         android:textSize="27dp"
         android:fontFamily="@font/sf_bold"
-        android:id="@+id/setting_position_tv"/>
+        android:id="@+id/study_position_tv"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/setting_position_tv"
-        app:layout_constraintStart_toStartOf="@id/setting_position_tv"
-        app:layout_constraintEnd_toEndOf="@id/setting_position_tv"
+        app:layout_constraintTop_toBottomOf="@id/study_position_tv"
+        app:layout_constraintStart_toStartOf="@id/study_position_tv"
+        app:layout_constraintEnd_toEndOf="@id/study_position_tv"
         android:layout_marginTop="7dp"
         android:text="@string/study_msg"
         android:textColor="@color/white"
         android:textSize="27dp"
         android:fontFamily="@font/sf_bold"
-        android:id="@+id/setting_msg_tv"/>
+        android:id="@+id/study_msg_tv"/>
 
     <Button
         android:layout_width="0dp"
         android:layout_height="55dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/setting_msg_tv"
+        app:layout_constraintTop_toBottomOf="@+id/study_msg_tv"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
         android:layout_marginTop="100dp"
@@ -59,20 +59,20 @@
         android:textColor="@color/white"
         android:fontFamily="@font/sf_regular"
         android:background="@drawable/button_rectangle"
-        android:id="@+id/setting_continue_btn"/>
+        android:id="@+id/study_continue_btn"/>
 
     <Button
         android:layout_width="0dp"
         android:layout_height="55dp"
-        app:layout_constraintStart_toStartOf="@id/setting_continue_btn"
-        app:layout_constraintEnd_toEndOf="@id/setting_continue_btn"
-        app:layout_constraintTop_toBottomOf="@+id/setting_continue_btn"
+        app:layout_constraintStart_toStartOf="@id/study_continue_btn"
+        app:layout_constraintEnd_toEndOf="@id/study_continue_btn"
+        app:layout_constraintTop_toBottomOf="@+id/study_continue_btn"
         android:layout_marginTop="40dp"
         android:text="@string/see_term_list"
         android:textSize="19dp"
         android:textColor="@color/white"
         android:fontFamily="@font/sf_regular"
         android:background="@drawable/button_rectangle"
-        android:id="@+id/setting_see_list_btn"/>
+        android:id="@+id/study_see_list_btn"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
