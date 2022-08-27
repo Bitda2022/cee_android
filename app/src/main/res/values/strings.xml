@@ -18,4 +18,9 @@
 
     <string name="finish_quiz">퀴즈 종료</string>
 
+    <string name="study_title">학습</string>
+    <string name="study_msg">학습했습니다.</string>
+    <string name="study_continue">이어하기</string>
+    <string name="see_term_list">개념 리스트 보기</string>
+
 </resources>
