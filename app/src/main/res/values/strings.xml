@@ -26,4 +26,6 @@
     <string name="economy_basic">경제기초</string>
     <string name="financial_base">금융기반</string>
     <string name="stock_advanced">주식심화</string>
+
+    <string name="one_more_step">한걸음 더!</string>
 </resources>

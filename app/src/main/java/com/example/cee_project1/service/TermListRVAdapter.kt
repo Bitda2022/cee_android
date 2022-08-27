@@ -1,5 +1,6 @@
 package com.example.cee_project1.service
 
+import android.content.Intent
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -18,7 +19,22 @@ class TermListRVAdapter(url : String) : RecyclerView.Adapter<TermListRVAdapter.V
         fun bind(term : Term) {
             binding.itemTermNameTv.text = term.name
             binding.itemTermLine.visibility = View.VISIBLE
+            binding.root.setOnClickListener {
+                onItemClickListener.click(term.id)
+            }
         }
+    }
+
+    open class OnItemClickListener() {
+        open fun click(id : Int) {
+            return
+        }
+    }
+
+    private var onItemClickListener = OnItemClickListener()
+
+    fun setOnItemClickListener(listener : OnItemClickListener) {
+        this.onItemClickListener = listener
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {

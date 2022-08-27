@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.example.cee_project1.activity.TermActivity
 import com.example.cee_project1.activity.TermListActivity
 import com.example.cee_project1.databinding.FragmentStudyBinding
 
@@ -22,6 +23,11 @@ class StudyFragment : Fragment() {
 
         binding.studySeeListBtn.setOnClickListener {
             val intent = Intent(context, TermListActivity::class.java)
+            startActivity(intent)
+        }
+
+        binding.studyContinueBtn.setOnClickListener {
+            val intent = Intent(context, TermActivity::class.java)
             startActivity(intent)
         }
 
