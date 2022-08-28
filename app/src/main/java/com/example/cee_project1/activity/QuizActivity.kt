@@ -8,13 +8,10 @@ import com.example.cee_project1.data.Quiz
 import com.example.cee_project1.data.Term
 import com.example.cee_project1.databinding.ActivityQuizBinding
 import com.example.cee_project1.dialog.CorrectAlertDialog
-import com.example.cee_project1.dialog.TerminfoDialog
 import com.example.cee_project1.dialog.TerminfoDialogFragment
 import com.example.cee_project1.dialog.WrongAlertDialog
 import io.realm.Realm
-import io.realm.RealmResults
 import io.realm.kotlin.where
-import java.util.*
 import kotlin.collections.ArrayList
 import kotlin.random.Random
 
@@ -69,9 +66,6 @@ class QuizActivity : AppCompatActivity() {
             }
             binding.activityQuizWrongIv.setOnClickListener {
                 Log.d("click_event","정답 O인데 X 누름")
-//                TerminfoDialog(this){
-//
-//                }.show()
 
                 TerminfoDialogFragment.newInstance("send!!")?.show(supportFragmentManager,"TerminfoDialogFragment")
 
@@ -92,14 +86,7 @@ class QuizActivity : AppCompatActivity() {
             binding.activityQuizCorrectIv.setOnClickListener {
 
                 Log.d("click_event","정답 X인데 O 누름")
-//                TerminfoDialog(this){
-//
-//                }.show()
 
-
-//                val tidf=TerminfoDialogFragment()
-//                tidf.newInstance("send!!")
-//                tidf.show(supportFragmentManager,"TerminfoDialogFragment")
 
                 TerminfoDialogFragment.newInstance(quizs.get(i).term)?.show(supportFragmentManager,"TerminfoDialogFragment")
 
@@ -107,7 +94,7 @@ class QuizActivity : AppCompatActivity() {
 
                 }.show()
                 val wad=WrongAlertDialog(this){}
-                //wad.newInstance("sendMes",this)
+
                 wad.show()
 
 

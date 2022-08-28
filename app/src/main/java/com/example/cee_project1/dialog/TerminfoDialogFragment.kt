@@ -28,9 +28,7 @@ class TerminfoDialogFragment : DialogFragment(){
             bundle1.putString(KEY,msg)
             fragment.arguments =bundle1
 
-//            bundle1.apply {
-//                putString(KEY,msg)
-//            }
+
             Log.d("KEYMESCOM",fragment.arguments?.getString(KEY).toString())
             return fragment
         }
