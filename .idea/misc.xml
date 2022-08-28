@@ -25,7 +25,6 @@
         <entry key="..\:/Users/rdrni/AndroidStudioProjects/CEE/app/src/main/res/layout/wong_term_info_dialog.xml" value="0.32083333333333336" />
         <entry key="..\:/Users/rdrni/AndroidStudioProjects/CEE/app/src/main/res/layout/wrong_alert_dialog.xml" value="0.26336041043180847" />
         <entry key="..\:/Users/rdrni/AndroidStudioProjects/CEE/app/src/main/res/menu/bottom_nev_menu.xml" value="0.43148148148148147" />
-        <entry key="..\:/cee/cee_android/app/src/main/res/layout/wrong_alert_dialog.xml" value="0.3536458333333333" />
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.128" />
         <entry key="app/src/main/res/drawable/menu_selector_color.xml" value="0.128" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.1" />
@@ -34,9 +33,12 @@
         <entry key="app/src/main/res/layout/activity_term.xml" value="0.2375" />
         <entry key="app/src/main/res/layout/fragment_invest.xml" value="0.2375" />
         <entry key="app/src/main/res/layout/fragment_quiz_setting.xml" value="0.23854166666666668" />
-        <entry key="app/src/main/res/layout/fragment_setting.xml" value="0.3671122233072916" />
+        <entry key="app/src/main/res/layout/fragment_setting.xml" value="0.5799086757990868" />
         <entry key="app/src/main/res/layout/fragment_study.xml" value="0.2375" />
         <entry key="app/src/main/res/layout/fragment_term_list.xml" value="0.2375" />
+        <entry key="app/src/main/res/layout/wong_term_info_dialog.xml" value="0.20425724637681159" />
+        <entry key="app/src/main/res/layout/wrong_alert_dialog.xml" value="0.20425724637681159" />
+        <entry key="app/src/main/res/menu/bottom_nav_menu.xml" value="0.24166666666666667" />
         <entry key="app/src/main/res/menu/bottom_nev_menu.xml" value="0.22101745605468753" />
         <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.145" />
       </map>
