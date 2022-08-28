@@ -39,7 +39,6 @@ class SettingFragment : Fragment() {
         val adapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, handicap)
         binding.setEyeSp.adapter = adapter
     }
-}
 
     private fun testTTS() {
         tts.setSpeed(1.3f)
