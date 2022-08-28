@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black"
+    tools:context=".activity.FinishQuizActivity">
+
+    <TextView
+        android:id="@+id/activity_finish_quiz_title_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/finish_quiz"
+        android:layout_marginTop="80dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:fontFamily="@font/sf_bold"
+        android:textColor="@color/white"
+        android:textSize="30dp">
+    </TextView>
+
+
+    <TextView
+        android:id="@+id/activity_finish_quiz_correct_cnt_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="10문제 중 9개 정답"
+        android:layout_marginTop="80dp"
+        app:layout_constraintTop_toBottomOf="@id/activity_finish_quiz_title_tv"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:fontFamily="@font/sf_bold"
+        android:textColor="@color/white"
+        android:textSize="30dp">
+    </TextView>
+    <Button
+        android:id="@+id/activity_finish_quiz_finish_quiz_btn"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/activity_finish_quiz_correct_cnt_tv"
+        android:fontFamily="@font/sf_bold"
+        android:textSize="30dp"
+        android:text="퀴즈\n종료"
+        android:textColor="@color/white"
+        android:background="@drawable/buttom_round"
+        android:layout_width="150dp"
+        android:layout_height="150dp">
+    </Button>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

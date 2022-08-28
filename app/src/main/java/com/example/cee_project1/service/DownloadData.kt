@@ -109,6 +109,7 @@ class DownloadData {
                             else
                                 throw java.lang.Exception("wrong answer form")
 
+                            val commentary = form.select(".commentary").text()
 
                             val wrong = 0
 
@@ -117,8 +118,8 @@ class DownloadData {
                                 term,
                                 content,
                                 bool,
-                                wrong
-                            )
+                                commentary,
+                                wrong)
 
                             quizList.add(id, quiz)
                             id++
