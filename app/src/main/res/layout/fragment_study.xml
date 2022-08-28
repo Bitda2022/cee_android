@@ -2,15 +2,77 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/black">
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="56dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:text="@string/study_title"
+        android:textColor="@color/white"
+        android:textSize="25dp"
+        android:fontFamily="@font/sf_bold"
+        android:gravity="center"
+        android:background="@color/gray"
+        android:id="@+id/study_title_tv"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="지식탭입니다"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/study_title_tv"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="150dp"
+        android:text="경제 기초 생산까지"
+        android:textColor="@color/white"
+        android:textSize="27dp"
+        android:fontFamily="@font/sf_bold"
+        android:id="@+id/study_position_tv"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/study_position_tv"
+        app:layout_constraintStart_toStartOf="@id/study_position_tv"
+        app:layout_constraintEnd_toEndOf="@id/study_position_tv"
+        android:layout_marginTop="7dp"
+        android:text="@string/study_msg"
+        android:textColor="@color/white"
+        android:textSize="27dp"
+        android:fontFamily="@font/sf_bold"
+        android:id="@+id/study_msg_tv"/>
+
+    <Button
+        android:layout_width="0dp"
+        android:layout_height="55dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/study_msg_tv"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginTop="100dp"
+        android:text="@string/study_continue"
+        android:textSize="19dp"
+        android:textColor="@color/white"
+        android:fontFamily="@font/sf_regular"
+        android:background="@drawable/button_rectangle"
+        android:id="@+id/study_continue_btn"/>
+
+    <Button
+        android:layout_width="0dp"
+        android:layout_height="55dp"
+        app:layout_constraintStart_toStartOf="@id/study_continue_btn"
+        app:layout_constraintEnd_toEndOf="@id/study_continue_btn"
+        app:layout_constraintTop_toBottomOf="@+id/study_continue_btn"
+        android:layout_marginTop="40dp"
+        android:text="@string/see_term_list"
+        android:textSize="19dp"
+        android:textColor="@color/white"
+        android:fontFamily="@font/sf_regular"
+        android:background="@drawable/button_rectangle"
+        android:id="@+id/study_see_list_btn"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

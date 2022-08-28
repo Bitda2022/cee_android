@@ -13,4 +13,5 @@
     <color name="semi_gray">#47484A</color>
     <color name="light_gray">#BBBBBB</color>
     <color name="line">#9B9B9B</color>
+    <color name="transparent">#00000000</color>
 </resources>
