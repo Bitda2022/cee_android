@@ -20,6 +20,8 @@ class QuizActivity : AppCompatActivity() {
 
     lateinit var binding : ActivityQuizBinding
 
+    lateinit var realm:Realm
+
     var quizIndex:Int=0
     var flag:Boolean=false
     var correctCnt:Int=0
@@ -73,6 +75,17 @@ class QuizActivity : AppCompatActivity() {
 
                 }.show()
 
+                //wrong 횟수 증가시키기
+                var termQuiz = realm.where<Quiz>().contains("term", quizs.get(i).term).findFirst()
+
+
+                var presentWrongCnt=termQuiz?.wrong!!
+                presentWrongCnt++
+
+
+                realm.executeTransaction {
+                    termQuiz?.wrong=presentWrongCnt
+                }
 
                 flag=true
 
@@ -152,7 +165,7 @@ class QuizActivity : AppCompatActivity() {
 
 
         //initDatabase()
-        val realm = Realm.getDefaultInstance()
+        realm = Realm.getDefaultInstance()
         val quizList = realm.where<Quiz>().findAll()
         var quizTen=ArrayList<Quiz>()
         var randIdxSet=mutableSetOf<Int>()
@@ -192,17 +205,6 @@ class QuizActivity : AppCompatActivity() {
         Log.d("quizTenSize",quizTen.size.toString())
 
 
-//        var quizs=ArrayList<Quiz>()
-//        quizs.add(quiz1)
-//        quizs.add(quiz2)
-//        quizs.add(quiz3)
-//        quizs.add(quiz1)
-//        quizs.add(quiz2)
-//        quizs.add(quiz3)
-//        quizs.add(quiz1)
-//        quizs.add(quiz2)
-//        quizs.add(quiz3)
-//        quizs.add(quiz1)
 
 
 
