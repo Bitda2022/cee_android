@@ -47,9 +47,10 @@ class SettingFragment : Fragment() {
                 }
             }
         )
-        tts.pause()
-        tts.play()
-        tts.pause()
+//        tts.pause()
+//        tts.play()
+//        tts.pause()
+
     }
 
 }
