@@ -5,14 +5,18 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ArrayAdapter
+import android.widget.Spinner
 import androidx.fragment.app.Fragment
+import com.example.cee_project1.R
 import com.example.cee_project1.CEEApplication.Companion.tts
 import com.example.cee_project1.databinding.FragmentSettingBinding
 import com.example.cee_project1.service.TTSService
 
+
 class SettingFragment : Fragment() {
 
-    lateinit var binding : FragmentSettingBinding
+    lateinit var binding: FragmentSettingBinding
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -21,10 +25,19 @@ class SettingFragment : Fragment() {
     ): View {
         binding = FragmentSettingBinding.inflate(inflater, container, false)
 
+        eyespinner()
+
         // test tts code
         testTTS()
 
         return binding.root
+
+    }
+
+    private fun eyespinner() {
+        val handicap = resources.getStringArray(R.array.handicap_level)
+        val adapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, handicap)
+        binding.setEyeSp.adapter = adapter
     }
 
     private fun testTTS() {

@@ -8,12 +8,10 @@ import com.example.cee_project1.data.Quiz
 import com.example.cee_project1.data.Term
 import com.example.cee_project1.databinding.ActivityQuizBinding
 import com.example.cee_project1.dialog.CorrectAlertDialog
-import com.example.cee_project1.dialog.TerminfoDialog
+import com.example.cee_project1.dialog.TerminfoDialogFragment
 import com.example.cee_project1.dialog.WrongAlertDialog
 import io.realm.Realm
-import io.realm.RealmResults
 import io.realm.kotlin.where
-import java.util.*
 import kotlin.collections.ArrayList
 import kotlin.random.Random
 
@@ -21,6 +19,8 @@ import kotlin.random.Random
 class QuizActivity : AppCompatActivity() {
 
     lateinit var binding : ActivityQuizBinding
+
+    lateinit var realm:Realm
 
     var quizIndex:Int=0
     var flag:Boolean=false
@@ -68,14 +68,24 @@ class QuizActivity : AppCompatActivity() {
             }
             binding.activityQuizWrongIv.setOnClickListener {
                 Log.d("click_event","정답 O인데 X 누름")
-                TerminfoDialog(this){
 
-                }.show()
+                TerminfoDialogFragment.newInstance("send!!")?.show(supportFragmentManager,"TerminfoDialogFragment")
 
                 WrongAlertDialog(this) {
 
                 }.show()
 
+                //wrong 횟수 증가시키기
+                var termQuiz = realm.where<Quiz>().contains("term", quizs.get(i).term).findFirst()
+
+
+                var presentWrongCnt=termQuiz?.wrong!!
+                presentWrongCnt++
+
+
+                realm.executeTransaction {
+                    termQuiz?.wrong=presentWrongCnt
+                }
 
                 flag=true
 
@@ -89,10 +99,15 @@ class QuizActivity : AppCompatActivity() {
             binding.activityQuizCorrectIv.setOnClickListener {
 
                 Log.d("click_event","정답 X인데 O 누름")
-                TerminfoDialog(this){
+
+
+                TerminfoDialogFragment.newInstance(quizs.get(i).term)?.show(supportFragmentManager,"TerminfoDialogFragment")
+
+                WrongAlertDialog(this) {
 
                 }.show()
                 val wad=WrongAlertDialog(this){}
+
                 wad.show()
 
 
@@ -150,7 +165,7 @@ class QuizActivity : AppCompatActivity() {
 
 
         //initDatabase()
-        val realm = Realm.getDefaultInstance()
+        realm = Realm.getDefaultInstance()
         val quizList = realm.where<Quiz>().findAll()
         var quizTen=ArrayList<Quiz>()
         var randIdxSet=mutableSetOf<Int>()
@@ -190,17 +205,6 @@ class QuizActivity : AppCompatActivity() {
         Log.d("quizTenSize",quizTen.size.toString())
 
 
-//        var quizs=ArrayList<Quiz>()
-//        quizs.add(quiz1)
-//        quizs.add(quiz2)
-//        quizs.add(quiz3)
-//        quizs.add(quiz1)
-//        quizs.add(quiz2)
-//        quizs.add(quiz3)
-//        quizs.add(quiz1)
-//        quizs.add(quiz2)
-//        quizs.add(quiz3)
-//        quizs.add(quiz1)
 
 
 

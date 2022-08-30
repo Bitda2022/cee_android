@@ -13,5 +13,11 @@
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">@color/black</item>
         <!-- Customize your theme here. -->
+        <item name="android:navigationBarColor">@color/black</item>
+    </style>
+    
+    <style name="tabTextStyle" parent="TextAppearance.Design.Tab">
+        <item name="android:textSize">19dp</item>
+        <item name="android:fontFamily">@font/sf_regular</item>
     </style>
 </resources>
