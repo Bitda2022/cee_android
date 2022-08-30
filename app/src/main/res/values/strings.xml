@@ -24,6 +24,10 @@
     <string name="see_term_list">개념 리스트 보기</string>
 
     <string name="invest_title">투자</string>
+    <string name="invest_company1">제약기업</string>
+    <string name="invest_company2">환경기업</string>
+    <string name="invest_company3">항공기업</string>
+    <string name="invest_savings">적금</string>
 
     <string name="economy_basic">경제기초</string>
     <string name="financial_base">금융기반</string>
