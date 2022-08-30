@@ -7,7 +7,7 @@
 
     <queries>
         <intent>
-            <action android:name="android.intent.action.TTS_SERVICE"/>
+            <action android:name="android.intent.action.TTS_SERVICE" />
         </intent>
     </queries>
 
@@ -24,9 +24,14 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".InvestSelectActivity"
+            android:exported="false" />
+        <activity
+            android:name=".InvestMainActivity"
+            android:exported="false" />
+        <activity
             android:name=".activity.FinishQuizActivity"
             android:exported="false" />
-
         <activity
             android:name=".activity.SplashActivity"
             android:exported="true">
@@ -36,11 +41,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.MainActivity"/>
-        <activity android:name=".activity.TermActivity"/>
-        <activity android:name=".activity.QuizActivity"/>
-        <activity android:name=".activity.TermListActivity"/>
-
+        <activity android:name=".activity.MainActivity" />
+        <activity android:name=".activity.TermActivity" />
+        <activity android:name=".activity.QuizActivity" />
+        <activity android:name=".activity.TermListActivity" />
     </application>
 
 </manifest>

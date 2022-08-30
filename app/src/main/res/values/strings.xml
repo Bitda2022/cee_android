@@ -23,6 +23,8 @@
     <string name="study_continue">이어하기</string>
     <string name="see_term_list">개념 리스트 보기</string>
 
+    <string name="invest_title">투자</string>
+
     <string name="economy_basic">경제기초</string>
     <string name="financial_base">금융기반</string>
     <string name="stock_advanced">주식심화</string>
