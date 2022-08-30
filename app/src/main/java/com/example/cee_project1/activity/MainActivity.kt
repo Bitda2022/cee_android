@@ -54,6 +54,7 @@ class MainActivity : AppCompatActivity() {
             str1 += termList.size.toString() + "\n"
             str1 += "id : " + tmp.id + "\n"
             str1 += "name : " + tmp.name + "\n"
+            str1 += "type : " + tmp.type + "\n"
             str1 += "description : " + tmp.description + "\n"
             str1 += "hasStudied : " + tmp.hasStudied + "\n"
             if(tmp.quizs?.size!! > 0)
@@ -70,6 +71,7 @@ class MainActivity : AppCompatActivity() {
             str2 += "term : " + tmp.term + "\n"
             str2 += "content : " + tmp.content + "\n"
             str2 += "answer : " + tmp.answer + "\n"
+            str2 += "commentary : " + tmp.commentary + "\n"
             str2 += "wrong : " + tmp.wrong + "\n"
             Log.d("quiz", "onCreate: quizs: $str2")
         }

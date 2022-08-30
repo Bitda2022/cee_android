@@ -5,26 +5,19 @@
     android:layout_height="match_parent"
     android:background="@color/black">
 
-    <View
-        android:id="@+id/invest_bar_iv"
-        android:layout_width="wrap_content"
-        android:layout_height="56dp"
-        android:background="@color/gray"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
-
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="0dp"
+        android:layout_height="56dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         android:text="@string/invest"
+        android:textColor="@color/white"
         android:textSize="25dp"
         android:fontFamily="@font/sf_bold"
-        android:textColor="@color/white"
-        app:layout_constraintStart_toStartOf="@id/invest_bar_iv"
-        app:layout_constraintEnd_toEndOf="@id/invest_bar_iv"
-        app:layout_constraintTop_toTopOf="@id/invest_bar_iv"
-        app:layout_constraintBottom_toBottomOf="@id/invest_bar_iv"/>
+        android:gravity="center"
+        android:background="@color/gray"
+        android:id="@+id/study_title_tv"/>
 
     <Button
         android:id="@+id/invest_start_quiz_btn"
