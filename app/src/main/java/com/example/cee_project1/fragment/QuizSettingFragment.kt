@@ -20,6 +20,8 @@ class QuizSettingFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentQuizSettingBinding.inflate(inflater, container, false)
+        
+
         binding.fragmentQuizSettingStartQuizBtn.setOnClickListener {
             val QuizIntent: Intent = Intent(activity,QuizActivity::class.java)
             startActivity(QuizIntent)
@@ -27,6 +29,7 @@ class QuizSettingFragment : Fragment() {
 
         return binding.root
     }
+
 
 
 }
