@@ -1,7 +1,9 @@
 package com.example.cee_project1.data
 
+import kotlin.random.Random
+
 data class Event(
-    var target : InvestOption? = null,
+    var target : InvestOption,
     var story : String = "",
     var degree : Degree
 ) {
@@ -13,5 +15,17 @@ data class Event(
         MIDDLE_DECLINE(-15, -5, 0),
         SMALL_DECLINE(-1, -5, 0),
         INTEREST_RATE(0, 0, 1)
+    }
+
+    fun apply() {
+        target.value = target.amount * getRate()
+    }
+
+    private fun getRate() : Double {
+        return if (degree == Degree.INTEREST_RATE)
+            ((degree.precisePercent + 100) / 100).toDouble()
+        else
+            (100 + Random(System.currentTimeMillis())
+                .nextDouble(degree.minPercent.toDouble(), degree.maxPercent.toDouble())) / 100
     }
 }
