@@ -6,11 +6,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.cee_project1.R
+import com.example.cee_project1.databinding.FragmentInvestMainBinding
+import com.example.cee_project1.databinding.FragmentInvestSelectBinding
 
 
 class InvestMainFragment : Fragment() {
 
-
+    lateinit var binding : FragmentInvestMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -21,7 +23,8 @@ class InvestMainFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_invest_main, container, false)
+        binding = FragmentInvestMainBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
 
