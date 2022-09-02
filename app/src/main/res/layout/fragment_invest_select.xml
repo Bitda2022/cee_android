@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".fragment.InvestSelectFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/black"
+        tools:context=".activity.InvestSelectActivity">
+
+
+
+        <TextView
+            android:id="@+id/fragment_invest_select_day_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:gravity="center"
+            android:text="1일차"
+            android:textColor="@color/white"
+            android:textSize="30dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+        </TextView>
+
+        <TextView
+            android:id="@+id/fragment_invest_select_info_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:gravity="center"
+            android:text="매도/ 매수 할 주식을 선택해주세요"
+            android:textColor="@color/white"
+            android:textSize="25dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/fragment_invest_select_day_tv">
+
+        </TextView>
+
+        <TextView
+            android:id="@+id/fragment_invest_select_exsiting_coin_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:gravity="center"
+            android:text="보유 코인 : 100코인"
+            android:textColor="@color/white"
+            android:textSize="25dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/fragment_invest_select_info_tv">
+
+        </TextView>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/fragment_invest_select_cl"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="30dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/fragment_invest_select_exsiting_coin_tv"
+
+            >
+
+
+            <!--        기업1-->
+
+            <TextView
+                android:id="@+id/fragment_invest_select_company1"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginTop="28dp"
+                android:background="@drawable/button_rectangle"
+                android:fontFamily="@font/sf_bold"
+                android:gravity="center"
+                android:text="@string/invest_company1"
+                android:textColor="@color/white"
+                android:textSize="20dp"
+                android:padding="15dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <!--기업2-->
+            <TextView
+                android:id="@+id/fragment_invest_select_company2"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginTop="30dp"
+                android:background="@drawable/button_rectangle"
+                android:fontFamily="@font/sf_bold"
+                android:gravity="center"
+                android:text="@string/invest_company2"
+                android:textColor="@color/white"
+                android:textSize="20dp"
+                android:padding="15dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/fragment_invest_select_company1" />
+
+
+
+            <!--기업3-->
+            <TextView
+                android:id="@+id/fragment_invest_select_company3"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginTop="30dp"
+                android:background="@drawable/button_rectangle"
+                android:fontFamily="@font/sf_bold"
+                android:gravity="center"
+                android:text="@string/invest_company3"
+                android:textColor="@color/white"
+                android:textSize="20dp"
+                android:padding="15dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/fragment_invest_select_company2" />
+
+
+
+
+
+
+            <!--적금-->
+            <TextView
+                android:id="@+id/fragment_invest_select_savings"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginTop="30dp"
+                android:background="@drawable/button_rectangle"
+                android:fontFamily="@font/sf_bold"
+                android:gravity="center"
+                android:text="@string/invest_savings"
+                android:textColor="@color/white"
+                android:textSize="20dp"
+                android:padding="15dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/fragment_invest_select_company3" />
+
+
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <Button
+            android:id="@+id/fragment_invest_select_complete_btn"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:background="@drawable/buttom_round"
+            android:fontFamily="@font/sf_bold"
+            android:text="완료"
+            android:textColor="@color/white"
+            android:textSize="30dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/fragment_invest_select_cl"></Button>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
