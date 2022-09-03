@@ -1,20 +1,27 @@
 package com.example.cee_project1.activity
 
 import android.annotation.SuppressLint
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.os.Message
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.example.cee_project1.CEEApplication
+import com.example.cee_project1.data.Event
+import com.example.cee_project1.data.InvestOption
 import com.example.cee_project1.data.Quiz
 import com.example.cee_project1.data.Term
 import com.example.cee_project1.databinding.ActivitySplashBinding
 import com.example.cee_project1.service.DownloadData
+import com.example.cee_project1.service.ManageInvestGame
 import io.realm.Realm
 import io.realm.kotlin.delete
 import io.realm.kotlin.where
+import java.io.ObjectInputStream
+import java.io.ObjectOutputStream
 
 @SuppressLint("CustomSplashScreen")
 class SplashActivity : AppCompatActivity() {
@@ -33,7 +40,11 @@ class SplashActivity : AppCompatActivity() {
         if(CEEApplication.prefs.getString("version", "null") == "null") {
             setVersion()
             setDatabaseTermThenQuiz()
+
+            CEEApplication.gameManager = ManageInvestGame()
+            setInvestData(CEEApplication.gameManager, true)
         } else {
+            setInvestData(CEEApplication.gameManager, false)
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
             finish()
@@ -113,6 +124,34 @@ class SplashActivity : AppCompatActivity() {
         }
         val handler = MyHandler()
         DownloadData().getVersion(handler)
+    }
+
+    private fun setInvestData(manager : ManageInvestGame, needDownload : Boolean) {
+        if(needDownload) {
+            class MyHandler : Handler(Looper.getMainLooper()) {
+                override fun handleMessage(msg: Message) {
+                    val pair = msg.obj as Pair<*, *>
+                    manager.setPlayerOptions(pair.first as ArrayList<InvestOption>)
+                    manager.setEventsSequence(pair.second as ArrayList<ArrayList<Event>>)
+
+                    val fos = applicationContext.openFileOutput("gameManager", Context.MODE_PRIVATE)
+                    val oos = ObjectOutputStream(fos)
+                    oos.writeObject(manager)
+                    oos.close()
+                    fos.close()
+                    Log.d("invest", "handleMessage: complete")
+                }
+            }
+
+            val handler = MyHandler()
+            DownloadData().downloadInvestInfo(handler)
+        } else {
+            val fis = applicationContext.openFileInput("gameManager")
+            val ois = ObjectInputStream(fis)
+            CEEApplication.gameManager = ois.readObject() as ManageInvestGame
+            ois.close()
+            fis.close()
+        }
     }
 
 }

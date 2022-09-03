@@ -1,44 +1,59 @@
 package com.example.cee_project1.service
 
+import android.util.Log
 import com.example.cee_project1.data.Event
 import com.example.cee_project1.data.History
 import com.example.cee_project1.data.InvestOption
 import com.example.cee_project1.data.Player
+import java.io.Serializable
+
+/*
+게임 시작 후 대략적인 순서 가이드
+resetGame
+getNowEventStory -> 투자 스토리 보여줌
+getNowSequence -> 몇번째 주차인지 보여줌
+getPlayerMoney -> 보유 코인 보여줌
+playerInvest -> 플레이어가 각 기업에 투자함
+applyEvents -> 플레이어 투자에 스토리 반영하여 결과 도출
+getResults -> 각 기업들의 변화량을 문자로 보여줌
+goNextSequence -> 다음 주차로 이동
+ */
 
 private const val PLAYER_INITIAL_MONEY = 100
-private const val END_OF_SEQUENCE = 7
+private const val END_OF_SEQUENCE = 6
 
-class ManageInvestGame {
+class ManageInvestGame : Serializable {
 
     private var sequence : Int = 1; // 1주차, 2주차들을 의미
-    private val options = ArrayList<InvestOption>() // 투자처들 총 목록
     private val history = History(ArrayList(), ArrayList()) // 앞으로의 일정, 과거들 관리
     private val player : Player = Player(PLAYER_INITIAL_MONEY, ArrayList()) // 플레이어
 
     /* 게임을 시작하거나 끝낼때 게임 리셋
     * sequence 1로 초기화 (첫 주차임을 의미)
-    * history.events 초기화 후 setEventsSequence 함수로 사건들 재투입 (모든 사건 한번에)
     * history.choices 초기화
-    * 플레이어 money 초기화, 플레이어 option 초기화
+    * 플레이어 money 초기화
     * */
     fun resetGame() {
-        sequence = 1
-        history.events.clear()
-        setEventsSequence()
+        sequence = 0
         history.choices.clear()
         player.money = PLAYER_INITIAL_MONEY
-        player.options.clear()
-        setPlayerOptions()
     }
 
     /*
     * 다음 라운드로 갈 때 실행하는 함수
     * 현재 옵션들의 결과를 히스토리에 넣음 (applyEvents 함수 실행 후 실행 요망)
     * sequence 를 증가시켜 다음 주차임을 확정
+    * 플레이어 돈 자동 회수
     * */
-    fun goNextSequence() {
+    fun goNextSequence() : Boolean {
         history.addHistory(sequence, player.options)
-        sequence++
+        player.retrieveMoney()
+        return if(sequence == END_OF_SEQUENCE) {
+            false
+        } else {
+            sequence++
+            true
+        }
     }
 
     // 플레이어의 기업 선택지들 이름을 반환하는 함수
@@ -71,6 +86,11 @@ class ManageInvestGame {
     // 플레이어의 남은 돈을 반환해주는 함수
     fun getPlayerMoney() : Int {
         return player.money
+    }
+
+    // 플레이어 총 자본을 반환해주는 함수
+    fun getPlayerTotalMoney() : Int {
+        return player.getTotalMoney()
     }
 
     /*
@@ -109,20 +129,21 @@ class ManageInvestGame {
         return text
     }
 
-    private fun setPlayerOptions() {
+    fun setPlayerOptions(options : ArrayList<InvestOption>) {
         player.options = options
     }
 
-    private fun getOptionsData() {
-
+    fun setEventsSequence(events : ArrayList<ArrayList<Event>>) {
+        history.events = events
     }
 
-    private fun getEventsData() {
-
-    }
-
-    private fun setEventsSequence() {
-
+    fun test() {
+        for(option in player.options) {
+            Log.d("invest", "test: " + option.name)
+        }
+        for(event in history.events.first()) {
+            Log.d("invest", "test: " + event.story)
+        }
     }
 
 }

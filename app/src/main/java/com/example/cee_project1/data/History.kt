@@ -1,9 +1,11 @@
 package com.example.cee_project1.data
 
+import java.io.Serializable
+
 data class History(
     var events : ArrayList<ArrayList<Event>>,
     var choices : ArrayList<ArrayList<InvestOption>>
-) {
+) : Serializable {
     fun getEvents(sequence : Int) : ArrayList<Event> {
         return events[sequence]
     }

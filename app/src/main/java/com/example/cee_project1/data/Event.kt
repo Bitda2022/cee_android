@@ -1,12 +1,13 @@
 package com.example.cee_project1.data
 
+import java.io.Serializable
 import kotlin.random.Random
 
 data class Event(
     var target : InvestOption,
     var story : String = "",
     var result : Degree
-) {
+) : Serializable {
     enum class Degree(val minPercent : Int, val maxPercent : Int, val precisePercent : Int) {
         BIG_RAISE(15, 30, 0),
         MIDDLE_RAISE(5, 15, 0),

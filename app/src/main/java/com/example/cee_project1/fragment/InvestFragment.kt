@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.example.cee_project1.CEEApplication.Companion.gameManager
 import com.example.cee_project1.databinding.FragmentInvestBinding
 
 class InvestFragment : Fragment() {
@@ -17,8 +18,14 @@ class InvestFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentInvestBinding.inflate(inflater, container, false)
-
+        testInvestData()
         return binding.root
+    }
+
+    private fun testInvestData() {
+        binding.root.setOnClickListener {
+            gameManager!!.test()
+        }
     }
 
 }

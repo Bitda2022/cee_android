@@ -1,16 +1,19 @@
 package com.example.cee_project1
 
 import android.app.Application
+import com.example.cee_project1.service.ManageInvestGame
 import com.example.cee_project1.service.PreferenceUtil
 import com.example.cee_project1.service.TTSService
 import io.realm.Realm
 import io.realm.RealmConfiguration
+import java.io.ObjectInputStream
 
 class CEEApplication : Application() {
 
     companion object {
         lateinit var prefs : PreferenceUtil
         lateinit var tts : TTSService
+        var gameManager : ManageInvestGame = ManageInvestGame()
     }
 
     override fun onCreate() {
