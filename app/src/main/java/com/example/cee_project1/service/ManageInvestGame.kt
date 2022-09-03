@@ -12,26 +12,36 @@ class ManageInvestGame {
 
     private var sequence : Int = 1; // 1주차, 2주차들을 의미
     private val options = ArrayList<InvestOption>() // 투자처들 총 목록
-    private val events = ArrayList<Event>() // 사건들 총 목록
     private val history = History(ArrayList(), ArrayList()) // 앞으로의 일정, 과거들 관리
     private val player : Player = Player(PLAYER_INITIAL_MONEY, ArrayList()) // 플레이어
 
-    // 게임을 시작하거나 끝낼때 게임 리셋
+    /* 게임을 시작하거나 끝낼때 게임 리셋
+    * sequence 1로 초기화 (첫 주차임을 의미)
+    * history.events 초기화 후 setEventsSequence 함수로 사건들 재투입 (모든 사건 한번에)
+    * history.choices 초기화
+    * 플레이어 money 초기화, 플레이어 option 초기화
+    * */
     fun resetGame() {
         sequence = 1
         history.events.clear()
         setEventsSequence()
-        history.choice.clear()
+        history.choices.clear()
         player.money = PLAYER_INITIAL_MONEY
+        player.options.clear()
         setPlayerOptions()
     }
 
-    // 다음 주차로 갈때 실행하는 함수
+    /*
+    * 다음 라운드로 갈 때 실행하는 함수
+    * 현재 옵션들의 결과를 히스토리에 넣음 (applyEvents 함수 실행 후 실행 요망)
+    * sequence 를 증가시켜 다음 주차임을 확정
+    * */
     fun goNextSequence() {
-        sequence++;
+        history.addHistory(sequence, player.options)
+        sequence++
     }
 
-    // 플레이어의 기업 선택지들 이름들을 반환하는 함수
+    // 플레이어의 기업 선택지들 이름을 반환하는 함수
     fun getPlayersOptionsName() : ArrayList<String> {
         val names = ArrayList<String>()
         for(option in player.options) names.add(option.name)

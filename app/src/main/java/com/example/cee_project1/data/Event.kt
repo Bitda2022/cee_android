@@ -5,7 +5,7 @@ import kotlin.random.Random
 data class Event(
     var target : InvestOption,
     var story : String = "",
-    var degree : Degree
+    var result : Degree
 ) {
     enum class Degree(val minPercent : Int, val maxPercent : Int, val precisePercent : Int) {
         BIG_RAISE(15, 30, 0),
@@ -22,10 +22,10 @@ data class Event(
     }
 
     private fun getRate() : Double {
-        return if (degree == Degree.INTEREST_RATE)
-            ((degree.precisePercent + 100) / 100).toDouble()
+        return if (result == Degree.INTEREST_RATE)
+            ((result.precisePercent + 100) / 100).toDouble()
         else
             (100 + Random(System.currentTimeMillis())
-                .nextDouble(degree.minPercent.toDouble(), degree.maxPercent.toDouble())) / 100
+                .nextDouble(result.minPercent.toDouble(), result.maxPercent.toDouble())) / 100
     }
 }
