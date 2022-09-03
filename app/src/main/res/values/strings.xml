@@ -8,4 +8,37 @@
     <string name="quiz_number">퀴즈1</string>
     <string name="quiz_question">빌리거나 빌려 준 돈에 대한 이자. 이율을 금리라고 한다</string>
 
+    <string name="quiz_dialog_correct">정답</string>
+    <string name="quiz_dialog_correct_text">정답입니다</string>
+    <string name="quiz_dialog_wrong">오답</string>
+    <string name="quiz_dialog_wrong_text">오답입니다</string>
+
+    <string name="quiz_correct">맞다</string>
+    <string name="quiz_wrong">틀리다</string>
+
+    <string name="finish_quiz">퀴즈 종료</string>
+
+    <string name="study_title">학습</string>
+    <string name="study_msg">학습했습니다.</string>
+    <string name="study_continue">이어하기</string>
+    <string name="see_term_list">개념 리스트 보기</string>
+
+    <string name="invest_title">투자</string>
+    <string name="invest_company1">제약기업</string>
+    <string name="invest_company2">문구기업</string>
+    <string name="invest_company3">항공기업</string>
+    <string name="invest_savings">적금</string>
+
+    <string name="invest_day_of_result">1일차 기업</string>
+    <string name="invest_company1_result">제약기업\n25->30</string>
+    <string name="invest_company2_result">문구기업\n25->30</string>
+    <string name="invest_company3_result">항공기업\n25->30</string>
+
+    <string name="economy_basic">경제기초</string>
+    <string name="financial_base">금융기반</string>
+    <string name="stock_advanced">주식심화</string>
+
+    <string name="one_more_step">한걸음 더!</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

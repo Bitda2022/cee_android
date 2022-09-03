@@ -1,16 +1,207 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/black">
+
+
+    <View
+        android:id="@+id/set_tabbar_v"
+        android:layout_width="wrap_content"
+        android:layout_height="56dp"
+        android:background="@color/gray"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="설정탭입니다"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:text="설정"
+        android:fontFamily="@font/sf_bold"
+        android:textSize="25dp"
+        android:textColor="@color/white"
+        app:layout_constraintStart_toStartOf="@id/set_tabbar_v"
+        app:layout_constraintEnd_toEndOf="@id/set_tabbar_v"
+        app:layout_constraintTop_toTopOf="@id/set_tabbar_v"
+        app:layout_constraintBottom_toBottomOf="@id/set_tabbar_v" />
+
+    <!--설정-->
+
+    <ImageView
+        android:id="@+id/set_speed_iv"
+        android:layout_width="28dp"
+        android:layout_height="28dp"
+        android:src="@drawable/ic_set_speed"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/set_tabbar_v"
+        android:layout_marginTop="84dp"
+        android:layout_marginStart="28dp"/>
+
+    <TextView
+        android:id="@+id/set_speed_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TTS빠르기"
+        app:layout_constraintStart_toStartOf="@id/set_speed_iv"
+        app:layout_constraintBottom_toBottomOf="@id/set_speed_iv"
+        app:layout_constraintTop_toTopOf="@id/set_speed_iv"
+        android:layout_marginStart="61dp"
+        android:textColor="@color/white"
+        android:fontFamily="@font/sf_semibold"
+        android:textSize="25dp"/>
+
+    <TextView
+        android:id="@+id/setting_progress_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="@id/set_speed_tv"
+        app:layout_constraintBottom_toBottomOf="@id/set_speed_tv"
+        app:layout_constraintStart_toEndOf="@id/set_speed_tv"
+        android:text=":"
+        android:textColor="@color/white"
+        android:textSize="22sp"
+        android:layout_marginStart="20dp"/>
+
+    <SeekBar
+        android:id="@+id/set_speed_sk"
+        android:layout_width="281dp"
+        android:layout_height="50dp"
+        app:layout_constraintTop_toBottomOf="@id/set_speed_iv"
+        app:layout_constraintStart_toStartOf="@id/set_speed_tv"
+        android:backgroundTint="@color/white"
+        android:max="10"
+        android:progress="0"
+        android:thumb="@drawable/seekbar_theme_thumb"
+        android:progressDrawable="@drawable/seekbar_theme"/>
+
+
+
+    <!--시각-->
+
+    <ImageView
+        android:id="@+id/set_eye_iv"
+        android:layout_width="28dp"
+        android:layout_height="28dp"
+        android:src="@drawable/ic_set_eye"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/set_speed_iv"
+        android:layout_marginTop="70dp"
+        android:layout_marginStart="28dp"/>
+
+
+
+    <TextView
+        android:id="@+id/set_eye_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="시각장애등급"
+        app:layout_constraintStart_toStartOf="@id/set_eye_iv"
+        app:layout_constraintBottom_toBottomOf="@id/set_eye_iv"
+        app:layout_constraintTop_toTopOf="@id/set_eye_iv"
+        android:layout_marginStart="61dp"
+        android:textColor="@color/white"
+        android:fontFamily="@font/sf_semibold"
+        android:textSize="25dp"/>
+
+    <Spinner
+        android:id="@+id/set_eye_sp"
+        android:layout_width="300dp"
+        android:layout_height="40dp"
+        app:layout_constraintStart_toStartOf="@id/set_eye_tv"
+        app:layout_constraintTop_toBottomOf="@id/set_eye_tv"
+        android:layout_marginTop="10dp"
+        android:backgroundTint="@color/white"/>
+
+
+    <!--설정-->
+
+    <ImageView
+        android:id="@+id/set_tuto_iv"
+        android:layout_width="28dp"
+        android:layout_height="28dp"
+        android:src="@drawable/ic_set_tuto"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/set_eye_iv"
+        android:layout_marginTop="70dp"
+        android:layout_marginStart="28dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="튜토리얼 다시보기"
+        app:layout_constraintStart_toStartOf="@id/set_tuto_iv"
+        app:layout_constraintBottom_toBottomOf="@id/set_tuto_iv"
+        app:layout_constraintTop_toTopOf="@id/set_tuto_iv"
+        android:layout_marginStart="61dp"
+        android:textColor="@color/white"
+        android:fontFamily="@font/sf_semibold"
+        android:textSize="25dp"/>
+
+    <!--업데이트-->
+
+    <ImageView
+        android:id="@+id/set_update_iv"
+        android:layout_width="28dp"
+        android:layout_height="28dp"
+        android:src="@drawable/ic_set_update"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/set_tuto_iv"
+        android:layout_marginTop="70dp"
+        android:layout_marginStart="28dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="업데이트 확인"
+        app:layout_constraintStart_toStartOf="@id/set_update_iv"
+        app:layout_constraintBottom_toBottomOf="@id/set_update_iv"
+        app:layout_constraintTop_toTopOf="@id/set_update_iv"
+        android:layout_marginStart="61dp"
+        android:textColor="@color/white"
+        android:fontFamily="@font/sf_semibold"
+        android:textSize="25dp"/>
+
+
+
+
+    <!--만남-->
+
+    <ImageView
+        android:id="@+id/set_contact_iv"
+        android:layout_width="28dp"
+        android:layout_height="28dp"
+        android:src="@drawable/ic_set_contact"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/set_update_iv"
+        android:layout_marginTop="70dp"
+        android:layout_marginStart="28dp"/>
+
+    <TextView
+        android:id="@+id/set_contact_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Contact"
+        app:layout_constraintStart_toStartOf="@id/set_contact_iv"
+        app:layout_constraintBottom_toBottomOf="@id/set_contact_iv"
+        app:layout_constraintTop_toTopOf="@id/set_contact_iv"
+        android:layout_marginStart="61dp"
+        android:textColor="@color/white"
+        android:fontFamily="@font/sf_semibold"
+        android:textSize="25dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/set_contact_tv"
+        app:layout_constraintStart_toStartOf="@id/set_contact_tv"
+        android:autoLink="email"
+        android:text="zosel154@naver.com"
+        android:textSize="25sp"/>
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

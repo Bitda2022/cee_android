@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="handicap_level">
+        <item>시각장애 등급을 선택하세요.</item>
+        <item>1급</item>
+        <item>2급</item>
+        <item>3급1호</item>
+        <item>3급2호</item>
+        <item>4급1호</item>
+        <item>4급2호</item>
+        <item>5급1호</item>
+        <item>5급2호</item>
+        <item>6급</item>
+    </string-array>
+</resources>
