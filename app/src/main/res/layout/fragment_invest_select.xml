@@ -11,8 +11,9 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/black"
-        tools:context=".activity.InvestSelectActivity">
-
+        tools:context=".activity.InvestSelectActivity"
+        tools:layout_editor_absoluteX="-109dp"
+        tools:layout_editor_absoluteY="16dp">
 
 
         <TextView
@@ -54,122 +55,131 @@
             android:text="보유 코인 : 100코인"
             android:textColor="@color/white"
             android:textSize="25dp"
+            app:layout_constraintBottom_toTopOf="@id/fragment_invest_select_content_sv"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/fragment_invest_select_info_tv">
 
         </TextView>
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/fragment_invest_select_cl"
+        <ScrollView
+            android:id="@+id/fragment_invest_select_content_sv"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginEnd="20dp"
-            android:layout_marginBottom="30dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/fragment_invest_select_exsiting_coin_tv"
-
-            >
-
-
-            <!--        기업1-->
-
-            <TextView
-                android:id="@+id/fragment_invest_select_company1"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_marginTop="28dp"
-                android:background="@drawable/button_rectangle"
-                android:fontFamily="@font/sf_bold"
-                android:gravity="center"
-                android:text="@string/invest_company1"
-                android:textColor="@color/white"
-                android:textSize="20dp"
-                android:padding="15dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="1.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <!--기업2-->
-            <TextView
-                android:id="@+id/fragment_invest_select_company2"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_marginTop="30dp"
-                android:background="@drawable/button_rectangle"
-                android:fontFamily="@font/sf_bold"
-                android:gravity="center"
-                android:text="@string/invest_company2"
-                android:textColor="@color/white"
-                android:textSize="20dp"
-                android:padding="15dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/fragment_invest_select_company1" />
-
-
-
-            <!--기업3-->
-            <TextView
-                android:id="@+id/fragment_invest_select_company3"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_marginTop="30dp"
-                android:background="@drawable/button_rectangle"
-                android:fontFamily="@font/sf_bold"
-                android:gravity="center"
-                android:text="@string/invest_company3"
-                android:textColor="@color/white"
-                android:textSize="20dp"
-                android:padding="15dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/fragment_invest_select_company2" />
-
-
-
-
-
-
-            <!--적금-->
-            <TextView
-                android:id="@+id/fragment_invest_select_savings"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_marginTop="30dp"
-                android:background="@drawable/button_rectangle"
-                android:fontFamily="@font/sf_bold"
-                android:gravity="center"
-                android:text="@string/invest_savings"
-                android:textColor="@color/white"
-                android:textSize="20dp"
-                android:padding="15dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/fragment_invest_select_company3" />
-
-
-
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <Button
-            android:id="@+id/fragment_invest_select_complete_btn"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
-            android:background="@drawable/buttom_round"
-            android:fontFamily="@font/sf_bold"
-            android:text="완료"
-            android:textColor="@color/white"
-            android:textSize="30dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/fragment_invest_select_cl"></Button>
+            app:layout_constraintTop_toBottomOf="@id/fragment_invest_select_exsiting_coin_tv">
 
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/fragment_invest_select_cl"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginBottom="30dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+
+                >
+
+
+                <!--        기업1-->
+
+                <TextView
+                    android:id="@+id/fragment_invest_select_company1"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="28dp"
+                    android:background="@drawable/button_rectangle"
+                    android:fontFamily="@font/sf_bold"
+                    android:gravity="center"
+                    android:text="@string/invest_company1"
+                    android:textColor="@color/white"
+                    android:textSize="20dp"
+                    app:layout_constraintBottom_toTopOf="@id/fragment_invest_select_company2"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <!--기업2-->
+                <TextView
+                    android:id="@+id/fragment_invest_select_company2"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="30dp"
+                    android:background="@drawable/button_rectangle"
+                    android:fontFamily="@font/sf_bold"
+                    android:gravity="center"
+
+                    android:text="@string/invest_company2"
+                    android:textColor="@color/white"
+                    android:textSize="20dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/fragment_invest_select_company1"
+                    app:layout_constraintBottom_toTopOf="@id/fragment_invest_select_company3"
+                    />
+
+
+                <!--기업3-->
+                <TextView
+                    android:id="@+id/fragment_invest_select_company3"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="30dp"
+                    android:background="@drawable/button_rectangle"
+                    android:fontFamily="@font/sf_bold"
+                    android:gravity="center"
+
+                    android:text="@string/invest_company3"
+                    android:textColor="@color/white"
+                    android:textSize="20dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/fragment_invest_select_company2"
+                    app:layout_constraintBottom_toTopOf="@id/fragment_invest_select_savings"
+                    />
+
+
+                <!--적금-->
+                <TextView
+                    android:id="@+id/fragment_invest_select_savings"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="30dp"
+                    android:background="@drawable/button_rectangle"
+                    android:fontFamily="@font/sf_bold"
+                    android:gravity="center"
+                    android:text="@string/invest_savings"
+                    android:textColor="@color/white"
+                    android:textSize="20dp"
+                    app:layout_constraintBottom_toTopOf="@id/fragment_invest_select_complete_btn"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/fragment_invest_select_company3" />
+
+                <Button
+                    android:id="@+id/fragment_invest_select_complete_btn"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:background="@drawable/buttom_round"
+                    android:fontFamily="@font/sf_bold"
+                    android:text="완료"
+                    android:textColor="@color/white"
+                    android:textSize="30dp"
+                    android:layout_marginTop="30dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/fragment_invest_select_savings"></Button>
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </ScrollView>
+        
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
