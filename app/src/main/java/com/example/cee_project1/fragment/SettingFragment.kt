@@ -36,8 +36,9 @@ class SettingFragment : Fragment() {
         binding.setSpeedSk.setOnSeekBarChangeListener(object :SeekBar.OnSeekBarChangeListener{
             override fun onProgressChanged(seekbar: SeekBar?, progress: Int, fromUser: Boolean) {
                 binding.settingProgressTv.text = progress.toString()
-                tts.setSpeed((1 + progress / 10).toFloat())
-
+                val speed = (1f + (progress.toFloat() / 10))
+                Log.d("speed", "onProgressChanged: $speed")
+                tts.setSpeed(speed)
             }
 
             override fun onStartTrackingTouch(p0: SeekBar?) {
