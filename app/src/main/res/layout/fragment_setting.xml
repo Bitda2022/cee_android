@@ -71,12 +71,13 @@
         android:layout_width="281dp"
         android:layout_height="50dp"
         app:layout_constraintTop_toBottomOf="@id/set_speed_iv"
-        app:layout_constraintStart_toStartOf="@id/set_speed_tv"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         android:backgroundTint="@color/white"
         android:max="10"
         android:progress="0"
         android:thumb="@drawable/seekbar_theme_thumb"
-        android:progressDrawable="@drawable/seekbar_theme"/>
+        android:progressDrawable="@drawable/seekbar_theme" />
 
 
 
@@ -111,7 +112,8 @@
         android:id="@+id/set_eye_sp"
         android:layout_width="300dp"
         android:layout_height="40dp"
-        app:layout_constraintStart_toStartOf="@id/set_eye_tv"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/set_eye_tv"
         android:layout_marginTop="10dp"
         android:backgroundTint="@color/white"/>
