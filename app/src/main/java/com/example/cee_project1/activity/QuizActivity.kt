@@ -65,7 +65,7 @@ class QuizActivity : AppCompatActivity() {
                 val cDialog = CorrectAlertDialog(this) {}
                 CoroutineScope(Main).launch {
                     cDialog.show()
-                    delay(500)
+                    delay(1000)
                     cDialog.dismiss()
 
                     if (i == 9) {
@@ -109,7 +109,7 @@ class QuizActivity : AppCompatActivity() {
 
                 CoroutineScope(Main).launch {
                     wDialog.show()
-                    delay(500)
+                    delay(1000)
                     wDialog.dismiss()
                     TerminfoDialogFragment.newInstance(quizs.get(i).term)
                         ?.show(supportFragmentManager, "TerminfoDialogFragment")
@@ -157,7 +157,7 @@ class QuizActivity : AppCompatActivity() {
 
                 CoroutineScope(Main).launch {
                     wDialog.show()
-                    delay(500)
+                    delay(1000)
                     wDialog.dismiss()
                     TerminfoDialogFragment.newInstance(quizs.get(i).term)
                         ?.show(supportFragmentManager, "TerminfoDialogFragment")
@@ -185,7 +185,7 @@ class QuizActivity : AppCompatActivity() {
                 val cDialog = CorrectAlertDialog(this) {}
                 CoroutineScope(Main).launch {
                     cDialog.show()
-                    delay(500)
+                    delay(1000)
                     cDialog.dismiss()
 
                     if (i == 9) {
