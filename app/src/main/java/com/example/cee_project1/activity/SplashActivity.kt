@@ -37,14 +37,13 @@ class SplashActivity : AppCompatActivity() {
 
         realm = Realm.getDefaultInstance()
 
+        setInvestData(CEEApplication.gameManager)
         if(CEEApplication.prefs.getString("version", "null") == "null") {
             setVersion()
             setDatabaseTermThenQuiz()
 
             CEEApplication.gameManager = ManageInvestGame()
-            setInvestData(CEEApplication.gameManager, true)
         } else {
-            setInvestData(CEEApplication.gameManager, false)
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
             finish()
@@ -126,8 +125,14 @@ class SplashActivity : AppCompatActivity() {
         DownloadData().getVersion(handler)
     }
 
-    private fun setInvestData(manager : ManageInvestGame, needDownload : Boolean) {
-        if(needDownload) {
+    private fun setInvestData(manager : ManageInvestGame) {
+        try {
+            val fis = applicationContext.openFileInput("gameManager")
+            val ois = ObjectInputStream(fis)
+            CEEApplication.gameManager = ois.readObject() as ManageInvestGame
+            ois.close()
+            fis.close()
+        } catch(e : Exception) {
             class MyHandler : Handler(Looper.getMainLooper()) {
                 override fun handleMessage(msg: Message) {
                     val pair = msg.obj as Pair<*, *>
@@ -145,12 +150,6 @@ class SplashActivity : AppCompatActivity() {
 
             val handler = MyHandler()
             DownloadData().downloadInvestInfo(handler)
-        } else {
-            val fis = applicationContext.openFileInput("gameManager")
-            val ois = ObjectInputStream(fis)
-            CEEApplication.gameManager = ois.readObject() as ManageInvestGame
-            ois.close()
-            fis.close()
         }
     }
 

@@ -24,14 +24,17 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
-            android:name=".InvestResultActivity"
+            android:name=".activity.InvestViewPagerActivity"
             android:exported="false" />
         <activity
-            android:name=".InvestSelectActivity"
+            android:name=".activity.InvestResultActivity"
             android:exported="false" />
-        <activity
-            android:name=".InvestMainActivity"
-            android:exported="false" />
+<!--        <activity-->
+<!--            android:name=".activity.InvestSelectActivity"-->
+<!--            android:exported="false" />-->
+<!--        <activity-->
+<!--            android:name=".activity.InvestMainActivity"-->
+<!--            android:exported="false" />-->
         <activity
             android:name=".activity.FinishQuizActivity"
             android:exported="false" />
