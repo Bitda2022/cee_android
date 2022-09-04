@@ -6,7 +6,7 @@ import com.example.cee_project1.service.PreferenceUtil
 import com.example.cee_project1.service.TTSService
 import io.realm.Realm
 import io.realm.RealmConfiguration
-import java.io.ObjectInputStream
+import io.realm.exceptions.RealmMigrationNeededException
 
 class CEEApplication : Application() {
 
@@ -24,6 +24,12 @@ class CEEApplication : Application() {
         Realm.init(this)
         val config = RealmConfiguration.Builder().schemaVersion(1).allowWritesOnUiThread(true).build()
         Realm.setDefaultConfiguration(config)
+        try {
+            val realm = Realm.getDefaultInstance()
+        } catch (e: RealmMigrationNeededException) {
+            Realm.deleteRealm(config)
+            val realm = Realm.getDefaultInstance()
+        }
 
         tts = TTSService(applicationContext)
         tts.reset()

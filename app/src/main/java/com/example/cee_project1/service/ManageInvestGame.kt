@@ -24,7 +24,7 @@ private const val END_OF_SEQUENCE = 6
 
 class ManageInvestGame : Serializable {
 
-    private var sequence : Int = 1; // 1주차, 2주차들을 의미
+    private var sequence : Int = 0; // 1주차, 2주차들을 의미
     private val history = History(ArrayList(), ArrayList()) // 앞으로의 일정, 과거들 관리
     private val player : Player = Player(PLAYER_INITIAL_MONEY, ArrayList()) // 플레이어
 
