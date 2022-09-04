@@ -27,11 +27,7 @@ class InvestViewPagerActivity : AppCompatActivity() {
         fragmentList.add(InvestSelectFragment())
         initAdapter()
         setContentView(binding.root)
-
-
     }
-
-
 
     override fun onResume() {
         Log.d("viewpager_lifecycle","investViewPagerActivity onResume 호출")
@@ -46,9 +42,6 @@ class InvestViewPagerActivity : AppCompatActivity() {
         super.onResume()
     }
     private fun initAdapter() {
-        //Adapter 안에 ViewPager2 상에 띄워줄 fragmentList 생성
-//         fragmentList = listOf(InvestMainFragment(),InvestSelectFragment())
-
         //ViewPagerAdapter 초기화
         ViewPagerAdapter = InvestViewPagerAdapter(this)
         ViewPagerAdapter.fragments.addAll(fragmentList)

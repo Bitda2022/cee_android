@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat.startActivity
 import com.example.cee_project1.data.Quiz
 import com.example.cee_project1.data.Term
 import com.example.cee_project1.databinding.ActivityQuizBinding
@@ -12,6 +13,10 @@ import com.example.cee_project1.dialog.TerminfoDialogFragment
 import com.example.cee_project1.dialog.WrongAlertDialog
 import io.realm.Realm
 import io.realm.kotlin.where
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers.Main
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 import kotlin.collections.ArrayList
 import kotlin.random.Random
 
@@ -56,9 +61,22 @@ class QuizActivity : AppCompatActivity() {
 
             binding.activityQuizCorrectIv.setOnClickListener {
                 Log.d("click_event","정답 O인데 O 누름")
-                CorrectAlertDialog(this) {
 
-                }.show()
+                //2초동안 보여주기
+                val cDialog= CorrectAlertDialog(this){}
+                CoroutineScope(Main).launch {
+                    cDialog.show()
+                    delay(500)
+                    cDialog.dismiss()
+
+                    if(i==9){
+
+                    }
+
+                }
+
+
+
                 correctCnt++
                 flag=true
 
@@ -69,11 +87,17 @@ class QuizActivity : AppCompatActivity() {
             binding.activityQuizWrongIv.setOnClickListener {
                 Log.d("click_event","정답 O인데 X 누름")
 
-                TerminfoDialogFragment.newInstance("send!!")?.show(supportFragmentManager,"TerminfoDialogFragment")
+//                TerminfoDialogFragment.newInstance("send!!")?.show(supportFragmentManager,"TerminfoDialogFragment")
 
-                WrongAlertDialog(this) {
+                val wDialog= WrongAlertDialog(this) {}
 
-                }.show()
+                CoroutineScope(Main).launch {
+                    wDialog.show()
+                    delay(500)
+                    wDialog.dismiss()
+                    TerminfoDialogFragment.newInstance("send!!")?.show(supportFragmentManager,"TerminfoDialogFragment")
+
+                }
 
                 //wrong 횟수 증가시키기
                 var termQuiz = realm.where<Quiz>().contains("term", quizs.get(i).term).findFirst()
@@ -101,14 +125,20 @@ class QuizActivity : AppCompatActivity() {
                 Log.d("click_event","정답 X인데 O 누름")
 
 
-                TerminfoDialogFragment.newInstance(quizs.get(i).term)?.show(supportFragmentManager,"TerminfoDialogFragment")
+//                TerminfoDialogFragment.newInstance(quizs.get(i).term)?.show(supportFragmentManager,"TerminfoDialogFragment")
 
-                WrongAlertDialog(this) {
+                val wDialog= WrongAlertDialog(this) {}
 
-                }.show()
-                val wad=WrongAlertDialog(this){}
+                CoroutineScope(Main).launch {
+                    wDialog.show()
+                    delay(500)
+                    wDialog.dismiss()
+                    TerminfoDialogFragment.newInstance(quizs.get(i).term)?.show(supportFragmentManager,"TerminfoDialogFragment")
 
-                wad.show()
+                }
+//                val wad=WrongAlertDialog(this){}
+//
+//                wad.show()
 
 
 
@@ -121,9 +151,19 @@ class QuizActivity : AppCompatActivity() {
             }
             binding.activityQuizWrongIv.setOnClickListener {
                 Log.d("click_event","정답 X인데 X 누름")
-                CorrectAlertDialog(this) {
 
-                }.show()
+                //2초동안 보여주기
+                val cDialog= CorrectAlertDialog(this){}
+                CoroutineScope(Main).launch {
+                    cDialog.show()
+                    delay(500)
+                    cDialog.dismiss()
+
+                }
+
+//                CorrectAlertDialog(this) {
+//
+//                }.show()
                 correctCnt++
                 flag=true
 
