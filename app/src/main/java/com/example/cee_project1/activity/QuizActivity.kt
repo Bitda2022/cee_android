@@ -1,10 +1,14 @@
 package com.example.cee_project1.activity
 
+import android.app.ProgressDialog.show
 import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.GestureDetector
+import android.view.MotionEvent
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat.startActivity
 import com.example.cee_project1.data.Quiz
 import com.example.cee_project1.data.Term
 import com.example.cee_project1.databinding.ActivityQuizBinding
@@ -20,7 +24,8 @@ import kotlinx.coroutines.launch
 import kotlin.random.Random
 
 
-class QuizActivity : AppCompatActivity() {
+class QuizActivity : AppCompatActivity(){
+//    DialogInterface.OnDismissListener
 
     lateinit var binding: ActivityQuizBinding
 
@@ -30,6 +35,8 @@ class QuizActivity : AppCompatActivity() {
     var flag: Boolean = false
     var correctCnt: Int = 0
 
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityQuizBinding.inflate(layoutInflater)
@@ -38,6 +45,7 @@ class QuizActivity : AppCompatActivity() {
         initDatabase()
 
     }
+
 
     private fun initDatabase() {
 
@@ -57,7 +65,7 @@ class QuizActivity : AppCompatActivity() {
     private fun clickListener(quizs: ArrayList<Quiz>, i: Int) {
         var i_index = i
         if (quizs.get(i).answer) {//정답이 O라면
-
+            Log.d("TDialog","quiz index: $i")
             binding.activityQuizCorrectIv.setOnClickListener {
                 Log.d("click_event", "정답 O인데 O 누름")
 
@@ -90,31 +98,21 @@ class QuizActivity : AppCompatActivity() {
                 Log.d("click_event", "정답 O인데 X 누름")
 
 
-
-//                val TDialog=TerminfoDialogFragment.newInstance("send!!")
-//                        TDialog?.show(supportFragmentManager, "TerminfoDialogFragment")
-//                if (TDialog != null) {
-//                    TDialog.dialog!!.setOnDismissListener(
-//
-//                    )
-//                }
-//                if (TDialog != null) {
-//                    TDialog.dialog?.setOnDismissListener( DialogInterface.OnDismissListener(){
-//                      Log.d("onDismiss","호출")
-//
-//                    })
-//                }
-
                 val wDialog = WrongAlertDialog(this) {}
+                val TDialog=TerminfoDialogFragment.newInstance(quizs.get(i).term)
+
 
                 CoroutineScope(Main).launch {
                     wDialog.show()
                     delay(1000)
                     wDialog.dismiss()
-                    TerminfoDialogFragment.newInstance(quizs.get(i).term)
-                        ?.show(supportFragmentManager, "TerminfoDialogFragment")
+
+//                    TerminfoDialogFragment.newInstance(quizs.get(i).term)
+//                        ?.show(supportFragmentManager, "TerminfoDialogFragment")
 
 
+                    TDialog?.show(supportFragmentManager, "TerminfoDialogFragment")
+                    supportFragmentManager.executePendingTransactions()
 
                     if (i == 9) {
                         val intent = Intent(applicationContext, FinishQuizActivity::class.java)
@@ -122,9 +120,20 @@ class QuizActivity : AppCompatActivity() {
                         startActivity(intent)
                         finish()
                     }
-
-
                 }
+
+//
+//                TDialog?.dialog?.setOnDismissListener(DialogInterface.OnDismissListener {
+//                    //do whatever you want when dialog is dismissed
+//                    Log.d("TDialog","onDismissListener 호출")
+//                    Log.d("TDialog","i: $i")
+//                    if (i == 9) {
+//                        val intent = Intent(applicationContext, FinishQuizActivity::class.java)
+//                        intent.putExtra("correctCnt", correctCnt)
+//                        startActivity(intent)
+//                        finish()
+//                    }
+//                })
 
                 //wrong 횟수 증가시키기
                 var termQuiz = realm.where<Quiz>().contains("term", quizs.get(i).term).findFirst()
@@ -159,8 +168,16 @@ class QuizActivity : AppCompatActivity() {
                     wDialog.show()
                     delay(1000)
                     wDialog.dismiss()
-                    TerminfoDialogFragment.newInstance(quizs.get(i).term)
-                        ?.show(supportFragmentManager, "TerminfoDialogFragment")
+
+
+                    val TiDialog=TerminfoDialogFragment.newInstance(quizs.get(i).term)
+                            TiDialog?.show(supportFragmentManager, "TerminfoDialogFragment")
+
+
+
+//                        ?.show(supportFragmentManager, "TerminfoDialogFragment")
+
+
 
 //                    if (i == 9) {
 //                        val intent = Intent(applicationContext, FinishQuizActivity::class.java)
@@ -333,9 +350,10 @@ class QuizActivity : AppCompatActivity() {
         quiz(quizs)
     }
 
+//    override fun onDismiss(p0: DialogInterface?) {
+//        TODO("Not yet implemented")
+//    }
+
 
 }
-//
-//private fun DialogInterface.setOnDismissListener() {
-//
-//}
+
