@@ -2,6 +2,7 @@ package com.example.cee_project1.fragment
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -51,8 +52,6 @@ class InvestSelectFragment : Fragment() {
             binding.fragmentInvestSelectDeadlineBtn.visibility=View.VISIBLE
 
 
-//            app:layout_constraintBottom_toTopOf="@id/fragment_invest_select_selected_company_tv"
-
             val set = ConstraintSet()
             val constraintLayout = binding.root
             set.clone(constraintLayout)
@@ -64,6 +63,19 @@ class InvestSelectFragment : Fragment() {
             )
             set.applyTo(constraintLayout)
         }
+
+
+
+        binding.fragmentInvestSelectDeadlineBtn.setOnClickListener {
+
+            binding.fragmentInvestSelectSelectedCompanyTv.visibility = View.GONE
+            binding.fragmentInvestSelectInvestedMoneyEt.visibility = View.GONE
+            binding.fragmentInvestSelectDeadlineBtn.visibility = View.GONE
+
+            binding.fragmentInvestSelectCl.visibility = View.VISIBLE
+
+        }
+
 
     }
 
