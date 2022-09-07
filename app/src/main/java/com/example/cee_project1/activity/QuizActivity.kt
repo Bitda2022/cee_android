@@ -65,6 +65,9 @@ class QuizActivity : AppCompatActivity(){
 
     private fun clickListener(quizs: ArrayList<Quiz>, i: Int) {
         var i_index = i
+        if(quizs.size==0){
+            return
+        }
         if (quizs.get(i).answer) {//정답이 O라면
             Log.d("TDialog","quiz index: $i")
             binding.activityQuizCorrectIv.setOnClickListener {

@@ -23,8 +23,9 @@ class InvestViewPagerActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityInvestViewPagerBinding.inflate(layoutInflater)
         fragmentList =ArrayList<Fragment>()
-        fragmentList.add(InvestMainFragment())
-        fragmentList.add(InvestSelectFragment())
+        fragmentList.add(InvestMainFragment())//게임 규칙 설명
+        fragmentList.add(InvestMainFragment())//스토리
+        fragmentList.add(InvestSelectFragment())//투자
         initAdapter()
         setContentView(binding.root)
     }
@@ -32,7 +33,7 @@ class InvestViewPagerActivity : AppCompatActivity() {
     override fun onResume() {
         Log.d("viewpager_lifecycle","investViewPagerActivity onResume 호출")
         if(InvestResultActivity.btnFlag==true){
-            fragmentList.add(1,InvestMainFragment())
+            fragmentList.add(2,InvestMainFragment()) //이번 주차 스터리 추가
             initAdapter()
             InvestResultActivity.btnFlag=false
             binding.vpSample.currentItem=fragmentList.size-2

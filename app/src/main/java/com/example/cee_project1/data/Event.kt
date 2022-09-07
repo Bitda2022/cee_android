@@ -4,7 +4,7 @@ import java.io.Serializable
 import kotlin.random.Random
 
 data class Event(
-    var target : InvestOption,
+    var target : InvestOption,//기업
     var story : String = "",
     var result : Degree
 ) : Serializable {

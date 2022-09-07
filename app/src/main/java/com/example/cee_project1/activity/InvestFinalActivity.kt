@@ -11,7 +11,5 @@ class InvestFinalActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityInvestFinalBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-
     }
 }

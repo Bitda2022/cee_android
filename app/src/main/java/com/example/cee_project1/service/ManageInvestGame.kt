@@ -47,7 +47,7 @@ class ManageInvestGame : Serializable {
     * */
     fun goNextSequence() : Boolean {
         history.addHistory(sequence, player.options)
-        player.retrieveMoney()
+//        player.retrieveMoney()
         return if(sequence == END_OF_SEQUENCE) {
             false
         } else {
