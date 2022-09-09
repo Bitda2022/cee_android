@@ -23,7 +23,6 @@ import kotlin.random.Random
 
 
 class QuizActivity : AppCompatActivity(){
-//    DialogInterface.OnDismissListener
 
     lateinit var binding: ActivityQuizBinding
 
@@ -90,7 +89,6 @@ class QuizActivity : AppCompatActivity(){
                 }
 
 
-
                 correctCnt++
                 flag = true
 
@@ -111,10 +109,6 @@ class QuizActivity : AppCompatActivity(){
                     delay(1000)
                     wDialog.dismiss()
 
-//                    TerminfoDialogFragment.newInstance(quizs.get(i).term)
-//                        ?.show(supportFragmentManager, "TerminfoDialogFragment")
-
-
                     TDialog?.show(supportFragmentManager, "TerminfoDialogFragment")
                     supportFragmentManager.executePendingTransactions()
 
@@ -125,19 +119,6 @@ class QuizActivity : AppCompatActivity(){
                         finish()
                     }
                 }
-
-//
-//                TDialog?.dialog?.setOnDismissListener(DialogInterface.OnDismissListener {
-//                    //do whatever you want when dialog is dismissed
-//                    Log.d("TDialog","onDismissListener 호출")
-//                    Log.d("TDialog","i: $i")
-//                    if (i == 9) {
-//                        val intent = Intent(applicationContext, FinishQuizActivity::class.java)
-//                        intent.putExtra("correctCnt", correctCnt)
-//                        startActivity(intent)
-//                        finish()
-//                    }
-//                })
 
                 //wrong 횟수 증가시키기
                 var termQuiz = realm.where<Quiz>().contains("term", quizs.get(i).term).findFirst()
@@ -164,8 +145,6 @@ class QuizActivity : AppCompatActivity(){
                 Log.d("click_event", "정답 X인데 O 누름")
 
 
-//                TerminfoDialogFragment.newInstance(quizs.get(i).term)?.show(supportFragmentManager,"TerminfoDialogFragment")
-
                 val wDialog = WrongAlertDialog(this) {}
 
                 CoroutineScope(Main).launch {
@@ -177,9 +156,6 @@ class QuizActivity : AppCompatActivity(){
                     val TiDialog=TerminfoDialogFragment.newInstance(quizs.get(i).term)
                             TiDialog?.show(supportFragmentManager, "TerminfoDialogFragment")
 
-
-
-//                        ?.show(supportFragmentManager, "TerminfoDialogFragment")
 
 
 
@@ -247,7 +223,6 @@ class QuizActivity : AppCompatActivity(){
             "economy_basic"->{
                  termList = realm.where<Term>().contains("type","knowledge/economy_basic.html").findAll()
 
-//                quizList=RealmResults<Quiz>(termList.size)
                 if(termList!=null) {
                     for (term in termList) {
                         if(term?.quizs != null && term?.quizs!!.size != 0) {
@@ -326,16 +301,10 @@ class QuizActivity : AppCompatActivity(){
             val randQuiz = quizList?.get(randIdx)!!
 
             quizTen.add(randQuiz)
-//            str2 = "\n-----------------------------------\n"
-//            str2 += quizList.size.toString() + "\n"
-//            str2 += "id : " + tmp.id + "\n"
+
             str2 = "term : " + randQuiz.term + "\n"
-//            str2 += "content : " + tmp.content + "\n"
-//            str2 += "answer : " + tmp.answer + "\n"
-//            str2 += "commentary : " + tmp.commentary + "\n"
-//            str2 += "wrong : " + tmp.wrong + "\n"
             Log.d("str2", "onCreate: quizs: $str2")
-//            index++
+
         }
         Log.d("quizTenSize", quizTen.size.toString())
 
@@ -355,14 +324,6 @@ class QuizActivity : AppCompatActivity(){
         var quizNumber = i + 1
         var quizNumberText = "퀴즈" + quizNumber.toString()
 
-//        if(i==10){
-//            val intent = Intent(applicationContext, FinishQuizActivity::class.java)
-//            intent.putExtra("correctCnt",correctCnt)
-//            startActivity(intent)
-//            finish()
-//            return
-//        }
-
         if(i==totalQuizCnt){
             return
         }
@@ -373,11 +334,6 @@ class QuizActivity : AppCompatActivity(){
         flag = false
         quiz(quizs)
     }
-
-//    override fun onDismiss(p0: DialogInterface?) {
-//        TODO("Not yet implemented")
-//    }
-
 
 }
 

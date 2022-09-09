@@ -45,4 +45,7 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
     <string name="selected_company">자동차기업</string>
+
+    <string name="deadline_btn">마감</string>
+    <string name="complete_btn">완료</string>
 </resources>
