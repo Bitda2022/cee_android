@@ -45,13 +45,10 @@ class SettingFragment : Fragment() {
             }
 
             override fun onStopTrackingTouch(p0: SeekBar?) {
-                tts.addContents("빠르기 "+ p0!!.progress)
-                tts.play()
             }
         })
 
         return binding.root
-
     }
 
 
