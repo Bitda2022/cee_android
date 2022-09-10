@@ -14,16 +14,12 @@ data class Player(
         money -= amount
     }
 
-    fun retrieveMoney() {
-        var sum = 0.0
+    fun setAmount2Value() {
         for(option in options) {
             if(option.name != "적금") {
-                sum += option.value
-                option.value = 0.0
-                option.amount = 0
+                option.amount = option.value.toInt()
             }
         }
-        money = sum.toInt()
     }
 
     fun getTotalMoney() : Int {

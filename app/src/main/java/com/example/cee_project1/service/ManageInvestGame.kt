@@ -47,7 +47,7 @@ class ManageInvestGame : Serializable {
     * */
     fun goNextSequence() : Boolean {
         history.addHistory(sequence, player.options)
-        player.retrieveMoney()
+        player.setAmount2Value()
         return if(sequence == END_OF_SEQUENCE) {
             false
         } else {
@@ -115,6 +115,15 @@ class ManageInvestGame : Serializable {
     }
 
     /*
+    * 원하는 옵션의 amount 값을 가져오는 메소드
+    * 매개변수로 해당 옵션의 이름을 받으면 Int 타입의 amount 값을 리턴해줌
+    * */
+    fun getOptionAmount(optionName : String) : Int {
+        val option = player.findOption(optionName)
+        return option.amount
+    }
+
+    /*
     * 현재 주차의 투자 결과를 반환하는 함수
     * 매개변수로 투자 결과를 반환받고 싶은 옵션의 정확한 이름(String)을 받음
     * 해당하는 기업 옵션의 변화의 설명이 String 형태로 반환됨
@@ -125,7 +134,7 @@ class ManageInvestGame : Serializable {
         text += option.amount.toString() + "->" + option.value.toInt().toString()
         val diff = option.value.toInt() - option.amount
         text += if(diff > 0) " ($diff 상승)"
-        else " (" + (diff * -1).toString() + " 하락"
+        else " (" + (diff * -1).toString() + " 하락)"
         return text
     }
 
