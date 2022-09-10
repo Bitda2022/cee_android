@@ -41,10 +41,6 @@ class InvestViewPagerActivity : AppCompatActivity() {
             "5. 주차별 투자가 완료된 시점에서 데이터는 세이브 됩니다.",
             "6. 상장가 이하로 투자는 불가능합니다.",
             "7. 실제 투자와 상이합니다.꼭 참고하시고 즐기세요 "
-
-
-
-
             )
 
         var stories=CEEApplication.gameManager.getNowEventsStory()
