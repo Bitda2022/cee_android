@@ -36,11 +36,26 @@ class InvestSelectFragment : Fragment() {
 
         initView()
         changePage()
+        setDeadLineBtn()
         return binding.root
     }
 
-    private fun changePage() {
+    private fun setDeadLineBtn() {
+        binding.fragmentInvestSelectDeadlineBtn.setOnClickListener {
+            CEEApplication.gameManager.applyEvents()
+            var optionsNameArr=CEEApplication.gameManager.getPlayersOptionsName()
+            for(optionName in optionsNameArr){
+                Log.d("invest_test:투자 결과 apply 후",CEEApplication.gameManager.getResults(optionName)+"\n")
+            }
 
+
+            val intent = Intent(activity, InvestResultActivity::class.java)
+            startActivity(intent)
+        }
+    }
+
+    private fun changePage() {
+        //투자하고 completeBtn 누르고 selectPage로 이동
 
         binding.fragmentInvestSelectCompany1.setOnClickListener {
 
@@ -150,20 +165,20 @@ class InvestSelectFragment : Fragment() {
             }
         }
 
-        binding.fragmentInvestSelectCompleteBtn.setOnClickListener {
-            //투자 amount editText에서 정하고 "완료"버튼 눌렀을 시
-            binding.fragmentInvestSelectSelectedCompanyTv.visibility = View.GONE
-            binding.fragmentInvestSelectInvestedMoneyEt.visibility = View.GONE
-            binding.fragmentInvestSelectCompleteBtn.visibility = View.GONE
+//        binding.fragmentInvestSelectCompleteBtn.setOnClickListener {
+//            //투자 amount editText에서 정하고 "완료"버튼 눌렀을 시
+//            binding.fragmentInvestSelectSelectedCompanyTv.visibility = View.GONE
+//            binding.fragmentInvestSelectInvestedMoneyEt.visibility = View.GONE
+//            binding.fragmentInvestSelectCompleteBtn.visibility = View.GONE
+//
+//            binding.fragmentInvestSelectCl.visibility = View.VISIBLE
+//
+//        }
 
-            binding.fragmentInvestSelectCl.visibility = View.VISIBLE
-
-        }
-
-        binding.fragmentInvestSelectDeadlineBtn.setOnClickListener {
-            val intent = Intent(activity, InvestResultActivity::class.java)
-            startActivity(intent)
-        }
+//        binding.fragmentInvestSelectDeadlineBtn.setOnClickListener {
+//            val intent = Intent(activity, InvestResultActivity::class.java)
+//            startActivity(intent)
+//        }
     }
 
     private fun investingToSelectPage() {

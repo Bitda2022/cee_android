@@ -67,6 +67,7 @@ class InvestViewPagerActivity : AppCompatActivity() {
         if(InvestResultActivity.btnFlag==true){
 
             if(CEEApplication.gameManager.goNextSequence()){//주차 증가
+
                 var stories=CEEApplication.gameManager.getNowEventsStory()
                 fragmentList.add(fragmentList.size-1,InvestMainFragment(stories)) //이번 주차 스터리 추가
             }
