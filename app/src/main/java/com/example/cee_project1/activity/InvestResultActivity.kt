@@ -49,5 +49,9 @@ class InvestResultActivity : AppCompatActivity() {
             btnFlag = true
             finish()
         }
+
+        //나의 자본
+        var myCapital=CEEApplication.gameManager.getPlayerTotalMoney()
+        binding.activityInvestResultMyCoinContentRoundTv.text=myCapital.toString()
     }
 }
