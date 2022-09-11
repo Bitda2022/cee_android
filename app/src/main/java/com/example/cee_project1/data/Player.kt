@@ -7,11 +7,18 @@ data class Player(
     var money : Int = 0,
     var options : ArrayList<InvestOption>
 ) : Serializable {
-    fun invest(optionName : String, amount : Int) {
+    fun invest(optionName : String, amount : Int) : Boolean {
         val option = findOption(optionName)
-        option.amount += amount
-        option.value = option.amount.toDouble()
-        money -= amount
+        return if(option.price > amount)
+            false
+        else if(money < amount)
+            false
+        else {
+            option.amount += amount
+            option.value = option.amount.toDouble()
+            money -= amount
+            true
+        }
     }
 
     fun setAmount2Value() {

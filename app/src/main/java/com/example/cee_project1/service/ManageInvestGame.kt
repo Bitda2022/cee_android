@@ -99,8 +99,8 @@ class ManageInvestGame : Serializable {
     * 결과로는 플레이어의 money(금액)이 투자할 양만큼 줄고,
     * 해당하는 option.amount 가 증가되고 option.value 가 option.amount 와 일치됨
     * */
-    fun playerInvest(optionName : String, amount : Int) {
-        player.invest(optionName, amount)
+    fun playerInvest(optionName : String, amount : Int) : Boolean {
+        return player.invest(optionName, amount)
     }
 
 
