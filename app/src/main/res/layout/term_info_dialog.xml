@@ -35,7 +35,8 @@
         app:layout_constraintTop_toBottomOf="@id/term_info_dialog_close_btn_iv"
         android:layout_marginTop="50dp"
         android:layout_marginBottom="30dp"
-        android:text="생산">
+        android:text="생산"
+        android:fontFamily="@font/sf_bold">
 
     </TextView>
     
@@ -45,7 +46,7 @@
         android:layout_height="2px"
         android:layout_marginTop="10dp"
         app:layout_constraintTop_toBottomOf="@id/term_info_dialog_term_name_tv"
-        android:background="@color/line">
+        android:background="@drawable/button_rectangle_color">
 
     </View>
 
@@ -60,10 +61,10 @@
 아아아아ㅏ앙
 아아ㅏㅇ아ㅏ아"
         android:textColor="@color/white"
+        android:fontFamily="@font/sf_semibold"
         app:layout_constraintBottom_toTopOf="@id/term_info_dialog_line_after_term_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-
         app:layout_constraintTop_toBottomOf="@id/term_info_dialog_line_after_term_name">
 
     </TextView>
@@ -73,7 +74,7 @@
         android:layout_width="match_parent"
         android:layout_height="2px"
         android:layout_marginTop="30dp"
-        android:background="@color/line"
+        android:background="@drawable/button_rectangle_color"
         app:layout_constraintTop_toBottomOf="@id/term_info_dialog_term_content_tv"
         tools:layout_editor_absoluteX="3dp">
 
@@ -93,7 +94,8 @@
         android:layout_marginTop="100dp"
         android:layout_marginBottom="100dp"
         android:text="대충예시들이 이렇지 않을까요?
-좀 길겠음">
+좀 길겠음"
+        android:fontFamily="@font/sf_semibold">
 
     </TextView>
 
@@ -103,12 +105,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="100dp"
-
-
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/term_info_dialog_example_tv"
-        android:text="문제 다시 듣기">
+        android:text="문제 다시 듣기"
+        android:background="@drawable/button_rectangle_color"
+        android:padding="5dp"
+        android:fontFamily="@font/sf_bold">
 
     </TextView>
     <!--    <TextView-->

@@ -19,19 +19,29 @@
         android:background="@color/gray"
         android:id="@+id/study_title_tv"/>
 
-    <Button
-        android:id="@+id/invest_start_quiz_btn"
+    <ImageView
+        android:id="@+id/invest_title_iv"
+        android:layout_width="212dp"
+        android:layout_height="113dp"
+        android:src="@drawable/daysinvest"
+        app:layout_constraintTop_toBottomOf="@id/study_title_tv"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="120dp"/>
+
+    <Button
+        android:id="@+id/invest_start_quiz_btn"
         android:text="시작하기"
-        android:fontFamily="@font/sf_semibold"
+        android:fontFamily="@font/sf_bold"
         android:textSize="30sp"
         android:textColor="@color/white"
         android:background="@drawable/buttom_round"
-        android:layout_width="170dp"
-        android:layout_height="170dp"
-        android:layout_marginBottom="221dp">
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/invest_title_iv"
+        android:layout_marginTop="30dp">
     </Button>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

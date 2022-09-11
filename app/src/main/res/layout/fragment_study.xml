@@ -58,7 +58,7 @@
         android:textSize="19dp"
         android:textColor="@color/white"
         android:fontFamily="@font/sf_regular"
-        android:background="@drawable/button_rectangle"
+        android:background="@drawable/button_rectangle_color"
         android:id="@+id/study_continue_btn"/>
 
     <Button
@@ -72,7 +72,7 @@
         android:textSize="19dp"
         android:textColor="@color/white"
         android:fontFamily="@font/sf_regular"
-        android:background="@drawable/button_rectangle"
+        android:background="@drawable/button_rectangle_color"
         android:id="@+id/study_see_list_btn"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

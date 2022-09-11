@@ -24,6 +24,7 @@
             android:text="1일차"
             android:textColor="@color/white"
             android:textSize="30dp"
+            android:fontFamily="@font/sf_bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
@@ -39,6 +40,7 @@
             android:text="매도/ 매수 할 주식을 선택해주세요"
             android:textColor="@color/white"
             android:textSize="25dp"
+            android:fontFamily="@font/sf_semibold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/fragment_invest_select_day_tv">
@@ -54,6 +56,7 @@
             android:text="보유 코인 : 100코인"
             android:textColor="@color/white"
             android:textSize="25dp"
+            android:fontFamily="@font/sf_semibold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/fragment_invest_select_info_tv">

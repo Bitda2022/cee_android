@@ -26,22 +26,37 @@
         <entry key="..\:/cee/cee_android/cee_android/app/src/main/res/layout/fragment_quiz_setting.xml" value="0.1" />
         <entry key="..\:/cee/cee_android/cee_android/app/src/main/res/layout/fragment_study.xml" value="0.1634963768115942" />
         <entry key="..\:/cee/cee_android/cee_android/app/src/main/res/layout/fragment_term_list.xml" value="0.1634963768115942" />
+        <entry key="app/src/main/res/drawable/buttom_round.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/button_background_stroke.xml" value="0.1565" />
+        <entry key="app/src/main/res/drawable/button_background_theme.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/button_rectangle.xml" value="0.10048675537109375" />
+        <entry key="app/src/main/res/drawable/button_rectangle_background.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.128" />
         <entry key="app/src/main/res/drawable/menu_selector_color.xml" value="0.128" />
         <entry key="app/src/main/res/drawable/seekbar_theme.xml" value="0.128" />
         <entry key="app/src/main/res/drawable/seekbar_theme_thumb.xml" value="0.1" />
+        <entry key="app/src/main/res/font/font_familiy.xml" value="0.2898148148148148" />
         <entry key="app/src/main/res/layout/activity_finish_quiz.xml" value="0.24114583333333334" />
-        <entry key="app/src/main/res/layout/activity_invest_final.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/activity_invest_result.xml" value="0.16625223053504146" />
-        <entry key="app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_invest_final.xml" value="0.25658416748046875" />
+        <entry key="app/src/main/res/layout/activity_invest_result.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_invest_view_pager.xml" value="0.3098958333333333" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.1422470092773438" />
         <entry key="app/src/main/res/layout/activity_quiz.xml" value="0.2375" />
         <entry key="app/src/main/res/layout/activity_splash.xml" value="0.23854166666666668" />
         <entry key="app/src/main/res/layout/activity_term.xml" value="0.2375" />
-        <entry key="app/src/main/res/layout/fragment_invest.xml" value="0.2375" />
+        <entry key="app/src/main/res/layout/activity_term_list.xml" value="0.15070921985815602" />
+        <entry key="app/src/main/res/layout/fragment_invest.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/fragment_invest_main.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/fragment_invest_select.xml" value="0.3098958333333333" />
         <entry key="app/src/main/res/layout/fragment_quiz_setting.xml" value="0.23854166666666668" />
         <entry key="app/src/main/res/layout/fragment_setting.xml" value="0.2826327843846801" />
-        <entry key="app/src/main/res/layout/fragment_study.xml" value="0.2375" />
+        <entry key="app/src/main/res/layout/fragment_study.xml" value="0.19479980468750002" />
         <entry key="app/src/main/res/layout/fragment_term_list.xml" value="0.2375" />
+        <entry key="app/src/main/res/layout/item_term.xml" value="0.15070921985815602" />
+        <entry key="app/src/main/res/layout/item_term_list.xml" value="0.3098958333333333" />
+        <entry key="app/src/main/res/layout/term_info_dialog.xml" value="0.24007161458333331" />
+        <entry key="app/src/main/res/layout/wong_term_info_dialog.xml" value="0.3098958333333333" />
+        <entry key="app/src/main/res/layout/wrong_alert_dialog.xml" value="0.3098958333333333" />
         <entry key="app/src/main/res/menu/bottom_nev_menu.xml" value="0.22101745605468753" />
         <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.145" />
       </map>
