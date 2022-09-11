@@ -180,6 +180,8 @@ class TTSService(context: Context) : UtteranceProgressListener(), TextToSpeech.O
         if(contents.isEmpty()) {
             state = State.CLEAR
             onDoneListener.afterDone()
+            alreadyRead.clear()
+            nowIndex = 0
         } else {
             tts.speak(contents[0], TextToSpeech.QUEUE_FLUSH, null, contents.size.toString())
         }

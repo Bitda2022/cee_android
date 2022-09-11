@@ -28,9 +28,16 @@ class SettingFragment : Fragment() {
     ): View {
         binding = FragmentSettingBinding.inflate(inflater, container, false)
 
-        eyespinner()
         // test tts code
 //        testTTS()
+
+        binding.setTutorialAgainTv.setOnClickListener {
+
+        }
+
+        binding.setUpdateCheckTv.setOnClickListener {
+
+        }
 
 
         binding.setSpeedSk.setOnSeekBarChangeListener(object :SeekBar.OnSeekBarChangeListener{
@@ -50,15 +57,6 @@ class SettingFragment : Fragment() {
 
         return binding.root
     }
-
-
-    private fun eyespinner() {
-        val handicap = resources.getStringArray(R.array.handicap_level)
-        val adapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, handicap)
-        binding.setEyeSp.adapter = adapter
-    }
-
-
 
 
 //    private fun testTTS() {

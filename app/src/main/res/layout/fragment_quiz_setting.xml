@@ -9,7 +9,7 @@
         android:id="@+id/fragment_quiz_setting_quiz_range_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="퀴즈범위"
+        android:text="퀴즈유형"
         android:fontFamily="@font/sf_bold"
         android:textSize="20dp"
         android:textColor="@color/white"
@@ -18,7 +18,7 @@
         app:layout_constraintStart_toStartOf="@id/fragment_quiz_setting_level_ll"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toTopOf="@id/fragment_quiz_setting_level_ll"
-        android:contentDescription="">
+        android:contentDescription="@string/content_description_quiz_range">
 
     </TextView>
 
@@ -111,7 +111,9 @@
         android:fontFamily="@font/sf_bold"
         android:textSize="30dp"
         android:layout_width="150dp"
-        android:layout_height="150dp">
+        android:layout_height="150dp"
+        android:contentDescription="퀴즈시작"
+        android:hint="두 번 탭하여 퀴즈를 시작하실 수 있습니다">
     </Button>
 
 
