@@ -1,10 +1,12 @@
 package com.example.cee_project1.service
 
+import android.content.Context
 import android.util.Log
 import com.example.cee_project1.data.Event
 import com.example.cee_project1.data.History
 import com.example.cee_project1.data.InvestOption
 import com.example.cee_project1.data.Player
+import java.io.ObjectOutputStream
 import java.io.Serializable
 
 /*
@@ -144,6 +146,15 @@ class ManageInvestGame : Serializable {
 
     fun setEventsSequence(events : ArrayList<ArrayList<Event>>) {
         history.events = events
+    }
+
+    fun saveState(context : Context) {
+        val fos = context.openFileOutput("gameManager", Context.MODE_PRIVATE)
+        val oos = ObjectOutputStream(fos)
+        oos.writeObject(this)
+        oos.close()
+        fos.close()
+        Log.d("invest", "handleMessage: complete")
     }
 
     fun test() {
