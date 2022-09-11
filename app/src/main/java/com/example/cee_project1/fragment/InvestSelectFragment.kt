@@ -3,6 +3,7 @@ package com.example.cee_project1.fragment
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.KeyEvent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -23,8 +24,14 @@ class InvestSelectFragment : Fragment() {
     }
 
     private fun initView() {
-        var sequence=CEEApplication.gameManager.getNowSequence()+1
-        binding.fragmentInvestSelectDayTv.text=sequence.toString()+"주차"
+        var sequence=CEEApplication.gameManager.getNowSequence()
+        binding.fragmentInvestSelectDayTv.text=(sequence+1).toString()+"주차"
+        showExsitingMoney()
+
+    }
+
+    private fun showExsitingMoney() {
+        binding.fragmentInvestSelectExsitingCoinTv.text="보유 코인:"+CEEApplication.gameManager.getPlayerMoney().toString()+"코인"
     }
 
     override fun onCreateView(
@@ -64,6 +71,77 @@ class InvestSelectFragment : Fragment() {
             selectToInvestingPage()
             var selectedCompany = CEEApplication.gameManager.getPlayersOptionsName().get(0)
             var amount = 0
+            var difference=0
+
+            //선택한 기업 이름 보여주기
+            binding.fragmentInvestSelectSelectedCompanyTv.text=selectedCompany
+
+            //editText에 현재까지 투자한 돈 보여주기
+            var optionAmount=CEEApplication.gameManager.getOptionAmount(selectedCompany)
+            binding.fragmentInvestSelectInvestedMoneyEt.setText(optionAmount.toString())
+
+            //editText에 enter 눌렀을 때 입력한 돈에 따라 보유코인 text 바꾸기
+            binding.fragmentInvestSelectInvestedMoneyEt.setOnKeyListener(View.OnKeyListener { v, keyCode, event ->
+                if (keyCode == KeyEvent.KEYCODE_ENTER && event.action == KeyEvent.ACTION_DOWN) {
+                    //Perform Code
+
+                    try {
+                        Log.d(
+                            "invest_test:edit text String",
+                            binding.fragmentInvestSelectInvestedMoneyEt.text.toString()
+                        )
+                        amount =
+                            Integer.parseInt(binding.fragmentInvestSelectInvestedMoneyEt.text.toString())
+                        Log.d("invest_test:edit text Int", amount.toString())
+                    } catch (e: NumberFormatException) {
+                        // handle the exception
+                    }
+                    difference=amount-optionAmount
+
+                    //보유코인 text 바꾸기
+                    var exsitingMoneyTmp=CEEApplication.gameManager.getPlayerMoney()-difference
+                    binding.fragmentInvestSelectExsitingCoinTv.text="보유 코인 : "+exsitingMoneyTmp.toString()+"코인"
+                    return@OnKeyListener true
+                }
+                false
+            })
+
+
+
+            binding.fragmentInvestSelectCompleteBtn.setOnClickListener {
+//                try {
+//                    Log.d(
+//                        "invest_test:edit text String",
+//                        binding.fragmentInvestSelectInvestedMoneyEt.text.toString()
+//                    )
+//                    amount =
+//                        Integer.parseInt(binding.fragmentInvestSelectInvestedMoneyEt.text.toString())
+//                    Log.d("invest_test:edit text Int", amount.toString())
+//                } catch (e: NumberFormatException) {
+//                    // handle the exception
+//                }
+//                var difference=amount-optionAmount
+
+                //상장가보다 적게 투자하는거 막기 (예외처리)
+                CEEApplication.gameManager.playerInvest(selectedCompany, difference)
+                Log.d("invest_test:투자", "$selectedCompany 에 $difference 만큼 더 투자함")
+
+                //보유코인 text 바꾸기
+                var exsitingPlayerMoney=CEEApplication.gameManager.getPlayerMoney()
+                binding.fragmentInvestSelectExsitingCoinTv.text="보유 코인 : "+exsitingPlayerMoney.toString()+"코인"
+
+
+                investingToSelectPage()
+
+
+            }
+
+        }
+
+        binding.fragmentInvestSelectCompany2.setOnClickListener {
+            selectToInvestingPage()
+            var selectedCompany = CEEApplication.gameManager.getPlayersOptionsName().get(1)
+            var amount = 0
 
             //선택한 기업 이름 보여주기
             binding.fragmentInvestSelectSelectedCompanyTv.text=selectedCompany
@@ -73,7 +151,6 @@ class InvestSelectFragment : Fragment() {
             binding.fragmentInvestSelectInvestedMoneyEt.setText(optionAmount.toString())
 
             binding.fragmentInvestSelectCompleteBtn.setOnClickListener {
-
 
                 try {
                     Log.d(
@@ -87,38 +164,10 @@ class InvestSelectFragment : Fragment() {
                     // handle the exception
                 }
                 var difference=amount-optionAmount
-                CEEApplication.gameManager.playerInvest(selectedCompany, amount)
-                Log.d("invest_test:투자", "$selectedCompany 에 $amount 만큼 투자함")
 
-                investingToSelectPage()
-            }
-
-        }
-
-        binding.fragmentInvestSelectCompany2.setOnClickListener {
-            selectToInvestingPage()
-            var selectedCompany = CEEApplication.gameManager.getPlayersOptionsName().get(1)
-            var amount = 0
-
-            //선택한 기업 이름 보여주기
-            binding.fragmentInvestSelectSelectedCompanyTv.text=selectedCompany
-
-            binding.fragmentInvestSelectCompleteBtn.setOnClickListener {
-
-                try {
-                    Log.d(
-                        "invest_test:edit text String",
-                        binding.fragmentInvestSelectInvestedMoneyEt.text.toString()
-                    )
-                    amount =
-                        Integer.parseInt(binding.fragmentInvestSelectInvestedMoneyEt.text.toString())
-                    Log.d("invest_test:edit text Int", amount.toString())
-                } catch (e: NumberFormatException) {
-                    // handle the exception
-                }
-
-                CEEApplication.gameManager.playerInvest(selectedCompany, amount)
-                Log.d("invest_test:투자", "$selectedCompany 에 $amount 만큼 투자함")
+                //상장가보다 적게 투자하는거 막기 (예외처리)
+                CEEApplication.gameManager.playerInvest(selectedCompany, difference)
+                Log.d("invest_test:투자", "$selectedCompany 에 $difference 만큼 더 투자함")
 
                 investingToSelectPage()
 
@@ -133,6 +182,10 @@ class InvestSelectFragment : Fragment() {
             //선택한 기업 이름 보여주기
             binding.fragmentInvestSelectSelectedCompanyTv.text=selectedCompany
 
+            //editText에 현재까지 투자한 돈 보여주기
+            var optionAmount=CEEApplication.gameManager.getOptionAmount(selectedCompany)
+            binding.fragmentInvestSelectInvestedMoneyEt.setText(optionAmount.toString())
+
             binding.fragmentInvestSelectCompleteBtn.setOnClickListener {
 
                 try {
@@ -147,8 +200,11 @@ class InvestSelectFragment : Fragment() {
                     // handle the exception
                 }
 
-                CEEApplication.gameManager.playerInvest(selectedCompany, amount)
-                Log.d("invest_test:투자", "$selectedCompany 에 $amount 만큼 투자함")
+                var difference=amount-optionAmount
+
+                //상장가보다 적게 투자하는거 막기 (예외처리)
+                CEEApplication.gameManager.playerInvest(selectedCompany, difference)
+                Log.d("invest_test:투자", "$selectedCompany 에 $difference 만큼 더 투자함")
 
                 investingToSelectPage()
             }
@@ -162,6 +218,10 @@ class InvestSelectFragment : Fragment() {
             //선택한 기업 이름 보여주기
             binding.fragmentInvestSelectSelectedCompanyTv.text=selectedCompany
 
+            //editText에 현재까지 투자한 돈 보여주기
+            var optionAmount=CEEApplication.gameManager.getOptionAmount(selectedCompany)
+            binding.fragmentInvestSelectInvestedMoneyEt.setText(optionAmount.toString())
+
             binding.fragmentInvestSelectCompleteBtn.setOnClickListener {
 
                 try {
@@ -176,8 +236,11 @@ class InvestSelectFragment : Fragment() {
                     // handle the exception
                 }
 
-                CEEApplication.gameManager.playerInvest(selectedCompany, amount)
-                Log.d("invest_test:투자", "$selectedCompany 에 $amount 만큼 투자함")
+                var difference=amount-optionAmount
+
+                //상장가보다 적게 투자하는거 막기 (예외처리)
+                CEEApplication.gameManager.playerInvest(selectedCompany, difference)
+                Log.d("invest_test:투자", "$selectedCompany 에 $difference 만큼 더 투자함")
 
                 investingToSelectPage()
 
