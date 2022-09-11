@@ -31,8 +31,8 @@
         <entry key="app/src/main/res/drawable/seekbar_theme.xml" value="0.128" />
         <entry key="app/src/main/res/drawable/seekbar_theme_thumb.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_finish_quiz.xml" value="0.24114583333333334" />
-        <entry key="app/src/main/res/layout/activity_invest_final.xml" value="0.11727456940222898" />
-        <entry key="app/src/main/res/layout/activity_invest_result.xml" value="0.11727456940222898" />
+        <entry key="app/src/main/res/layout/activity_invest_final.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_invest_result.xml" value="0.16625223053504146" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_quiz.xml" value="0.2375" />
         <entry key="app/src/main/res/layout/activity_splash.xml" value="0.23854166666666668" />
