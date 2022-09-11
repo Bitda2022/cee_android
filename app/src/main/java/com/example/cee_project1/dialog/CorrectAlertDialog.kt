@@ -27,4 +27,6 @@ class CorrectAlertDialog(context: Context,private val okCallback:(String)->Unit)
         window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
 
     }
+    
+
 }
