@@ -1,10 +1,12 @@
 package com.example.cee_project1.service
 
+import android.content.Context
 import android.util.Log
 import com.example.cee_project1.data.Event
 import com.example.cee_project1.data.History
 import com.example.cee_project1.data.InvestOption
 import com.example.cee_project1.data.Player
+import java.io.ObjectOutputStream
 import java.io.Serializable
 
 /*
@@ -47,7 +49,7 @@ class ManageInvestGame : Serializable {
     * */
     fun goNextSequence() : Boolean {
         history.addHistory(sequence, player.options)
-        player.retrieveMoney()
+        player.setAmount2Value()
         return if(sequence == END_OF_SEQUENCE) {
             false
         } else {
@@ -99,8 +101,8 @@ class ManageInvestGame : Serializable {
     * 결과로는 플레이어의 money(금액)이 투자할 양만큼 줄고,
     * 해당하는 option.amount 가 증가되고 option.value 가 option.amount 와 일치됨
     * */
-    fun playerInvest(optionName : String, amount : Int) {
-        player.invest(optionName, amount)
+    fun playerInvest(optionName : String, amount : Int) : Boolean {
+        return player.invest(optionName, amount)
     }
 
 
@@ -115,6 +117,15 @@ class ManageInvestGame : Serializable {
     }
 
     /*
+    * 원하는 옵션의 amount 값을 가져오는 메소드
+    * 매개변수로 해당 옵션의 이름을 받으면 Int 타입의 amount 값을 리턴해줌
+    * */
+    fun getOptionAmount(optionName : String) : Int {
+        val option = player.findOption(optionName)
+        return option.amount
+    }
+
+    /*
     * 현재 주차의 투자 결과를 반환하는 함수
     * 매개변수로 투자 결과를 반환받고 싶은 옵션의 정확한 이름(String)을 받음
     * 해당하는 기업 옵션의 변화의 설명이 String 형태로 반환됨
@@ -125,7 +136,7 @@ class ManageInvestGame : Serializable {
         text += option.amount.toString() + "->" + option.value.toInt().toString()
         val diff = option.value.toInt() - option.amount
         text += if(diff > 0) " ($diff 상승)"
-        else " (" + (diff * -1).toString() + " 하락"
+        else " (" + (diff * -1).toString() + " 하락)"
         return text
     }
 
@@ -135,6 +146,15 @@ class ManageInvestGame : Serializable {
 
     fun setEventsSequence(events : ArrayList<ArrayList<Event>>) {
         history.events = events
+    }
+
+    fun saveState(context : Context) {
+        val fos = context.openFileOutput("gameManager", Context.MODE_PRIVATE)
+        val oos = ObjectOutputStream(fos)
+        oos.writeObject(this)
+        oos.close()
+        fos.close()
+        Log.d("invest", "handleMessage: complete")
     }
 
     fun test() {

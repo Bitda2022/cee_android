@@ -39,7 +39,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/set_tabbar_v"
         android:layout_marginTop="84dp"
-        android:layout_marginStart="28dp"/>
+        android:layout_marginStart="28dp"
+        android:importantForAccessibility="no"/>
 
     <TextView
         android:id="@+id/set_speed_tv"
@@ -52,7 +53,8 @@
         android:layout_marginStart="61dp"
         android:textColor="@color/white"
         android:fontFamily="@font/sf_semibold"
-        android:textSize="25dp"/>
+        android:textSize="25dp"
+        android:importantForAccessibility="no"/>
 
     <TextView
         android:id="@+id/setting_progress_tv"
@@ -64,7 +66,8 @@
         android:text=":"
         android:textColor="@color/white"
         android:textSize="22sp"
-        android:layout_marginStart="20dp"/>
+        android:layout_marginStart="20dp"
+        android:importantForAccessibility="no"/>
 
     <SeekBar
         android:id="@+id/set_speed_sk"
@@ -77,46 +80,8 @@
         android:max="10"
         android:progress="0"
         android:thumb="@drawable/seekbar_theme_thumb"
-        android:progressDrawable="@drawable/seekbar_theme" />
-
-
-
-    <!--시각-->
-
-    <ImageView
-        android:id="@+id/set_eye_iv"
-        android:layout_width="28dp"
-        android:layout_height="28dp"
-        android:src="@drawable/ic_set_eye"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/set_speed_iv"
-        android:layout_marginTop="70dp"
-        android:layout_marginStart="28dp"/>
-
-
-
-    <TextView
-        android:id="@+id/set_eye_tv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="시각장애등급"
-        app:layout_constraintStart_toStartOf="@id/set_eye_iv"
-        app:layout_constraintBottom_toBottomOf="@id/set_eye_iv"
-        app:layout_constraintTop_toTopOf="@id/set_eye_iv"
-        android:layout_marginStart="61dp"
-        android:textColor="@color/white"
-        android:fontFamily="@font/sf_semibold"
-        android:textSize="25dp"/>
-
-    <Spinner
-        android:id="@+id/set_eye_sp"
-        android:layout_width="300dp"
-        android:layout_height="40dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/set_eye_tv"
-        android:layout_marginTop="10dp"
-        android:backgroundTint="@color/white"/>
+        android:progressDrawable="@drawable/seekbar_theme"
+        android:contentDescription="빠르기"/>
 
 
     <!--설정-->
@@ -127,11 +92,13 @@
         android:layout_height="28dp"
         android:src="@drawable/ic_set_tuto"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/set_eye_iv"
+        app:layout_constraintTop_toBottomOf="@id/set_speed_iv"
         android:layout_marginTop="70dp"
-        android:layout_marginStart="28dp"/>
+        android:layout_marginStart="28dp"
+        android:importantForAccessibility="no"/>
 
     <TextView
+        android:id="@+id/set_tutorial_again_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="튜토리얼 다시보기"
@@ -141,7 +108,8 @@
         android:layout_marginStart="61dp"
         android:textColor="@color/white"
         android:fontFamily="@font/sf_semibold"
-        android:textSize="25dp"/>
+        android:textSize="25dp"
+        />
 
     <!--업데이트-->
 
@@ -153,9 +121,11 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/set_tuto_iv"
         android:layout_marginTop="70dp"
-        android:layout_marginStart="28dp"/>
+        android:layout_marginStart="28dp"
+        android:importantForAccessibility="no"/>
 
     <TextView
+        android:id="@+id/set_update_check_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="업데이트 확인"
@@ -180,7 +150,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/set_update_iv"
         android:layout_marginTop="70dp"
-        android:layout_marginStart="28dp"/>
+        android:layout_marginStart="28dp"
+        android:importantForAccessibility="no"/>
 
     <TextView
         android:id="@+id/set_contact_tv"
@@ -193,7 +164,8 @@
         android:layout_marginStart="61dp"
         android:textColor="@color/white"
         android:fontFamily="@font/sf_semibold"
-        android:textSize="25dp"/>
+        android:textSize="25dp"
+        android:importantForAccessibility="no"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -202,7 +174,8 @@
         app:layout_constraintStart_toStartOf="@id/set_contact_tv"
         android:autoLink="email"
         android:text="zosel154@naver.com"
-        android:textSize="25sp"/>
+        android:textSize="25sp"
+        android:contentDescription="Contact. 두번 탭하여 이메일 창으로 이동하실 수 있습니다."/>
 
 
 

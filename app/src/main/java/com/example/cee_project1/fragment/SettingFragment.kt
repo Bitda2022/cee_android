@@ -28,9 +28,16 @@ class SettingFragment : Fragment() {
     ): View {
         binding = FragmentSettingBinding.inflate(inflater, container, false)
 
-        eyespinner()
         // test tts code
 //        testTTS()
+
+        binding.setTutorialAgainTv.setOnClickListener {
+
+        }
+
+        binding.setUpdateCheckTv.setOnClickListener {
+
+        }
 
 
         binding.setSpeedSk.setOnSeekBarChangeListener(object :SeekBar.OnSeekBarChangeListener{
@@ -45,23 +52,11 @@ class SettingFragment : Fragment() {
             }
 
             override fun onStopTrackingTouch(p0: SeekBar?) {
-                tts.addContents("빠르기 "+ p0!!.progress)
-                tts.play()
             }
         })
 
         return binding.root
-
     }
-
-
-    private fun eyespinner() {
-        val handicap = resources.getStringArray(R.array.handicap_level)
-        val adapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, handicap)
-        binding.setEyeSp.adapter = adapter
-    }
-
-
 
 
 //    private fun testTTS() {

@@ -7,23 +7,26 @@ data class Player(
     var money : Int = 0,
     var options : ArrayList<InvestOption>
 ) : Serializable {
-    fun invest(optionName : String, amount : Int) {
+    fun invest(optionName : String, amount : Int) : Boolean {
         val option = findOption(optionName)
-        option.amount += amount
-        option.value = option.amount.toDouble()
-        money -= amount
+        return if(option.price > amount)
+            false
+        else if(money < amount)
+            false
+        else {
+            option.amount += amount
+            option.value = option.amount.toDouble()
+            money -= amount
+            true
+        }
     }
 
-    fun retrieveMoney() {
-        var sum = 0.0
+    fun setAmount2Value() {
         for(option in options) {
             if(option.name != "적금") {
-                sum += option.value
-                option.value = 0.0
-                option.amount = 0
+                option.amount = option.value.toInt()
             }
         }
-        money = sum.toInt()
     }
 
     fun getTotalMoney() : Int {
