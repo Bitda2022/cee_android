@@ -42,7 +42,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@id/activity_finish_quiz_correct_cnt_tv"
         android:fontFamily="@font/sf_bold"
-        android:textSize="30dp"
+        android:textSize="25dp"
         android:text="퀴즈\n종료"
         android:textColor="@color/white"
         android:background="@drawable/buttom_round"
