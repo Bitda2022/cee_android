@@ -23,7 +23,8 @@ class InvestSelectFragment : Fragment() {
     }
 
     private fun initView() {
-
+        var sequence=CEEApplication.gameManager.getNowSequence()+1
+        binding.fragmentInvestSelectDayTv.text=sequence.toString()+"주차"
     }
 
     override fun onCreateView(
@@ -41,6 +42,7 @@ class InvestSelectFragment : Fragment() {
     }
 
     private fun setDeadLineBtn() {
+        //마감 버튼 눌렀을 시
         binding.fragmentInvestSelectDeadlineBtn.setOnClickListener {
             CEEApplication.gameManager.applyEvents()
             var optionsNameArr=CEEApplication.gameManager.getPlayersOptionsName()
@@ -63,7 +65,15 @@ class InvestSelectFragment : Fragment() {
             var selectedCompany = CEEApplication.gameManager.getPlayersOptionsName().get(0)
             var amount = 0
 
+            //선택한 기업 이름 보여주기
+            binding.fragmentInvestSelectSelectedCompanyTv.text=selectedCompany
+
+            //editText에 현재까지 투자한 돈 보여주기
+            var optionAmount=CEEApplication.gameManager.getOptionAmount(selectedCompany)
+            binding.fragmentInvestSelectInvestedMoneyEt.setText(optionAmount.toString())
+
             binding.fragmentInvestSelectCompleteBtn.setOnClickListener {
+
 
                 try {
                     Log.d(
@@ -76,7 +86,7 @@ class InvestSelectFragment : Fragment() {
                 } catch (e: NumberFormatException) {
                     // handle the exception
                 }
-
+                var difference=amount-optionAmount
                 CEEApplication.gameManager.playerInvest(selectedCompany, amount)
                 Log.d("invest_test:투자", "$selectedCompany 에 $amount 만큼 투자함")
 
@@ -89,6 +99,9 @@ class InvestSelectFragment : Fragment() {
             selectToInvestingPage()
             var selectedCompany = CEEApplication.gameManager.getPlayersOptionsName().get(1)
             var amount = 0
+
+            //선택한 기업 이름 보여주기
+            binding.fragmentInvestSelectSelectedCompanyTv.text=selectedCompany
 
             binding.fragmentInvestSelectCompleteBtn.setOnClickListener {
 
@@ -117,6 +130,9 @@ class InvestSelectFragment : Fragment() {
             var selectedCompany = CEEApplication.gameManager.getPlayersOptionsName().get(2)
             var amount = 0
 
+            //선택한 기업 이름 보여주기
+            binding.fragmentInvestSelectSelectedCompanyTv.text=selectedCompany
+
             binding.fragmentInvestSelectCompleteBtn.setOnClickListener {
 
                 try {
@@ -143,6 +159,9 @@ class InvestSelectFragment : Fragment() {
             var selectedCompany = CEEApplication.gameManager.getPlayersOptionsName().get(3)
             var amount = 0
 
+            //선택한 기업 이름 보여주기
+            binding.fragmentInvestSelectSelectedCompanyTv.text=selectedCompany
+
             binding.fragmentInvestSelectCompleteBtn.setOnClickListener {
 
                 try {
@@ -165,20 +184,6 @@ class InvestSelectFragment : Fragment() {
             }
         }
 
-//        binding.fragmentInvestSelectCompleteBtn.setOnClickListener {
-//            //투자 amount editText에서 정하고 "완료"버튼 눌렀을 시
-//            binding.fragmentInvestSelectSelectedCompanyTv.visibility = View.GONE
-//            binding.fragmentInvestSelectInvestedMoneyEt.visibility = View.GONE
-//            binding.fragmentInvestSelectCompleteBtn.visibility = View.GONE
-//
-//            binding.fragmentInvestSelectCl.visibility = View.VISIBLE
-//
-//        }
-
-//        binding.fragmentInvestSelectDeadlineBtn.setOnClickListener {
-//            val intent = Intent(activity, InvestResultActivity::class.java)
-//            startActivity(intent)
-//        }
     }
 
     private fun investingToSelectPage() {
