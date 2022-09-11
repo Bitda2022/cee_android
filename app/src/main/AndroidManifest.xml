@@ -29,6 +29,9 @@
         <activity
             android:name=".activity.InvestResultActivity"
             android:exported="false" />
+        <activity
+            android:name=".activity.InvestFinalActivity"
+            android:exported="false" />
 <!--        <activity-->
 <!--            android:name=".activity.InvestSelectActivity"-->
 <!--            android:exported="false" />-->

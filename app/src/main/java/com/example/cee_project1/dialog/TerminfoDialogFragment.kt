@@ -4,9 +4,7 @@ import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.util.Log
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import androidx.fragment.app.DialogFragment
 import com.example.cee_project1.CEEApplication
 import com.example.cee_project1.activity.QuizActivity
@@ -43,11 +41,91 @@ class TerminfoDialogFragment : DialogFragment(){
         dialog?.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
         initbtn()
         initData()
+        initMotion()
 
         val msg: String = arguments?.getString(KEY)?:"default"
         Log.d("KEYMES",msg)
         initView(msg)
         return view
+    }
+
+    private fun initMotion() {
+
+
+        //GestureDetector 변수 전역선언
+        var detector: GestureDetector
+        detector = GestureDetector(context, object : GestureDetector.OnGestureListener {
+            override fun onDown(motionEvent: MotionEvent): Boolean {
+                // do something...
+                Log.d("motionEvent", "onDown()호출")
+                return true
+            } /* onShowPress(), onSingleTapUp(), onScroll(), onLongPress(), onFling() ... 등등 */
+
+            override fun onShowPress(p0: MotionEvent?) {
+
+                Log.d("motionEvent", "onShowPress()호출")
+
+            }
+
+            override fun onSingleTapUp(p0: MotionEvent?): Boolean {
+                Log.d("motionEvent", "onSingleTapUp()호출")
+                return true
+            }
+
+            override fun onScroll(
+                p0: MotionEvent?,
+                p1: MotionEvent?,
+                x: Float,
+                y: Float
+            ): Boolean {
+                Log.d("motionEvent", "onScroll()호출")
+                Log.d("motionEvent", "onScroll() ("+x+","+y+")")
+                dismiss()
+                return true
+            }
+
+            override fun onLongPress(p0: MotionEvent?) {
+                Log.d("motionEvent", "onLongPress()호출")
+
+            }
+
+            override fun onFling(
+                p0: MotionEvent?,
+                p1: MotionEvent?,
+                p2: Float,
+                p3: Float
+            ): Boolean {
+                Log.d("motionEvent", "onFling()호출")
+                return true
+            }
+        })
+
+
+        binding.termInfoDialogCl.setOnTouchListener { view, motionEvent ->
+            Log.d("motionEvent", "setOnTouchListener 들어옴")
+
+
+            when (motionEvent.action) {
+                MotionEvent.ACTION_DOWN -> {
+                    Log.d("motionEvent", "ACTION_DOWN")
+                }
+                MotionEvent.ACTION_MOVE -> {
+                    Log.d("motionEvent", "ACTION_MOVE")
+                }
+                MotionEvent.ACTION_UP -> {
+                    Log.d("motionEvent", "ACTION_UP")
+                }
+                MotionEvent.ACTION_POINTER_UP -> {
+                    Log.d("motionEvent", "ACTION_POINTER_UP")
+                }
+
+
+            }
+            detector.onTouchEvent(motionEvent) // detector에게 이벤트 전달, 처리요청
+            true
+        }
+
+
     }
 
     private fun initView(msg:String) {
@@ -81,6 +159,8 @@ class TerminfoDialogFragment : DialogFragment(){
         super.onDestroyView()
         _binding = null
     }
+
+
 
 
 
