@@ -44,7 +44,7 @@ class StudyFragment : Fragment() {
     override fun onResume() {
         val pos = prefs.getString("term_save_point", "0").toInt()
         val text = Realm.getDefaultInstance().where<Term>().containsValue("id", pos).findFirst()?.name
-        binding.studyPositionTv.text = text + "까지"
+        binding.studyPositionTv.text = text + "입니다."
         super.onResume()
     }
 

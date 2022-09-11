@@ -46,7 +46,12 @@ class TTSService(context: Context) : UtteranceProgressListener(), TextToSpeech.O
         this.onDoneListener = onDoneListener
     }
 
+    fun isEmpty() : Boolean {
+        return contents.isEmpty()
+    }
+
     fun reset() {
+        tts.stop()
         speed = prefs.getFloat("tts_speed", 1f)
         contents.clear()
         nowIndex = 0
@@ -62,6 +67,11 @@ class TTSService(context: Context) : UtteranceProgressListener(), TextToSpeech.O
 
     fun addContents(str : String) {
         contents.add("$str.")
+    }
+
+    fun readNotice(text : String, speed : Float) {
+        ttsNotice.setSpeechRate(speed)
+        ttsNotice.speak(text, TextToSpeech.QUEUE_FLUSH, null, "100")
     }
 
     fun play() {
@@ -92,6 +102,7 @@ class TTSService(context: Context) : UtteranceProgressListener(), TextToSpeech.O
         if(contents[0].startsWith(alreadyRead.last()))
             alreadyRead.removeLast()
         if(alreadyRead.isNotEmpty()) {
+            ttsNotice.setSpeechRate(3f)
             ttsNotice.speak(alreadyRead.last(), TextToSpeech.QUEUE_FLUSH, null, "-2")
 
             Log.d("tts", "goBack: speaking")
@@ -129,6 +140,7 @@ class TTSService(context: Context) : UtteranceProgressListener(), TextToSpeech.O
             Log.d("tts", "goForward: " + contents[0][idx])
             idx++
         }
+        ttsNotice.setSpeechRate(3f)
         ttsNotice.speak(alreadyRead.last(), TextToSpeech.QUEUE_FLUSH, null, "-3")
 
         return true
@@ -152,7 +164,6 @@ class TTSService(context: Context) : UtteranceProgressListener(), TextToSpeech.O
             tts.setOnUtteranceProgressListener(this)
 
             ttsNotice.language = Locale.KOREA
-            ttsNotice.setSpeechRate(3f)
         }
         else
             Log.e("tts", "onInit: failed to initialize")
@@ -169,6 +180,8 @@ class TTSService(context: Context) : UtteranceProgressListener(), TextToSpeech.O
         if(contents.isEmpty()) {
             state = State.CLEAR
             onDoneListener.afterDone()
+            alreadyRead.clear()
+            nowIndex = 0
         } else {
             tts.speak(contents[0], TextToSpeech.QUEUE_FLUSH, null, contents.size.toString())
         }
@@ -180,7 +193,7 @@ class TTSService(context: Context) : UtteranceProgressListener(), TextToSpeech.O
     }
 
     override fun onRangeStart(utteranceId: String?, start: Int, end: Int, frame: Int) {
-        Log.d("tts", "onRangeStart: $start / $end / $frame / $utteranceId / " + contents[0].substring(start, end))
+        //Log.d("tts", "onRangeStart: $start / $end / $frame / $utteranceId / " + contents[0].substring(start, end))
         if(end != contents[0].length) {
             if (alreadyRead.isNotEmpty()) {
                 if (alreadyRead.last() != contents[0].substring(start, end + 1))
@@ -189,7 +202,7 @@ class TTSService(context: Context) : UtteranceProgressListener(), TextToSpeech.O
                 alreadyRead.add(contents[0].substring(start, end + 1))
             }
         }
-        Log.d("tts", "alreadyRead: $alreadyRead")
+        //Log.d("tts", "alreadyRead: $alreadyRead")
         nowIndex = start
     }
 
