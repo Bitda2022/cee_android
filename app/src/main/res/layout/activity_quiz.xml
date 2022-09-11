@@ -46,7 +46,8 @@
         android:src="@drawable/ic_correct"
         app:layout_constraintHorizontal_bias="0.3"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/quiz_correct">
     </ImageView>
     <TextView
         app:layout_constraintStart_toStartOf="@id/activity_quiz_correct_iv"
@@ -57,7 +58,8 @@
         android:fontFamily="@font/sf_bold"
         android:textColor="@color/white"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:importantForAccessibility="no">
 
     </TextView>
 
@@ -71,7 +73,8 @@
         app:layout_constraintHorizontal_bias="0.7"
         app:layout_constraintVertical_bias="0.3"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/quiz_wrong">
     </ImageView>
 
     <TextView
@@ -83,7 +86,8 @@
         android:fontFamily="@font/sf_bold"
         android:textColor="@color/white"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:importantForAccessibility="no">
 
     </TextView>
 

@@ -17,7 +17,8 @@
         android:fontFamily="@font/sf_bold"
         android:gravity="center"
         android:background="@color/gray"
-        android:id="@+id/term_title_tv"/>
+        android:id="@+id/term_title_tv"
+        android:importantForAccessibility="no"/>
 
     <androidx.viewpager2.widget.ViewPager2
         android:layout_width="0dp"
@@ -31,6 +32,8 @@
         android:layout_marginTop="50dp"
         android:layout_marginBottom="50dp"
         android:background="@drawable/button_rectangle"
-        android:id="@+id/term_view_pager"/>
+        android:id="@+id/term_view_pager"
+        android:importantForAccessibility="no"
+        android:contentDescription="ㅤ"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

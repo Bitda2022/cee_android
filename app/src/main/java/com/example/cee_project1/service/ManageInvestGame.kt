@@ -1,10 +1,12 @@
 package com.example.cee_project1.service
 
+import android.content.Context
 import android.util.Log
 import com.example.cee_project1.data.Event
 import com.example.cee_project1.data.History
 import com.example.cee_project1.data.InvestOption
 import com.example.cee_project1.data.Player
+import java.io.ObjectOutputStream
 import java.io.Serializable
 
 /*
@@ -99,8 +101,8 @@ class ManageInvestGame : Serializable {
     * 결과로는 플레이어의 money(금액)이 투자할 양만큼 줄고,
     * 해당하는 option.amount 가 증가되고 option.value 가 option.amount 와 일치됨
     * */
-    fun playerInvest(optionName : String, amount : Int) {
-        player.invest(optionName, amount)
+    fun playerInvest(optionName : String, amount : Int) : Boolean {
+        return player.invest(optionName, amount)
     }
 
 
@@ -144,6 +146,15 @@ class ManageInvestGame : Serializable {
 
     fun setEventsSequence(events : ArrayList<ArrayList<Event>>) {
         history.events = events
+    }
+
+    fun saveState(context : Context) {
+        val fos = context.openFileOutput("gameManager", Context.MODE_PRIVATE)
+        val oos = ObjectOutputStream(fos)
+        oos.writeObject(this)
+        oos.close()
+        fos.close()
+        Log.d("invest", "handleMessage: complete")
     }
 
     fun test() {
