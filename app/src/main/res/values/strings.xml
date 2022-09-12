@@ -37,10 +37,13 @@
     <string name="invest_company2_result">문구기업\n25->30</string>
     <string name="invest_company3_result">항공기업\n25->30</string>
 
+    <string name="quiz_type">퀴즈유형</string>
     <string name="economy_basic">경제기초</string>
     <string name="financial_base">금융기반</string>
     <string name="stock_advanced">주식심화</string>
+    <string name="customized_quiz">맞춤형퀴즈</string>
     <string name="one_more_step">한걸음 더!</string>
+    <string name="start_quiz">퀴즈\n시작</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
