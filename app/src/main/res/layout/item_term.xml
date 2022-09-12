@@ -12,12 +12,14 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toTopOf="@id/item_term_page_tv"
-        android:layout_marginBottom="50dp">
+        android:layout_marginBottom="50dp"
+        android:contentDescription="ㅤ">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/transparent">
+            android:background="@color/transparent"
+            android:importantForAccessibility="no">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -30,7 +32,8 @@
                 android:textSize="22dp"
                 android:fontFamily="@font/sf_bold"
                 android:textColor="@color/white"
-                android:id="@+id/item_term_name_tv"/>
+                android:id="@+id/item_term_name_tv"
+                android:importantForAccessibility="no"/>
 
             <View
                 android:layout_width="match_parent"
@@ -42,7 +45,8 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 android:background="@drawable/button_rectangle_color"
-                android:id="@+id/item_term_line1"/>
+                android:id="@+id/item_term_line1"
+                android:importantForAccessibility="no"/>
 
             <TextView
                 android:layout_width="0dp"
@@ -57,7 +61,8 @@
                 android:textColor="@color/white"
                 android:textSize="19dp"
                 android:fontFamily="@font/sf_medium"
-                android:id="@+id/item_term_description_tv"/>
+                android:id="@+id/item_term_description_tv"
+                android:importantForAccessibility="no"/>
 
             <View
                 android:layout_width="match_parent"
@@ -69,7 +74,8 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 android:background="@drawable/button_rectangle_color"
-                android:id="@+id/item_term_line2"/>
+                android:id="@+id/item_term_line2"
+                android:importantForAccessibility="no"/>
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="105dp"
@@ -80,7 +86,8 @@
                 android:layout_marginTop="15dp"
                 android:background="@drawable/button_rectangle"
                 android:padding="5dp"
-                android:id="@+id/item_term_step_cl">
+                android:id="@+id/item_term_step_cl"
+                android:importantForAccessibility="no">
 
                 <ImageView
                     android:layout_width="15dp"
@@ -89,7 +96,8 @@
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    android:layout_marginStart="13dp"/>
+                    android:layout_marginStart="13dp"
+                    android:importantForAccessibility="no"/>
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -101,7 +109,8 @@
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    android:layout_marginEnd="17dp"/>
+                    android:layout_marginEnd="17dp"
+                    android:importantForAccessibility="no"/>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -118,7 +127,8 @@
                 android:textColor="@color/white"
                 android:textSize="19dp"
                 android:fontFamily="@font/sf_medium"
-                android:id="@+id/item_term_examples_tv"/>
+                android:id="@+id/item_term_examples_tv"
+                android:importantForAccessibility="no"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -135,6 +145,7 @@
         android:textColor="@color/white"
         android:textSize="17dp"
         android:fontFamily="@font/sf_medium"
-        android:id="@+id/item_term_page_tv"/>
+        android:id="@+id/item_term_page_tv"
+        android:importantForAccessibility="no"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
