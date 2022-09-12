@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
+import com.example.cee_project1.CEEApplication
 import com.example.cee_project1.data.Quiz
 import com.example.cee_project1.data.Term
 import com.example.cee_project1.databinding.ActivityQuizBinding
@@ -19,6 +20,8 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers.Main
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import java.util.*
+import kotlin.collections.ArrayList
 import kotlin.random.Random
 
 
@@ -34,6 +37,8 @@ class QuizActivity : AppCompatActivity(){
     var quizIndex: Int = 0
     var flag: Boolean = false
     var correctCnt: Int = 0
+
+    val wrongCntSet = mutableSetOf<Int>(0)
 
 
 
@@ -80,6 +85,7 @@ class QuizActivity : AppCompatActivity(){
                     cDialog.dismiss()
 
                     if (i == totalQuizCnt-1) {
+                        sendWrongCntPrefs()
                         val intent = Intent(applicationContext, FinishQuizActivity::class.java)
                         intent.putExtra("correctCnt", correctCnt)
                         startActivity(intent)
@@ -113,6 +119,7 @@ class QuizActivity : AppCompatActivity(){
                     supportFragmentManager.executePendingTransactions()
 
                     if (i == totalQuizCnt-1) {
+                        sendWrongCntPrefs()
                         val intent = Intent(applicationContext, FinishQuizActivity::class.java)
                         intent.putExtra("correctCnt", correctCnt)
                         startActivity(intent)
@@ -123,7 +130,6 @@ class QuizActivity : AppCompatActivity(){
                 //wrong 횟수 증가시키기
                 var termQuiz = realm.where<Quiz>().contains("term", quizs.get(i).term).findFirst()
 
-
                 var presentWrongCnt = termQuiz?.wrong!!
                 presentWrongCnt++
 
@@ -131,6 +137,9 @@ class QuizActivity : AppCompatActivity(){
                 realm.executeTransaction {
                     termQuiz?.wrong = presentWrongCnt
                 }
+
+                wrongCntSet.add(presentWrongCnt)
+
 
                 flag = true
 
@@ -152,22 +161,32 @@ class QuizActivity : AppCompatActivity(){
                     delay(1000)
                     wDialog.dismiss()
 
-
                     val TiDialog=TerminfoDialogFragment.newInstance(quizs.get(i).term)
                             TiDialog?.show(supportFragmentManager, "TerminfoDialogFragment")
 
-
-
-
                     if (i == totalQuizCnt-1) {
+                        sendWrongCntPrefs()
                         val intent = Intent(applicationContext, FinishQuizActivity::class.java)
                         intent.putExtra("correctCnt", correctCnt)
                         startActivity(intent)
                         finish()
                     }
 
-
                 }
+
+                //wrong 횟수 증가시키기
+                var termQuiz = realm.where<Quiz>().contains("term", quizs.get(i).term).findFirst()
+
+                var presentWrongCnt = termQuiz?.wrong!!
+                presentWrongCnt++
+
+
+                realm.executeTransaction {
+                    termQuiz?.wrong = presentWrongCnt
+                }
+
+                wrongCntSet.add(presentWrongCnt)
+
 
 
                 flag = true
@@ -186,6 +205,9 @@ class QuizActivity : AppCompatActivity(){
                     cDialog.dismiss()
 
                     if (i == totalQuizCnt-1) {
+
+                        sendWrongCntPrefs()
+
                         val intent = Intent(applicationContext, FinishQuizActivity::class.java)
                         intent.putExtra("correctCnt", correctCnt)
                         startActivity(intent)
@@ -206,6 +228,22 @@ class QuizActivity : AppCompatActivity(){
 
         }
 
+    }
+
+    private fun sendWrongCntPrefs() {
+        //wrongCntSet pref에 string으로 전달
+        var wrongCntString=""
+
+        for(i in 0..wrongCntSet.size-1){
+            wrongCntString+=wrongCntSet.elementAt(i).toString()
+            if(i!=wrongCntSet.size-1){
+                wrongCntString+=","
+            }
+        }
+
+
+        Log.d("wrongCntSet",wrongCntString)
+        CEEApplication.prefs.setString("wrong_cnt_string",wrongCntString)
     }
 
     private fun initData() {
@@ -261,6 +299,30 @@ class QuizActivity : AppCompatActivity(){
                     Log.d("quizListCnt",quizList.size.toString())
                 }
                 Log.d("quizType","stock_advanced")
+            }
+            "customized_quiz"->{
+                var wrongCntString =CEEApplication.prefs.getString("wrong_cnt_string","-1")
+                Log.d("wrongCntString",wrongCntString)
+                var list= wrongCntString.split(",")
+                Log.d("wrongCntList",list.toString())
+                var intList=ArrayList<Int>()
+
+                for(num in list){
+                    intList.add(num.toInt())
+                }
+                Collections.sort(intList, Collections.reverseOrder())
+
+                for(num in intList) {
+                    val results =
+                        realm.where<Quiz>().containsValue("wrong", num).findAll()
+
+                    for(quiz in results) {
+                        if(quizList.size<=10){
+                            quizList.add(quiz)
+                        }
+                    }
+
+                }
             }
             else->{
 

@@ -28,10 +28,12 @@ class QuizSettingFragment : Fragment() {
         binding = FragmentQuizSettingBinding.inflate(inflater, container, false)
         var quizType:String?=null
 
+        btnFlagArr.add(false)
+        btnFlagArr.add(false)
+        btnFlagArr.add(false)
         btnFlagArr.add(true)
-        btnFlagArr.add(false)
-        btnFlagArr.add(false)
-        btnFlagArr.add(false)
+
+
 
         btnArr.add(binding.fragmentQuizSettingEconomyBasicBtn)
         btnArr.add(binding.fragmentQuizSettingFinancialBasicBtn)
@@ -39,8 +41,10 @@ class QuizSettingFragment : Fragment() {
         btnArr.add(binding.fragmentQuizSettingCustomizeQuizBtn)
 
 
-        binding.fragmentQuizSettingEconomyBasicBtn.setOnClickListener {
+        for(i in 0..btnFlagArr.size-1)
+            checkbox(i)
 
+        binding.fragmentQuizSettingEconomyBasicBtn.setOnClickListener {
             checkbox(0)
 
             val QuizIntent: Intent = Intent(activity,QuizActivity::class.java)
@@ -69,7 +73,9 @@ class QuizSettingFragment : Fragment() {
         binding.fragmentQuizSettingCustomizeQuizBtn.setOnClickListener {
             checkbox(3)
 
-
+            val QuizIntent: Intent = Intent(activity,QuizActivity::class.java)
+            QuizIntent.putExtra("quizType","customized_quiz")
+            quizType="customized_quiz"
 
         }
 
