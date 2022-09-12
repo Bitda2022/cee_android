@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.cee_project1.activity.TermActivity
 import com.example.cee_project1.databinding.FragmentTermListBinding
-import com.example.cee_project1.service.TermListRVAdapter
+import com.example.cee_project1.adapter.TermListRVAdapter
 
 class TermListFragment(private val position : Int) : Fragment() {
 
