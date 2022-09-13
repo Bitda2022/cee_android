@@ -40,8 +40,7 @@ class QuizSettingFragment : Fragment() {
         btnArr.add(binding.fragmentQuizSettingCustomizeQuizBtn)
 
 
-        for(i in 0..btnFlagArr.size-1)
-            checkbox(i)
+        setButtonBackground()
 
         binding.fragmentQuizSettingEconomyBasicBtn.setOnClickListener {
             checkbox(0)
@@ -99,13 +98,19 @@ class QuizSettingFragment : Fragment() {
             btnFlagArr[btnIdx]=true
         }
 
+        setButtonBackground()
+
+
+
+    }
+
+    private fun setButtonBackground() {
         for(i in 0..(btnFlagArr.size-1)) {
             if (btnFlagArr[i])//true면 선택!
                 btnArr[i].setBackgroundResource(R.drawable.button_rectangle_color)
             else//false면
                 btnArr[i].setBackgroundResource(R.drawable.button_rectangle)
         }
-
     }
 
 
