@@ -2,6 +2,7 @@ package com.example.cee_project1.service
 
 import android.content.Context
 import android.util.Log
+import com.example.cee_project1.CEEApplication.Companion.gameManager
 import com.example.cee_project1.data.Event
 import com.example.cee_project1.data.History
 import com.example.cee_project1.data.InvestOption
@@ -71,6 +72,10 @@ class ManageInvestGame : Serializable {
     * 만약 스토리가 같은 이벤트가 여러개일 경우는 중복된 스토리는 제거 후 반환
     * */
     fun getNowEventsStory() : ArrayList<String> {
+        return getEventStory(sequence)
+    }
+
+    fun getEventStory(sequence : Int) : ArrayList<String> {
         val events = history.getEvents(sequence)
         val stories = ArrayList<String>()
         for(event in events) {
@@ -135,6 +140,11 @@ class ManageInvestGame : Serializable {
         return option.amount
     }
 
+    fun getOptionPrice(optionName : String) : Int {
+        val option = player.findOption(optionName)
+        return option.price
+    }
+
     /*
     * 현재 주차의 투자 결과를 반환하는 함수
     * 매개변수로 투자 결과를 반환받고 싶은 옵션의 정확한 이름(String)을 받음
@@ -161,7 +171,7 @@ class ManageInvestGame : Serializable {
     fun saveState(context : Context) {
         val fos = context.openFileOutput("gameManager", Context.MODE_PRIVATE)
         val oos = ObjectOutputStream(fos)
-        oos.writeObject(this)
+        oos.writeObject(gameManager)
         oos.close()
         fos.close()
         Log.d("invest", "handleMessage: complete")

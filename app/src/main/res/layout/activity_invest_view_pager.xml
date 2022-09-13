@@ -19,7 +19,8 @@
         android:fontFamily="@font/sf_bold"
         android:gravity="center"
         android:background="@color/gray"
-        android:id="@+id/invest_title_tv"/>
+        android:id="@+id/invest_title_tv"
+        android:importantForAccessibility="no"/>
 
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/vp_sample"
@@ -29,7 +30,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/invest_title_tv">
+        app:layout_constraintTop_toBottomOf="@id/invest_title_tv"
+        android:importantForAccessibility="no">
 
     </androidx.viewpager2.widget.ViewPager2>
 
