@@ -88,6 +88,7 @@
 
         <EditText
             android:id="@+id/fragment_invest_select_invested_money_et"
+            android:inputType="number"
             android:layout_width="match_parent"
             android:layout_height="130dp"
             android:visibility="gone"

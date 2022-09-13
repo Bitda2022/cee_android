@@ -8,6 +8,7 @@ import android.view.KeyEvent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintSet
@@ -158,6 +159,33 @@ class InvestSelectFragment : Fragment() {
 //
 //            }
 //        })
+
+
+        //숫자키패드 완료 누르기
+        binding.fragmentInvestSelectInvestedMoneyEt.setOnEditorActionListener { v, actionId, event ->
+            if(actionId == EditorInfo.IME_ACTION_DONE){
+                try {
+                    Log.d(
+                        "invest_test:edit text String",
+                        binding.fragmentInvestSelectInvestedMoneyEt.text.toString()
+                    )
+                    amount =
+                        Integer.parseInt(binding.fragmentInvestSelectInvestedMoneyEt.text.toString())
+                    Log.d("invest_test:edit text Int", amount.toString())
+                } catch (e: NumberFormatException) {
+                    // handle the exception
+                }
+                difference = amount - optionAmount
+
+                //보유코인 text 바꾸기
+                var exsitingMoneyTmp = CEEApplication.gameManager.getPlayerMoney() - difference
+                binding.fragmentInvestSelectExsitingCoinTv.text =
+                    "보유 코인 : " + exsitingMoneyTmp.toString() + "코인"
+                true
+            } else {
+                false
+            }
+        }
 
         binding.fragmentInvestSelectInvestedMoneyEt.setOnKeyListener(View.OnKeyListener { v, keyCode, event ->
             if (keyCode == KeyEvent.KEYCODE_ENTER && event.action == KeyEvent.ACTION_DOWN) {
