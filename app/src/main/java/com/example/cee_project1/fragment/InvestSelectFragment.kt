@@ -59,7 +59,10 @@ class InvestSelectFragment : Fragment() {
             for(optionName in optionsNameArr){
                 Log.d("invest_test:투자 결과 apply 후",CEEApplication.gameManager.getResults(optionName)+"\n")
             }
-
+            CEEApplication.gameManager.saveState(requireContext())
+            var sequence=CEEApplication.gameManager.getNowSequence()
+            CEEApplication.prefs.setString("deadline_sequence",sequence.toString())
+            Log.d("setSequence",sequence.toString())
 
             val intent = Intent(activity, InvestResultActivity::class.java)
             startActivity(intent)

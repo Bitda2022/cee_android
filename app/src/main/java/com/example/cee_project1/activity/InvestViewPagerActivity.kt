@@ -49,6 +49,11 @@ class InvestViewPagerActivity : AppCompatActivity() {
         fragmentList.add(InvestMainFragment(rulesArray))//게임 규칙 설명
         fragmentList.add(InvestMainFragment(stories))//스토리
         fragmentList.add(InvestSelectFragment())//투자
+        if(CEEApplication.prefs.getString("sequence_deadline","-1")!="0"
+            ||CEEApplication.prefs.getString("sequence_deadline","-1")!="-1"){
+            //2주차 스토리부터 현재주차 스토리까지 꺼내서 배열로 반환해주는 함수 사용
+            //그 스토리들을 fragmentList에 add할 것
+        }
         initAdapter()
         setContentView(binding.root)
     }

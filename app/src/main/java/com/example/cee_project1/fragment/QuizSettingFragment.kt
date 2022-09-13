@@ -19,7 +19,6 @@ class QuizSettingFragment : Fragment() {
     var btnArr=ArrayList<Button>()
 
 
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
