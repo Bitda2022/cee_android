@@ -3,22 +3,17 @@ package com.example.cee_project1.activity
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import android.view.inputmethod.InputMethodManager
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.widget.ViewPager2
 import com.example.cee_project1.CEEApplication
-import com.example.cee_project1.adapter.InvestViewPagerAdapter
 import com.example.cee_project1.CEEApplication.Companion.gameManager
 import com.example.cee_project1.CEEApplication.Companion.tts
-import com.example.cee_project1.data.Term
+import com.example.cee_project1.adapter.InvestViewPagerAdapter
 import com.example.cee_project1.databinding.ActivityInvestViewPagerBinding
 import com.example.cee_project1.fragment.InvestMainFragment
 import com.example.cee_project1.fragment.InvestSelectFragment
 import com.example.cee_project1.service.AccessibilityTTSHandler
-import com.example.cee_project1.service.InvestViewPagerAdapter
-import io.realm.Realm
-import io.realm.kotlin.where
 
 class InvestViewPagerActivity : AppCompatActivity() {
     var rules= mutableListOf<String>("게임소개","단, 7주차 모의투자 경험해보자.","단모경은 가상의 코인 1000코인을 가지고 해당 주차에 해당하는 스토리를\n" +

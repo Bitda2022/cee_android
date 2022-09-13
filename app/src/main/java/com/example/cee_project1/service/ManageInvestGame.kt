@@ -85,16 +85,6 @@ class ManageInvestGame : Serializable {
         return stories
     }
 
-    fun getEventStory(sequence : Int) : ArrayList<String> {
-        val events = history.getEvents(sequence)
-        val stories = ArrayList<String>()
-        for(event in events) {
-            if(!stories.contains(event.story))
-                stories.add(event.story)
-        }
-        return stories
-    }
-
     // 현재 몇주차인지 반환해주는 함수
     fun getNowSequence() : Int {
         return sequence
@@ -166,6 +156,7 @@ class ManageInvestGame : Serializable {
 
     fun setEventsSequence(events : ArrayList<ArrayList<Event>>) {
         history.events = events
+        Log.d("tts", "setEventsSequence: ${events.size}")
     }
 
     fun saveState(context : Context) {

@@ -41,8 +41,6 @@ class SplashActivity : AppCompatActivity() {
         if(CEEApplication.prefs.getString("version", "null") == "null") {
             setVersion()
             setDatabaseTermThenQuiz()
-
-            CEEApplication.gameManager = ManageInvestGame()
         } else {
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
