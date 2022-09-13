@@ -2,9 +2,8 @@ package com.example.cee_project1.activity
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.get
 import com.example.cee_project1.databinding.ActivityTermListBinding
-import com.example.cee_project1.service.TermListVPAdapter
+import com.example.cee_project1.adapter.TermListVPAdapter
 import com.google.android.material.tabs.TabLayoutMediator
 
 class TermListActivity : AppCompatActivity() {

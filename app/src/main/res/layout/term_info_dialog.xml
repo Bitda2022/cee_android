@@ -10,137 +10,104 @@
     android:background="@drawable/dialog_background_radius"
 
     xmlns:app="http://schemas.android.com/apk/res-auto">
-
-    <ImageView
-        android:id="@+id/term_info_dialog_close_btn_iv"
-        android:textColor="@color/white"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="10dp"
-        android:src="@drawable/close_btn"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-
-    </ImageView>
-
-    <TextView
-        android:id="@+id/term_info_dialog_term_name_tv"
-        android:textColor="@color/white"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/term_info_dialog_close_btn_iv"
-        android:layout_marginTop="50dp"
-        android:layout_marginBottom="30dp"
-        android:text="생산"
-        android:fontFamily="@font/sf_bold">
-
-    </TextView>
-    
-    <View
-        android:id="@+id/term_info_dialog_line_after_term_name"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="2px"
-        android:layout_marginTop="10dp"
-        app:layout_constraintTop_toBottomOf="@id/term_info_dialog_term_name_tv"
-        android:background="@drawable/button_rectangle_color">
+        android:layout_height="match_parent">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/term_info_dialog_term_name_tv"
+                android:textColor="@color/white"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toTopOf="@id/term_info_dialog_line_after_term_name"
+                android:layout_marginTop="30dp"
+                android:layout_marginBottom="50dp"
+                android:text="생산"
+                android:fontFamily="@font/sf_bold">
 
-    </View>
+            </TextView>
+
+            <View
+                android:id="@+id/term_info_dialog_line_after_term_name"
+                android:layout_width="match_parent"
+                android:layout_height="2px"
+                android:layout_marginTop="30dp"
+                app:layout_constraintTop_toBottomOf="@id/term_info_dialog_term_name_tv"
+                android:background="@drawable/button_rectangle_color">
+
+            </View>
 
 
-    <TextView
-        android:id="@+id/term_info_dialog_term_content_tv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
+            <TextView
+                android:id="@+id/term_info_dialog_term_content_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
 
-        android:text="대충설명들입니다
+                android:text="대충설명들입니다
 아아아아ㅏ앙
 아아ㅏㅇ아ㅏ아"
-        android:textColor="@color/white"
-        android:fontFamily="@font/sf_semibold"
-        app:layout_constraintBottom_toTopOf="@id/term_info_dialog_line_after_term_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/term_info_dialog_line_after_term_name">
+                android:textColor="@color/white"
+                android:fontFamily="@font/sf_semibold"
+                app:layout_constraintBottom_toTopOf="@id/term_info_dialog_line_after_term_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/term_info_dialog_line_after_term_name">
 
-    </TextView>
+            </TextView>
 
-    <View
-        android:id="@+id/term_info_dialog_line_after_term_content"
-        android:layout_width="match_parent"
-        android:layout_height="2px"
-        android:layout_marginTop="30dp"
-        android:background="@drawable/button_rectangle_color"
-        app:layout_constraintTop_toBottomOf="@id/term_info_dialog_term_content_tv"
-        tools:layout_editor_absoluteX="3dp">
+            <View
+                android:id="@+id/term_info_dialog_line_after_term_content"
+                android:layout_width="match_parent"
+                android:layout_height="2px"
+                android:layout_marginTop="30dp"
+                android:background="@drawable/button_rectangle_color"
+                app:layout_constraintTop_toBottomOf="@id/term_info_dialog_term_content_tv"
+                tools:layout_editor_absoluteX="3dp">
 
-    </View>
+            </View>
 
 
 
-    <TextView
-        android:id="@+id/term_info_dialog_example_tv"
-        android:textColor="@color/white"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/term_info_dialog_listen_again_tv"
-        app:layout_constraintTop_toBottomOf="@id/term_info_dialog_line_after_term_content"
-        android:layout_marginTop="100dp"
-        android:layout_marginBottom="100dp"
-        android:text="대충예시들이 이렇지 않을까요?
+            <TextView
+                android:id="@+id/term_info_dialog_example_tv"
+                android:textColor="@color/white"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toTopOf="@id/term_info_dialog_listen_again_tv"
+                app:layout_constraintTop_toBottomOf="@id/term_info_dialog_line_after_term_content"
+                android:layout_marginTop="100dp"
+                android:layout_marginBottom="100dp"
+                android:text="대충예시들이 이렇지 않을까요?
 좀 길겠음"
-        android:fontFamily="@font/sf_semibold">
+                android:fontFamily="@font/sf_semibold">
 
-    </TextView>
+            </TextView>
 
-    <TextView
-        android:id="@+id/term_info_dialog_listen_again_tv"
-        android:textColor="@color/white"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/term_info_dialog_example_tv"
-        android:text="문제 다시 듣기"
-        android:background="@drawable/button_rectangle_color"
-        android:padding="5dp"
-        android:fontFamily="@font/sf_bold">
+            <TextView
+                android:id="@+id/term_info_dialog_listen_again_tv"
+                android:textColor="@color/white"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="100dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/term_info_dialog_example_tv"
+                android:text="문제 다시 듣기"
+                android:background="@drawable/button_rectangle_color"
+                android:padding="5dp"
+                android:fontFamily="@font/sf_bold">
 
-    </TextView>
-    <!--    <TextView-->
-<!--        android:id="@+id/wrong_dialog_title_tv"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="parent"-->
-<!--        android:layout_marginTop="20dp"-->
+            </TextView>
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
-<!--        android:textColor="@color/white"-->
-<!--        android:text="@string/quiz_dialog_correct"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content">-->
-
-<!--    </TextView>-->
-
-<!--    <TextView-->
-<!--        android:id="@+id/wrong_dialog_content"-->
-<!--        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--        app:layout_constraintStart_toStartOf="@id/wrong_dialog_title_tv"-->
-<!--        app:layout_constraintEnd_toEndOf="@id/wrong_dialog_title_tv"-->
-<!--        app:layout_constraintTop_toBottomOf="@id/wrong_dialog_title_tv"-->
-<!--        android:layout_marginTop="20dp"-->
-<!--        android:layout_marginBottom="20dp"-->
-<!--        android:text="@string/quiz_dialog_correct_text"-->
-<!--        android:textColor="@color/white"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content">-->
-
-<!--    </TextView>-->
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

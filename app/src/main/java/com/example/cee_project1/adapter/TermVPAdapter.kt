@@ -1,4 +1,4 @@
-package com.example.cee_project1.service
+package com.example.cee_project1.adapter
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater

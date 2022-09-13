@@ -1,4 +1,4 @@
-package com.example.cee_project1.service
+package com.example.cee_project1.adapter
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity

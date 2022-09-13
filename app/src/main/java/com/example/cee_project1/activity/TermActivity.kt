@@ -2,25 +2,17 @@ package com.example.cee_project1.activity
 
 import android.os.Bundle
 import android.util.Log
-import android.view.KeyEvent
-import android.view.MotionEvent
-import android.view.View
-import android.view.ViewGroup
-import android.view.accessibility.AccessibilityEvent
 import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager2.widget.ViewPager2
 import com.example.cee_project1.CEEApplication.Companion.prefs
 import com.example.cee_project1.CEEApplication.Companion.tts
 import com.example.cee_project1.data.Term
-import com.example.cee_project1.databinding.ActivitySplashBinding
 import com.example.cee_project1.databinding.ActivityTermBinding
 import com.example.cee_project1.service.AccessibilityTTSHandler
 import com.example.cee_project1.service.TTSService
-import com.example.cee_project1.service.TermVPAdapter
+import com.example.cee_project1.adapter.TermVPAdapter
 import io.realm.Realm
 import io.realm.kotlin.where
-import java.util.*
-import kotlin.concurrent.timer
 
 class TermActivity : AppCompatActivity() {
 

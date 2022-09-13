@@ -1,7 +1,5 @@
-package com.example.cee_project1.service
+package com.example.cee_project1.adapter
 
-import android.content.Intent
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup

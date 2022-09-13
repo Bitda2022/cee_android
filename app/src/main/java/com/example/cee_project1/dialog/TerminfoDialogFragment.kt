@@ -39,9 +39,9 @@ class TerminfoDialogFragment : DialogFragment(){
         val view = binding.root
         // 레이아웃 배경을 투명하게 해줌, 필수 아님
         dialog?.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-        initbtn()
+//        initbtn()
         initData()
-        initMotion()
+//        initMotion()
 
         val msg: String = arguments?.getString(KEY)?:"default"
         Log.d("KEYMES",msg)
@@ -145,11 +145,11 @@ class TerminfoDialogFragment : DialogFragment(){
 
     }
 
-    private fun initbtn() {
-        binding.termInfoDialogCloseBtnIv.setOnClickListener {
-            this.dismiss()
-        }
-    }
+//    private fun initbtn() {
+//        binding.termInfoDialogCloseBtnIv.setOnClickListener {
+//            this.dismiss()
+//        }
+//    }
 
     private fun initData() {
         //binding.termInfoDialogTermNameTv.text
