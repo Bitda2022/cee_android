@@ -27,10 +27,10 @@ class QuizSettingFragment : Fragment() {
         binding = FragmentQuizSettingBinding.inflate(inflater, container, false)
         var quizType:String?=null
 
-        btnFlagArr.add(false)
-        btnFlagArr.add(false)
-        btnFlagArr.add(false)
         btnFlagArr.add(true)
+        btnFlagArr.add(false)
+        btnFlagArr.add(false)
+        btnFlagArr.add(false)
 
 
 

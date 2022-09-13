@@ -47,14 +47,11 @@ class QuizActivity : AppCompatActivity(){
         binding = ActivityQuizBinding.inflate(layoutInflater)
         setContentView(binding.root)
         initData()
-        initDatabase()
+
 
     }
 
 
-    private fun initDatabase() {
-
-    }
 
     private fun quiz(quizs: ArrayList<Quiz>) {
 
@@ -324,7 +321,19 @@ class QuizActivity : AppCompatActivity(){
 
                 }
             }
-            else->{
+            else->{//"경제기초"가 default
+                termList = realm.where<Term>().contains("type","knowledge/economy_basic.html").findAll()
+
+                if(termList!=null) {
+                    for (term in termList) {
+                        if(term?.quizs != null && term?.quizs!!.size != 0) {
+
+                            quizList?.add(term?.quizs?.get(0)!!)
+                        }
+                    }
+                }
+
+                Log.d("quizType","economy_basic")
 
             }
 
