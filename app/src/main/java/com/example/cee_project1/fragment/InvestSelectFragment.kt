@@ -218,7 +218,7 @@ class InvestSelectFragment : Fragment() {
 
             //상장가보다 적게 투자하는거 막기 (예외처리)
             if (CEEApplication.gameManager.playerInvest(selectedCompany, difference)) {
-                Toast.makeText(context, "가능한 거래입니다.", Toast.LENGTH_SHORT).show()
+                //Toast.makeText(context, "가능한 거래입니다.", Toast.LENGTH_SHORT).show()
             } else {//playerInvest()가 false return
                 Toast.makeText(context, "불가능한 거래입니다.", Toast.LENGTH_SHORT).show()
             }
