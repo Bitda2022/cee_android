@@ -47,8 +47,6 @@ class QuizActivity : AppCompatActivity(){
         binding = ActivityQuizBinding.inflate(layoutInflater)
         setContentView(binding.root)
         initData()
-
-
     }
 
 

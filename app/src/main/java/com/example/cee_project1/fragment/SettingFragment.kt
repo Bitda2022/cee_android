@@ -10,6 +10,7 @@ import android.widget.SeekBar
 import android.widget.Spinner
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import com.example.cee_project1.CEEApplication
 import com.example.cee_project1.R
 import com.example.cee_project1.CEEApplication.Companion.tts
 import com.example.cee_project1.databinding.FragmentSettingBinding
@@ -41,7 +42,12 @@ class SettingFragment : Fragment() {
 
 
         binding.setSpeedSk.setOnSeekBarChangeListener(object :SeekBar.OnSeekBarChangeListener{
+
             override fun onProgressChanged(seekbar: SeekBar?, progress: Int, fromUser: Boolean) {
+//                if(CEEApplication.prefs.getString("tts_speed","-1")!="-1"){
+//
+//                }
+
                 binding.settingProgressTv.text = progress.toString()
                 val speed = (1f + (progress.toFloat() / 10))
                 Log.d("speed", "onProgressChanged: $speed")

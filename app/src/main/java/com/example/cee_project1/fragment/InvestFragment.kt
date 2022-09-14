@@ -22,6 +22,7 @@ class InvestFragment : Fragment() {
         binding = FragmentInvestBinding.inflate(inflater, container, false)
         testInvestData()
 
+
         binding.investStartQuizBtn.setOnClickListener {
             val intent = Intent(activity, InvestViewPagerActivity::class.java)
             startActivity(intent)
@@ -36,5 +37,8 @@ class InvestFragment : Fragment() {
             CEEApplication.gameManager!!.test()
         }
     }
+
+
+
 
 }
