@@ -33,10 +33,11 @@
         </TextView>
 
         <TextView
+            app:layout_constraintVertical_chainStyle="packed"
             android:id="@+id/fragment_invest_select_info_tv"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="10dp"
             android:gravity="center"
             android:text="매도/ 매수 할 주식을 선택해주세요"
             android:textColor="@color/white"
@@ -44,7 +45,6 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/fragment_invest_select_day_tv"
-
             app:layout_constraintBottom_toTopOf="@id/fragment_invest_select_exsiting_coin_tv"
             >
 
@@ -54,7 +54,6 @@
             android:id="@+id/fragment_invest_select_exsiting_coin_tv"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
             android:gravity="center"
             android:text="보유 코인 : 100코인"
             android:textColor="@color/white"
@@ -66,62 +65,24 @@
 
         </TextView>
 
-        <!--        두번쨰 화면 시작-->
         <TextView
-            android:id="@+id/fragment_invest_select_selected_company_tv"
+            android:id="@+id/fragment_invest_select_asset_tv"
             android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:layout_marginTop="50dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
             android:gravity="center"
-            android:text="@string/selected_company"
+            android:text="총 자산 : 100코인"
             android:textColor="@color/white"
-            android:textSize="45dp"
-
-            android:visibility="gone"
-            app:layout_constraintBottom_toTopOf="@id/fragment_invest_select_invested_money_et"
+            android:textSize="25dp"
+            app:layout_constraintBottom_toTopOf="@id/fragment_invest_select_content_sv"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/fragment_invest_select_exsiting_coin_tv">
 
         </TextView>
 
-        <EditText
-            android:id="@+id/fragment_invest_select_invested_money_et"
-            android:inputType="number"
-            android:layout_width="match_parent"
-            android:layout_height="130dp"
-            android:visibility="gone"
-            android:backgroundTint="@color/black"
-            android:gravity="center"
-            android:textColor="@color/white"
-            android:textSize="90sp"
-            app:layout_constraintBottom_toTopOf="@id/fragment_invest_select_complete_btn"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/fragment_invest_select_selected_company_tv">
+        <!--        두번쨰 화면 시작-->
 
-        </EditText>
-
-        <Button
-            android:id="@+id/fragment_invest_select_complete_btn"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
-            android:visibility="gone"
-            android:layout_marginTop="30dp"
-            android:background="@drawable/buttom_round"
-            android:fontFamily="@font/sf_bold"
-            android:text="@string/complete_btn"
-            android:textColor="@color/white"
-            android:textSize="30dp"
-
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/fragment_invest_select_invested_money_et">
-
-        </Button>
 
         <!--        투자 금액 선택화면 끝-->
 
@@ -147,8 +108,64 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-
+                android:paddingTop="50dp"
                 >
+
+                <TextView
+                    android:id="@+id/fragment_invest_select_selected_company_tv"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:layout_marginTop="50dp"
+                    android:gravity="center"
+                    android:text="@string/selected_company"
+                    android:textColor="@color/white"
+                    android:textSize="45dp"
+
+                    android:visibility="gone"
+                    app:layout_constraintBottom_toTopOf="@id/fragment_invest_select_invested_money_et"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="parent">
+
+                </TextView>
+
+                <EditText
+                    android:id="@+id/fragment_invest_select_invested_money_et"
+                    android:inputType="number"
+                    android:layout_width="match_parent"
+                    android:layout_height="130dp"
+                    android:visibility="gone"
+                    android:backgroundTint="@color/black"
+                    android:gravity="center"
+                    android:textColor="@color/white"
+                    android:textSize="90sp"
+                    app:layout_constraintBottom_toTopOf="@id/fragment_invest_select_complete_btn"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/fragment_invest_select_selected_company_tv">
+
+                </EditText>
+
+                <Button
+                    android:id="@+id/fragment_invest_select_complete_btn"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:visibility="gone"
+                    android:layout_marginTop="30dp"
+                    android:background="@drawable/buttom_round"
+                    android:fontFamily="@font/sf_bold"
+                    android:text="@string/complete_btn"
+                    android:textColor="@color/white"
+                    android:textSize="30dp"
+
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/fragment_invest_select_invested_money_et">
+
+                </Button>
 
 
 
