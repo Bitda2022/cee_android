@@ -148,7 +148,6 @@ class TerminfoDialogFragment : DialogFragment(){
 
         }
 
-
     }
 
 //    private fun initbtn() {

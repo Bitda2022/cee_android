@@ -57,6 +57,7 @@ class TTSService(context: Context) : UtteranceProgressListener(), TextToSpeech.O
         nowIndex = 0
         state = State.CLEAR
         alreadyRead.clear()
+        this.onDoneListener = OnDoneListener()
     }
 
     fun setSpeed(speed : Float) {
