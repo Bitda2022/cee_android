@@ -26,7 +26,7 @@
     <string name="invest_title">투자</string>
     <string name="invest_company1">자동차기업</string>
     <string name="invest_company2">문구기업</string>
-    <string name="invest_company3">항공기업</string>
+    <string name="invest_company3">제약기업</string>
     <string name="invest_savings">적금</string>
 
     <string name="invest_day_of_result">1일차 기업</string>
@@ -35,7 +35,7 @@
     <string name="invest_day_of_final_myresult">투자요약</string>
     <string name="invest_company1_result">제약기업\n25->30</string>
     <string name="invest_company2_result">문구기업\n25->30</string>
-    <string name="invest_company3_result">항공기업\n25->30</string>
+    <string name="invest_company3_result">제약기업\n25->30</string>
 
     <string name="quiz_type">퀴즈유형</string>
     <string name="economy_basic">경제기초</string>

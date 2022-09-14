@@ -12,6 +12,7 @@ import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintSet
+import androidx.core.widget.doAfterTextChanged
 import androidx.fragment.app.Fragment
 import com.example.cee_project1.CEEApplication
 import com.example.cee_project1.activity.InvestResultActivity
@@ -26,6 +27,8 @@ class InvestSelectFragment : Fragment() {
     var amount = 0  //지금 투자하는 돈
     var difference = 0 // amount-optionAmount , (지금 투자하는 돈)-(원래 투자한 돈)
     var selectedCompany = ""
+    var isSelectPage = true
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
@@ -39,7 +42,8 @@ class InvestSelectFragment : Fragment() {
 
     private fun showExsitingMoney() {
         binding.fragmentInvestSelectExsitingCoinTv.text =
-            "보유 코인:" + CEEApplication.gameManager.getPlayerMoney().toString() + "코인"
+            "보유 코인 : " + CEEApplication.gameManager.getPlayerMoney().toString() + "코인"
+        binding.fragmentInvestSelectAssetTv.text = "총 자산 : " + CEEApplication.gameManager.getPlayerTotalMoney().toString() + "코인"
     }
 
     override fun onCreateView(
@@ -181,48 +185,42 @@ class InvestSelectFragment : Fragment() {
                 var exsitingMoneyTmp = CEEApplication.gameManager.getPlayerMoney() - difference
                 binding.fragmentInvestSelectExsitingCoinTv.text =
                     "보유 코인 : " + exsitingMoneyTmp.toString() + "코인"
+                binding.fragmentInvestSelectAssetTv.text = "총 자산 : " + CEEApplication.gameManager.getPlayerTotalMoney().toString() + "코인"
                 true
             } else {
                 false
             }
         }
 
-        binding.fragmentInvestSelectInvestedMoneyEt.setOnKeyListener(View.OnKeyListener { v, keyCode, event ->
-            if (keyCode == KeyEvent.KEYCODE_ENTER && event.action == KeyEvent.ACTION_DOWN) {
-                //Perform Code
-
-                try {
-                    Log.d(
-                        "invest_test:edit text String",
-                        binding.fragmentInvestSelectInvestedMoneyEt.text.toString()
-                    )
-                    amount =
-                        Integer.parseInt(binding.fragmentInvestSelectInvestedMoneyEt.text.toString())
-                    Log.d("invest_test:edit text Int", amount.toString())
-                } catch (e: NumberFormatException) {
-                    // handle the exception
-                }
-                difference = amount - optionAmount
-
-                //보유코인 text 바꾸기
-                var exsitingMoneyTmp = CEEApplication.gameManager.getPlayerMoney() - difference
-                binding.fragmentInvestSelectExsitingCoinTv.text =
-                    "보유 코인 : " + exsitingMoneyTmp.toString() + "코인"
-                return@OnKeyListener true
+        binding.fragmentInvestSelectInvestedMoneyEt.doAfterTextChanged {
+            try {
+                Log.d(
+                    "invest_test:edit text String",
+                    binding.fragmentInvestSelectInvestedMoneyEt.text.toString()
+                )
+                amount =
+                    Integer.parseInt(binding.fragmentInvestSelectInvestedMoneyEt.text.toString())
+                Log.d("invest_test:edit text Int", amount.toString())
+            } catch (e: NumberFormatException) {
+                // handle the exception
             }
-            false
-        })
+            difference = amount - optionAmount
 
+            //보유코인 text 바꾸기
+            var exsitingMoneyTmp = CEEApplication.gameManager.getPlayerMoney() - difference
+            binding.fragmentInvestSelectExsitingCoinTv.text =
+                "보유 코인 : " + exsitingMoneyTmp.toString() + "코인"
+            binding.fragmentInvestSelectAssetTv.text = "총 자산 : " + CEEApplication.gameManager.getPlayerTotalMoney().toString() + "코인"
+        }
 
 
         binding.fragmentInvestSelectCompleteBtn.setOnClickListener {
 
             //상장가보다 적게 투자하는거 막기 (예외처리)
             if (CEEApplication.gameManager.playerInvest(selectedCompany, difference)) {
-
+                Toast.makeText(context, "가능한 거래입니다.", Toast.LENGTH_SHORT).show()
             } else {//playerInvest()가 false return
-                Toast.makeText(context, "상장가 이상의 금액을 투자해야 합니다", Toast.LENGTH_SHORT).show()
-
+                Toast.makeText(context, "불가능한 거래입니다.", Toast.LENGTH_SHORT).show()
             }
             Log.d("invest_test:투자", "$selectedCompany 에 $difference 만큼 더 투자함")
 
@@ -230,6 +228,7 @@ class InvestSelectFragment : Fragment() {
             var exsitingPlayerMoney = CEEApplication.gameManager.getPlayerMoney()
             binding.fragmentInvestSelectExsitingCoinTv.text =
                 "보유 코인 : " + exsitingPlayerMoney.toString() + "코인"
+            binding.fragmentInvestSelectAssetTv.text = "총 자산 : " + CEEApplication.gameManager.getPlayerTotalMoney().toString() + "코인"
 
 
             investingToSelectPage()
@@ -239,20 +238,31 @@ class InvestSelectFragment : Fragment() {
 
     }
 
-    private fun investingToSelectPage() {
+    fun investingToSelectPage() {
+        isSelectPage = true
 
         //투자 amount editText에서 정하고 "완료"버튼 눌렀을 시
         binding.fragmentInvestSelectSelectedCompanyTv.visibility = View.GONE
         binding.fragmentInvestSelectInvestedMoneyEt.visibility = View.GONE
         binding.fragmentInvestSelectCompleteBtn.visibility = View.GONE
 
-        binding.fragmentInvestSelectCl.visibility = View.VISIBLE
-
+        binding.fragmentInvestSelectSavings.visibility = View.VISIBLE
+        binding.fragmentInvestSelectCompany1.visibility = View.VISIBLE
+        binding.fragmentInvestSelectCompany2.visibility = View.VISIBLE
+        binding.fragmentInvestSelectCompany3.visibility = View.VISIBLE
+        binding.fragmentInvestSelectDeadlineBtn.visibility = View.VISIBLE
 
     }
 
     private fun selectToInvestingPage() {
-        binding.fragmentInvestSelectCl.visibility = View.GONE
+        isSelectPage = false
+
+        binding.fragmentInvestSelectSavings.visibility = View.GONE
+        binding.fragmentInvestSelectCompany1.visibility = View.GONE
+        binding.fragmentInvestSelectCompany2.visibility = View.GONE
+        binding.fragmentInvestSelectCompany3.visibility = View.GONE
+        binding.fragmentInvestSelectDeadlineBtn.visibility = View.GONE
+
 
         binding.fragmentInvestSelectSelectedCompanyTv.visibility = View.VISIBLE
         binding.fragmentInvestSelectInvestedMoneyEt.visibility = View.VISIBLE
@@ -285,5 +295,6 @@ class InvestSelectFragment : Fragment() {
             )
         }
     }
+
 
 }
