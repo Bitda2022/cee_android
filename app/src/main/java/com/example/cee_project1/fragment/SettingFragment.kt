@@ -1,5 +1,6 @@
 package com.example.cee_project1.fragment
 
+import android.app.ProgressDialog.show
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -10,9 +11,13 @@ import android.widget.SeekBar
 import android.widget.Spinner
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
+import com.example.cee_project1.CEEApplication
 import com.example.cee_project1.R
 import com.example.cee_project1.CEEApplication.Companion.tts
 import com.example.cee_project1.databinding.FragmentSettingBinding
+import com.example.cee_project1.dialog.TutorialDialogFragment
+import com.example.cee_project1.dialog.WrongAlertDialog
 import com.example.cee_project1.service.TTSService
 
 
@@ -32,7 +37,8 @@ class SettingFragment : Fragment() {
 //        testTTS()
 
         binding.setTutorialAgainTv.setOnClickListener {
-
+            val TutoDialog = TutorialDialogFragment()
+            TutoDialog.show(requireFragmentManager() ,"TutorialDialogFragment")
         }
 
         binding.setUpdateCheckTv.setOnClickListener {
@@ -41,7 +47,10 @@ class SettingFragment : Fragment() {
 
 
         binding.setSpeedSk.setOnSeekBarChangeListener(object :SeekBar.OnSeekBarChangeListener{
+
             override fun onProgressChanged(seekbar: SeekBar?, progress: Int, fromUser: Boolean) {
+
+
                 binding.settingProgressTv.text = progress.toString()
                 val speed = (1f + (progress.toFloat() / 10))
                 Log.d("speed", "onProgressChanged: $speed")
@@ -55,7 +64,22 @@ class SettingFragment : Fragment() {
             }
         })
 
+        setSeekBarDefault()
+
+
         return binding.root
+    }
+
+    private fun setSeekBarDefault() {
+        val defaultSpeed=CEEApplication.prefs.getFloat("tts_speed",1f)//1.0에서 2.0까지
+        Log.d("tts_speed_defaultSpeed",defaultSpeed.toString())
+        if(defaultSpeed!=1f){
+            val speed=((defaultSpeed-1)*10).toInt()//0부터 10으로
+            Log.d("tts_speed_speed",speed.toString())
+            tts.setSpeed(defaultSpeed)
+            binding.setSpeedSk.setProgress(speed)
+        }
+
     }
 
 

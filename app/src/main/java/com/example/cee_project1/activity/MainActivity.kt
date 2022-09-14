@@ -10,10 +10,12 @@ import androidx.lifecycle.Lifecycle
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import androidx.viewpager2.widget.ViewPager2
 import com.example.cee_project1.CEEApplication
+import com.example.cee_project1.CEEApplication.Companion.tts
 import com.example.cee_project1.R
 import com.example.cee_project1.data.Quiz
 import com.example.cee_project1.data.Term
 import com.example.cee_project1.databinding.ActivityMainBinding
+import com.example.cee_project1.dialog.TutorialDialogFragment
 import com.example.cee_project1.fragment.InvestFragment
 import com.example.cee_project1.fragment.SettingFragment
 import com.example.cee_project1.fragment.StudyFragment
@@ -37,7 +39,14 @@ class MainActivity : AppCompatActivity() {
         binding.bottomNavigationView.setOnItemSelectedListener { navigationSelected(it) }
 
         testDatabase()
+
+
+
+
     }
+
+
+
 
     private fun testDatabase() {
         val realm = Realm.getDefaultInstance()
@@ -127,6 +136,8 @@ class MainActivity : AppCompatActivity() {
             }
         }
     }
+
+
 
 
 }
