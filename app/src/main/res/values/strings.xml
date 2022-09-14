@@ -52,6 +52,11 @@
     <string name="deadline_btn">마감</string>
     <string name="complete_btn">완료</string>
 
+    <string name="tutorial">튜토리얼을 진행하겠습니다.
+진행을 원치 않으시면 두 손가락으로 스크롤 하시면 됩니다.
+위 앱의 음성서비스는 한번 누르면 일시정지,
+꾹 누르기를 하면 음성서비스 뒤로가기를 할 수 있습니다.</string>
+
     <string name="content_description_quiz_range">퀴즈 유형을 선택하실 수 있습니다.</string>
 
 </resources>

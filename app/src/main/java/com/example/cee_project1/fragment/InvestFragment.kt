@@ -42,4 +42,7 @@ class InvestFragment : Fragment() {
         }
     }
 
+
+
+
 }

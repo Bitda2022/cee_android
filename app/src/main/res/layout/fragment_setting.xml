@@ -101,7 +101,7 @@
         android:id="@+id/set_tutorial_again_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="튜토리얼 다시보기"
+        android:text="튜토리얼 듣기"
         app:layout_constraintStart_toStartOf="@id/set_tuto_iv"
         app:layout_constraintBottom_toBottomOf="@id/set_tuto_iv"
         app:layout_constraintTop_toTopOf="@id/set_tuto_iv"
