@@ -44,9 +44,7 @@ class SettingFragment : Fragment() {
         binding.setSpeedSk.setOnSeekBarChangeListener(object :SeekBar.OnSeekBarChangeListener{
 
             override fun onProgressChanged(seekbar: SeekBar?, progress: Int, fromUser: Boolean) {
-//                if(CEEApplication.prefs.getString("tts_speed","-1")!="-1"){
-//
-//                }
+
 
                 binding.settingProgressTv.text = progress.toString()
                 val speed = (1f + (progress.toFloat() / 10))
@@ -61,7 +59,22 @@ class SettingFragment : Fragment() {
             }
         })
 
+        setSeekBarDefault()
+
+
         return binding.root
+    }
+
+    private fun setSeekBarDefault() {
+        val defaultSpeed=CEEApplication.prefs.getFloat("tts_speed",-1f)//1.0에서 2.0까지
+        Log.d("tts_speed_defaultSpeed",defaultSpeed.toString())
+        if(defaultSpeed!=-1f){
+            val speed=((defaultSpeed-1)*10).toInt()//0부터 10으로
+            Log.d("tts_speed_speed",speed.toString())
+            tts.setSpeed(defaultSpeed)
+            binding.setSpeedSk.setProgress(speed)
+        }
+
     }
 
 
