@@ -9,8 +9,18 @@ data class Player(
 ) : Serializable {
     fun invest(optionName : String, amount : Int) : Boolean {
         val option = findOption(optionName)
-        return if(option.price > amount)
-            false
+        if(option.name == "적금" && amount < 0) {
+            return false
+        }
+        return if(option.price > amount + option.amount)
+            if(amount + option.amount != 0)
+                false
+            else {
+                option.amount = 0
+                option.value = 0.0
+                money -= amount
+                true
+            }
         else if(money < amount)
             false
         else {
@@ -34,7 +44,7 @@ data class Player(
         for(option in options) {
             sum += option.value
         }
-        return sum.toInt()
+        return sum.toInt() + money
     }
 
     fun findOption(optionName : String) : InvestOption {

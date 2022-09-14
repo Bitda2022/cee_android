@@ -110,7 +110,6 @@ class ManageInvestGame : Serializable {
         return player.invest(optionName, amount)
     }
 
-
     /*
     * 최종 투자 결정 이후 해당 주차의 사건들을 기업에 적용해주는 함수
     * */
@@ -162,7 +161,7 @@ class ManageInvestGame : Serializable {
     fun saveState(context : Context) {
         val fos = context.openFileOutput("gameManager", Context.MODE_PRIVATE)
         val oos = ObjectOutputStream(fos)
-        oos.writeObject(gameManager)
+        oos.writeObject(this)
         oos.close()
         fos.close()
         Log.d("invest", "handleMessage: complete")

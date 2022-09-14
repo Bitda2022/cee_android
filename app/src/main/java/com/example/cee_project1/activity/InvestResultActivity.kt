@@ -54,4 +54,8 @@ class InvestResultActivity : AppCompatActivity() {
         var myCapital=CEEApplication.gameManager.getPlayerTotalMoney()
         binding.activityInvestResultMyCoinContentRoundTv.text=myCapital.toString()
     }
+
+    override fun onBackPressed() {
+
+    }
 }

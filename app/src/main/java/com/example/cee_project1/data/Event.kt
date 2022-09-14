@@ -14,7 +14,7 @@ data class Event(
         SMALL_RAISE(1, 5, 0),
         BIG_DECLINE(-30, -15, 0),
         MIDDLE_DECLINE(-15, -5, 0),
-        SMALL_DECLINE(-1, -5, 0),
+        SMALL_DECLINE(-5, -1, 0),
         INTEREST_RATE(0, 0, 1)
     }
 

@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.widget.ViewPager2
 import com.example.cee_project1.CEEApplication
@@ -46,47 +47,36 @@ class InvestViewPagerActivity : AppCompatActivity() {
         AccessibilityTTSHandler().handleAccessibility(this)
         whenPageChanged()
 
-        var stories=CEEApplication.gameManager.getNowEventsStory()
-
         var rulesArray=ArrayList<String>()//rules를 ArrayList로 만들기 위한 장치
         rulesArray.addAll(rules)
 
         fragmentList =ArrayList<Fragment>()
         fragmentList.add(InvestMainFragment(rulesArray))//게임 규칙 설명
-        fragmentList.add(InvestMainFragment(stories))//스토리
+        for(i in 0..gameManager.getNowSequence()) {
+            var stories=gameManager.getEventStory(i)
+            Log.d("invest", "onCreate: $stories")
+            fragmentList.add(InvestMainFragment(stories))//스토리
+        }
         fragmentList.add(InvestSelectFragment())//투자
         Log.d("sequence_deadline_get",CEEApplication.prefs.getString("sequence_deadline","-1"))
-        if(CEEApplication.prefs.getString("sequence_deadline","-1")!="0"
-            ||CEEApplication.prefs.getString("sequence_deadline","-1")!="-1"){
-            //2주차 스토리부터 현재주차 스토리까지 꺼내서 배열로 반환해주는 함수 사용
-            //그 스토리들을 fragmentList에 add할 것
-            var sequence=CEEApplication.gameManager.getNowSequence()
-            Log.d("sequence_deadline_get_if","if문 들어옴")
-            Log.d("sequence_deadline_get_if_sequence",sequence.toString())
-            for(i in 1..sequence){
-                Log.d("sequence_deadline_get_for",i.toString()+"\n")
-                var eventStory=CEEApplication.gameManager.getEventStory(i)
-                fragmentList.add(InvestMainFragment(eventStory))
-            }
-
-        }
         initAdapter()
         setContentView(binding.root)
     }
 
     private fun setGame() {
-        CEEApplication.gameManager.resetGame()
+        //CEEApplication.gameManager.resetGame()
         Log.d( "invest_test:현재주차: ",CEEApplication.gameManager.getNowSequence().toString())
 
     }
 
     override fun onResume() {
         Log.d("viewpager_lifecycle","investViewPagerActivity onResume 호출")
-        if(InvestResultActivity.btnFlag==true){
+        if(InvestResultActivity.btnFlag){
 
             if(CEEApplication.gameManager.goNextSequence()){//주차 증가
                 //투자해야할 주차 prefs에 set
-                CEEApplication.gameManager.saveState(this)
+                CEEApplication.gameManager.saveState(applicationContext)
+                Log.d("invest", "onResume: save ${gameManager.getNowSequence()}")
                 var sequence=CEEApplication.gameManager.getNowSequence()
                 CEEApplication.prefs.setString("sequence_deadline",sequence.toString())
                 Log.d("sequence_deadline_set",sequence.toString())
@@ -104,8 +94,10 @@ class InvestViewPagerActivity : AppCompatActivity() {
 //            var sequence=CEEApplication.gameManager.getNowSequence()
             initAdapter()
             InvestResultActivity.btnFlag=false
-            binding.vpSample.currentItem=fragmentList.size-2
+        }
 
+        if(gameManager.getNowSequence() != 0) {
+            binding.vpSample.currentItem=fragmentList.size-2
         }
 
         super.onResume()
@@ -139,6 +131,13 @@ class InvestViewPagerActivity : AppCompatActivity() {
                 }
             }
         })
+    }
+
+    override fun onBackPressed() {
+        if((fragmentList.last() as InvestSelectFragment).isSelectPage)
+            super.onBackPressed()
+        else
+            (fragmentList.last() as InvestSelectFragment).investingToSelectPage()
     }
 
 }
