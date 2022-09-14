@@ -15,6 +15,7 @@ import com.example.cee_project1.R
 import com.example.cee_project1.data.Quiz
 import com.example.cee_project1.data.Term
 import com.example.cee_project1.databinding.ActivityMainBinding
+import com.example.cee_project1.dialog.TutorialDialogFragment
 import com.example.cee_project1.fragment.InvestFragment
 import com.example.cee_project1.fragment.SettingFragment
 import com.example.cee_project1.fragment.StudyFragment
@@ -41,7 +42,9 @@ class MainActivity : AppCompatActivity() {
 
 
 
+
     }
+
 
 
 

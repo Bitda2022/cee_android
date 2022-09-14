@@ -5,50 +5,35 @@ import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.util.Log
 import android.view.*
+import androidx.core.content.res.ColorStateListInflaterCompat.inflate
 import androidx.fragment.app.DialogFragment
-import com.example.cee_project1.CEEApplication
-import com.example.cee_project1.CEEApplication.Companion.prefs
-import com.example.cee_project1.activity.QuizActivity
-import com.example.cee_project1.data.Quiz
-import com.example.cee_project1.data.Term
+import androidx.fragment.app.Fragment
+import com.example.cee_project1.R
+import com.example.cee_project1.databinding.ActivityFinishQuizBinding.inflate
+import com.example.cee_project1.databinding.FragmentInvestBinding
+import com.example.cee_project1.databinding.FragmentTutorialDialogBinding
 import com.example.cee_project1.databinding.TermInfoDialogBinding
-import io.realm.Realm
-import io.realm.kotlin.where
-
-class TerminfoDialogFragment : DialogFragment(){
-    private var _binding: TermInfoDialogBinding? = null
-    private val binding get() = _binding!!
-
-    companion object {
-        const val KEY = "key"
-        fun newInstance(msg:String): TerminfoDialogFragment? {
-            Log.d("KEYMESVAL",msg)
-            val fragment = TerminfoDialogFragment()
-            val bundle1 = Bundle()
-            bundle1.putString(KEY,msg)
-            fragment.arguments =bundle1
 
 
-            Log.d("KEYMESCOM",fragment.arguments?.getString(KEY).toString())
-            return fragment
-        }
+class TutorialDialogFragment : DialogFragment() {
+    lateinit var binding : FragmentTutorialDialogBinding
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
     }
 
-
-
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        _binding = TermInfoDialogBinding.inflate(inflater, container, false)
-        val view = binding.root
-        // 레이아웃 배경을 투명하게 해줌, 필수 아님
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        // Inflate the layout for this fragment
+        binding = FragmentTutorialDialogBinding.inflate(inflater, container, false)
         dialog?.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-//        initbtn()
-        initData()
-//        initMotion()
 
-        val msg: String = arguments?.getString(KEY)?:"default"
-        Log.d("KEYMES",msg)
-        initView(msg)
-        return view
+        initMotion()
+        return binding.root
+
     }
 
     private fun initMotion() {
@@ -101,7 +86,7 @@ class TerminfoDialogFragment : DialogFragment(){
         })
 
 
-        binding.termInfoDialogCl.setOnTouchListener { view, motionEvent ->
+        binding.fragmentTutorialDialogCl.setOnTouchListener { view, motionEvent ->
             Log.d("motionEvent", "setOnTouchListener 들어옴")
 
 
@@ -127,46 +112,6 @@ class TerminfoDialogFragment : DialogFragment(){
 
 
     }
-
-    private fun initView(msg:String) {
-
-        val realm = Realm.getDefaultInstance()
-        val version = CEEApplication.prefs.getString("version", "main_null")
-        Log.d("version", "onCreate: version: $version")
-
-        val term = realm.where<Term>().contains("name", msg).findFirst()
-        Log.d("showTerm", "showTerm: " + term?.description)
-
-
-        binding.termInfoDialogTermNameTv.text=term?.name
-        binding.termInfoDialogTermContentTv.text=term?.description
-        binding.termInfoDialogExampleTv.text=term?.example
-
-        binding.termInfoDialogListenAgainTv.setOnClickListener {
-            var termQuiz = realm.where<Quiz>().contains("term", term!!.name).findFirst()
-            CEEApplication.tts.readNotice(termQuiz!!.content,prefs.getFloat("tts_speed", 1f))
-
-        }
-
-
-    }
-
-//    private fun initbtn() {
-//        binding.termInfoDialogCloseBtnIv.setOnClickListener {
-//            this.dismiss()
-//        }
-//    }
-
-    private fun initData() {
-        //binding.termInfoDialogTermNameTv.text
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
-    }
-
-
 
 
 

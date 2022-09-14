@@ -14,12 +14,14 @@ import com.example.cee_project1.activity.TermActivity
 import com.example.cee_project1.activity.TermListActivity
 import com.example.cee_project1.data.Term
 import com.example.cee_project1.databinding.FragmentStudyBinding
+import com.example.cee_project1.dialog.TutorialDialogFragment
 import io.realm.Realm
 import io.realm.kotlin.where
 
 class StudyFragment : Fragment() {
 
     lateinit var binding : FragmentStudyBinding
+    var tutorialCnt:Int=0
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -40,8 +42,11 @@ class StudyFragment : Fragment() {
             startActivity(intent)
         }
 
-
-
+        tutorialCnt= prefs.getString("tutorial_cnt","0").toInt()
+        Log.d("tutorialCnt",tutorialCnt.toString())
+        if(tutorialCnt==0){
+            showTutorial()
+        }
 
         return binding.root
     }
@@ -53,6 +58,12 @@ class StudyFragment : Fragment() {
         super.onResume()
     }
 
+    private fun showTutorial() {
+        val TutoDialog = TutorialDialogFragment()
+        TutoDialog.show(requireFragmentManager() ,"TutorialDialogFragment")
+        tutorialCnt++
+        prefs.setString("tutorial_cnt",tutorialCnt.toString())
+    }
 
 
 }
