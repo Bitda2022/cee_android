@@ -26,7 +26,8 @@
             <LinearLayout
                 android:id="@+id/fragment_invest_main_container_sv"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:importantForAccessibility="no">
 
                 <TextView
                     android:id="@+id/fragment_invest_main_stories_tv"
