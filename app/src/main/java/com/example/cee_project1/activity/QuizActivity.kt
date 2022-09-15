@@ -269,7 +269,7 @@ class QuizActivity : AppCompatActivity(){
 
             }
             "financial_basic"->{
-                termList = realm.where<Term>().contains("type","knowledge/economy_basic.html").findAll()
+                termList = realm.where<Term>().contains("type","knowledge/financial_basic.html").findAll()
                 if(termList!=null) {
                     for (term in termList) {
                         if(term?.quizs != null && term?.quizs!!.size != 0) {
@@ -282,7 +282,7 @@ class QuizActivity : AppCompatActivity(){
 
             }
             "stock_advanced"->{
-                termList = realm.where<Term>().contains("type","knowledge/economy_basic.html").findAll()
+                termList = realm.where<Term>().contains("type","knowledge/stock_advanced.html").findAll()
                 Log.d("termListCnt",termList.size.toString())
                 if(termList!=null) {
                     for (term in termList) {
