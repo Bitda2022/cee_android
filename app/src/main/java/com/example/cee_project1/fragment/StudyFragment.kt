@@ -47,7 +47,6 @@ class StudyFragment : Fragment() {
         if(tutorialCnt==0){
             showTutorial()
         }
-
         return binding.root
     }
 
