@@ -15,7 +15,7 @@ data class Event(
         BIG_DECLINE(-30, -15, 0),
         MIDDLE_DECLINE(-15, -5, 0),
         SMALL_DECLINE(-5, -1, 0),
-        INTEREST_RATE(0, 0, 1)
+        INTEREST_RATE(0, 0, 2)
     }
 
     fun apply() {
@@ -24,7 +24,7 @@ data class Event(
 
     private fun getRate() : Double {
         return if (result == Degree.INTEREST_RATE)
-            ((result.precisePercent + 100) / 100).toDouble()
+            ((result.precisePercent + 100).toDouble() / 100)
         else
             (100 + Random(System.currentTimeMillis())
                 .nextDouble(result.minPercent.toDouble(), result.maxPercent.toDouble())) / 100

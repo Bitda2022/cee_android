@@ -112,6 +112,19 @@
                 >
 
                 <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="상장가 : 20코인"
+                    android:textSize="22dp"
+                    android:textColor="@color/white"
+                    android:visibility="gone"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintBottom_toTopOf="@id/fragment_invest_select_selected_company_tv"
+                    android:id="@+id/fragment_invest_select_price_tv"/>
+
+
+                <TextView
                     android:id="@+id/fragment_invest_select_selected_company_tv"
                     android:layout_width="match_parent"
                     android:layout_height="100dp"

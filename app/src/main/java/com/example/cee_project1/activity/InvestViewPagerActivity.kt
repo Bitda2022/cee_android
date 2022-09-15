@@ -51,11 +51,11 @@ class InvestViewPagerActivity : AppCompatActivity() {
         rulesArray.addAll(rules)
 
         fragmentList =ArrayList<Fragment>()
-        fragmentList.add(InvestMainFragment(rulesArray))//게임 규칙 설명
+        fragmentList.add(InvestMainFragment(rulesArray, -1))//게임 규칙 설명
         for(i in 0..gameManager.getNowSequence()) {
             var stories=gameManager.getEventStory(i)
             Log.d("invest", "onCreate: $stories")
-            fragmentList.add(InvestMainFragment(stories))//스토리
+            fragmentList.add(InvestMainFragment(stories, i))//스토리
         }
         fragmentList.add(InvestSelectFragment())//투자
         Log.d("sequence_deadline_get",CEEApplication.prefs.getString("sequence_deadline","-1"))
@@ -82,11 +82,12 @@ class InvestViewPagerActivity : AppCompatActivity() {
                 Log.d("sequence_deadline_set",sequence.toString())
 
                 var stories=CEEApplication.gameManager.getNowEventsStory()
-                fragmentList.add(fragmentList.size-1,InvestMainFragment(stories)) //이번 주차 스터리 추가
+                fragmentList.add(fragmentList.size-1,InvestMainFragment(stories, gameManager.getNowSequence())) //이번 주차 스터리 추가
             }
             else{//7주차 -> 다음주차로 넘어가려고 할 때
                 val intent = Intent(this, InvestFinalActivity::class.java)
                 startActivity(intent)
+                finish()
             }
 
 
@@ -102,6 +103,7 @@ class InvestViewPagerActivity : AppCompatActivity() {
 
         super.onResume()
     }
+
     private fun initAdapter() {
         //ViewPagerAdapter 초기화
         ViewPagerAdapter = InvestViewPagerAdapter(this)

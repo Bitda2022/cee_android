@@ -114,7 +114,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="30dp"
-                android:background="@drawable/ic_rectangle_gray"
+                android:background="@drawable/button_rectangle"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
@@ -128,9 +128,11 @@
                     android:text="투자요약"
                     android:textColor="@color/white"
                     android:textSize="20dp"
-
+                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent">
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="10dp">
 
                 </TextView>
 
@@ -141,14 +143,18 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/sf_bold"
-                android:text="100"
+                android:text=" 1일차 : 100코인    2일차 : 140코인\n
+3일차 : 112코인    4일차 : 145코인\n
+5일차 :  93코인    6일차 : 102코인\n
+7일차 : 111코인\n"
                 android:textColor="@color/white"
                 android:textSize="20dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
 
                 android:layout_marginTop="30dp"
-                app:layout_constraintTop_toBottomOf="@id/activity_invest_result_my_coin_round_cl">
+                app:layout_constraintTop_toBottomOf="@id/activity_invest_result_my_coin_round_cl"
+                android:textAlignment="textStart">
 
             </TextView>
 

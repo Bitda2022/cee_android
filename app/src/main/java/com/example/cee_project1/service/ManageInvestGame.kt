@@ -28,7 +28,7 @@ private const val END_OF_SEQUENCE = 6
 class ManageInvestGame : Serializable {
 
     private var sequence : Int = 0; // 1주차, 2주차들을 의미
-    private val history = History(ArrayList(), ArrayList()) // 앞으로의 일정, 과거들 관리
+    private val history = History(ArrayList(), ArrayList(), ArrayList()) // 앞으로의 일정, 과거들 관리
     private val player : Player = Player(PLAYER_INITIAL_MONEY, ArrayList()) // 플레이어
 
     /* 게임을 시작하거나 끝낼때 게임 리셋
@@ -40,6 +40,7 @@ class ManageInvestGame : Serializable {
         sequence = 0
         history.choices.clear()
         player.money = PLAYER_INITIAL_MONEY
+        player.resetOptions()
     }
 
     /*
@@ -49,7 +50,7 @@ class ManageInvestGame : Serializable {
     * 플레이어 돈 자동 회수
     * */
     fun goNextSequence() : Boolean {
-        history.addHistory(sequence, player.options)
+        history.addHistory(sequence, player.options, player.money)
         player.setAmount2Value()
         return if(sequence == END_OF_SEQUENCE) {
             false
@@ -146,6 +147,18 @@ class ManageInvestGame : Serializable {
         val diff = option.value.toInt() - option.amount
         text += if(diff > 0) " ($diff 상승)"
         else " (" + (diff * -1).toString() + " 하락)"
+        return text
+    }
+
+    fun getFinalResult() : String {
+        val assetHistory = history.getPlayerAssetHistory()
+        var text = ""
+
+        for((i, asset) in assetHistory.withIndex()) {
+            text += "%d일차 : %3d코인".format(i + 1, asset)
+            text += if(i % 2 == 0) "    " else "\n"
+        }
+
         return text
     }
 

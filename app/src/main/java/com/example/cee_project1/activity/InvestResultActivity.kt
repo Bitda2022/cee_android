@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import com.example.cee_project1.CEEApplication
+import com.example.cee_project1.CEEApplication.Companion.tts
 import com.example.cee_project1.R
 import com.example.cee_project1.databinding.ActivityFinishQuizBinding
 import com.example.cee_project1.databinding.ActivityInvestResultBinding
@@ -56,6 +57,6 @@ class InvestResultActivity : AppCompatActivity() {
     }
 
     override fun onBackPressed() {
-
+        tts.readNotice("완료 버튼을 눌러 다음 단계로 넘어가세요.", 1.3f)
     }
 }

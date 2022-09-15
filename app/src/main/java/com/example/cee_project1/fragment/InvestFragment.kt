@@ -23,10 +23,6 @@ class InvestFragment : Fragment() {
         binding = FragmentInvestBinding.inflate(inflater, container, false)
         testInvestData()
 
-        if(gameManager.getNowSequence() != 0) {
-            binding.investStartQuizBtn.text = "이어하기"
-        }
-
         binding.investStartQuizBtn.setOnClickListener {
             val intent = Intent(activity, InvestViewPagerActivity::class.java)
             startActivity(intent)
@@ -36,13 +32,19 @@ class InvestFragment : Fragment() {
         return binding.root
     }
 
+    override fun onResume() {
+        if(gameManager.getNowSequence() != 0) {
+            binding.investStartQuizBtn.text = "이어하기"
+        } else {
+            binding.investStartQuizBtn.text = "시작하기"
+        }
+        super.onResume()
+    }
+
     private fun testInvestData() {
         binding.root.setOnClickListener {
             CEEApplication.gameManager!!.test()
         }
     }
-
-
-
 
 }

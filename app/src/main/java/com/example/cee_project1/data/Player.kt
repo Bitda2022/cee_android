@@ -33,9 +33,7 @@ data class Player(
 
     fun setAmount2Value() {
         for(option in options) {
-            if(option.name != "적금") {
-                option.amount = option.value.toInt()
-            }
+            option.amount = option.value.toInt()
         }
     }
 
@@ -53,5 +51,12 @@ data class Player(
                 return option
         }
         throw Exception("there is no option whose name is $optionName!")
+    }
+
+    fun resetOptions() {
+        for(option in options) {
+            option.amount = 0
+            option.value = 0.0
+        }
     }
 }

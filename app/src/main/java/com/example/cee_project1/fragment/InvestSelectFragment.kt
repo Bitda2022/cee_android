@@ -129,6 +129,7 @@ class InvestSelectFragment : Fragment() {
         //네 개의 선택지에 대한 이벤트 처리
         //선택한 기업 이름 보여주기
         binding.fragmentInvestSelectSelectedCompanyTv.text = selectedCompany
+        binding.fragmentInvestSelectPriceTv.text = "상장가 : %d코인".format(CEEApplication.gameManager.getOptionPrice(selectedCompany))
 
         //editText에 현재까지 투자한 돈 보여주기
         optionAmount = CEEApplication.gameManager.getOptionAmount(selectedCompany)
@@ -242,6 +243,7 @@ class InvestSelectFragment : Fragment() {
         isSelectPage = true
 
         //투자 amount editText에서 정하고 "완료"버튼 눌렀을 시
+        binding.fragmentInvestSelectPriceTv.visibility = View.GONE
         binding.fragmentInvestSelectSelectedCompanyTv.visibility = View.GONE
         binding.fragmentInvestSelectInvestedMoneyEt.visibility = View.GONE
         binding.fragmentInvestSelectCompleteBtn.visibility = View.GONE
@@ -264,6 +266,7 @@ class InvestSelectFragment : Fragment() {
         binding.fragmentInvestSelectDeadlineBtn.visibility = View.GONE
 
 
+        binding.fragmentInvestSelectPriceTv.visibility = View.VISIBLE
         binding.fragmentInvestSelectSelectedCompanyTv.visibility = View.VISIBLE
         binding.fragmentInvestSelectInvestedMoneyEt.visibility = View.VISIBLE
         binding.fragmentInvestSelectCompleteBtn.visibility = View.VISIBLE
