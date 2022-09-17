@@ -26,7 +26,6 @@ class InvestFragment : Fragment() {
         binding.investStartQuizBtn.setOnClickListener {
             val intent = Intent(activity, InvestViewPagerActivity::class.java)
             startActivity(intent)
-
         }
 
         return binding.root
@@ -37,6 +36,7 @@ class InvestFragment : Fragment() {
             binding.investStartQuizBtn.text = "이어하기"
         } else {
             binding.investStartQuizBtn.text = "시작하기"
+            gameManager.resetGame()
         }
         super.onResume()
     }

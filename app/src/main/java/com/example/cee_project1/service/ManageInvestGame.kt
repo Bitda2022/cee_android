@@ -9,6 +9,7 @@ import com.example.cee_project1.data.InvestOption
 import com.example.cee_project1.data.Player
 import java.io.ObjectOutputStream
 import java.io.Serializable
+import kotlin.random.Random
 
 /*
 게임 시작 후 대략적인 순서 가이드
@@ -30,6 +31,7 @@ class ManageInvestGame : Serializable {
     private var sequence : Int = 0; // 1주차, 2주차들을 의미
     private val history = History(ArrayList(), ArrayList(), ArrayList()) // 앞으로의 일정, 과거들 관리
     private val player : Player = Player(PLAYER_INITIAL_MONEY, ArrayList()) // 플레이어
+    private var randomEvent : Int = -1
 
     /* 게임을 시작하거나 끝낼때 게임 리셋
     * sequence 1로 초기화 (첫 주차임을 의미)
@@ -41,6 +43,7 @@ class ManageInvestGame : Serializable {
         history.choices.clear()
         player.money = PLAYER_INITIAL_MONEY
         player.resetOptions()
+        randomEvent = Random(System.currentTimeMillis()).nextInt(0, 6)
     }
 
     /*
@@ -77,7 +80,11 @@ class ManageInvestGame : Serializable {
     }
 
     fun getEventStory(sequence : Int) : ArrayList<String> {
-        val events = history.getEvents(sequence)
+        var events = history.getEvents(sequence)
+        if(sequence == 6) {
+            val tmp = events.slice((randomEvent * 4 until (randomEvent + 1) * 4))
+            events = tmp as ArrayList<Event>
+        }
         val stories = ArrayList<String>()
         for(event in events) {
             if(!stories.contains(event.story))
@@ -86,7 +93,7 @@ class ManageInvestGame : Serializable {
         return stories
     }
 
-    // 현재 몇주차인지 반환해주는 함수
+    // 현재 몇 주차인지 반환해주는 함수
     fun getNowSequence() : Int {
         return sequence
     }
@@ -115,7 +122,11 @@ class ManageInvestGame : Serializable {
     * 최종 투자 결정 이후 해당 주차의 사건들을 기업에 적용해주는 함수
     * */
     fun applyEvents() {
-        val events = history.getEvents(sequence)
+        var events = history.getEvents(sequence)
+        if(sequence == 6) {
+            val tmp = events.slice((randomEvent * 4 until (randomEvent + 1) * 4))
+            events = tmp as ArrayList<Event>
+        }
         for(event in events) {
             event.apply()
         }
